@@ -4,7 +4,7 @@
             :key="launch.id" 
             class="min-h-screen relative flex bg-green-300 ">
             helo
-        </section> -->
+        </section> --> 
         <header>
             <nav class=" w-full h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
@@ -13,6 +13,7 @@
 
         </header>
 
+        
 
         <!-- <div class="night-section ">
             <section v-for="i in 2" :key="i" class="night-background min-h-screen relative flex ">
