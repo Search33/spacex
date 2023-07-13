@@ -13,15 +13,16 @@
             <div class="flex w-1/3 items-center justify-center  p-8">
                 <ClientOnly>
                     <!-- <LazyRocketModel v-if="launch?.vehicle.id === 1" url="~/falcon9.gltf" />
-                <LazyRocketModel v-else-if="launch?.vehicle.id === 18" url="~/public/electron.gltf" />
-                <LazyRocketModel v-else-if="launch?.vehicle.id === 19" url="~/GSLV III.gltf" />
-                <LazyRocketModel v-else-if="launch?.vehicle.id === 20" url="~/soyuz2.gltf" /> -->
-                    <!-- <LazyRocketModel v-if="launch?.vehicle.id === 2" url="/Falcon9.vue" /> -->
+                    <LazyRocketModel v-else-if="launch?.vehicle.id === 18" url="~/electron.gltf" />
+                    <LazyRocketModel v-else-if="launch?.vehicle.id === 19" url="~/GSLV III.gltf" />
+                    <LazyRocketModel v-else-if="launch?.vehicle.id === 20" url="~/soyuz2.gltf" /> -->
 
                     <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
+                    <!-- <LazyFalconHeavy v-else-if="launch?.vehicle.id === " /> -->
+                    <!-- <LazyPSLV v-else-if="launch?.vehicle.id === " /> -->
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>
@@ -62,6 +63,15 @@
         </section>
     </div>
     <section class="min-h-screen bg-[#333333]  ">
+        <div class="flex items-center justify-center h-screen text-white">
+            <div>
+                <p>Data by <a href="https://fdo.rocketlaunch.live" target="_blank" class="underline">DataLaunch.live</a> </p>
+                <p>Icons and vectors by <a href="https://www.svgrepo.com" target="_blank" class="underline">SVGRepo</a></p>
+
+            </div>
+
+
+        </div>
     </section>
 </template>
 

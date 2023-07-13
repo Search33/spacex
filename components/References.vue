@@ -21,13 +21,13 @@
             </template>
 
         </div>
-        <p class="flex items-center justify-center text-sm font-thin  ">
+        <!-- <p class="flex items-center justify-center text-sm font-thin  ">
             Data by
             <span>
                 <a href="https://www.rocketlaunch.live " target="_blank" class="underline pl-1">
                     RocketLaunch.Live</a>
             </span>
-        </p>
+        </p> -->
     </div>
 </template>
 
