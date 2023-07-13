@@ -13,7 +13,7 @@
         <img :src="imgSrc" width="40" height="40" />
       </div>
       <div class="flex items-center pl-3 z-9">
-        {{ text || 'soon added' }}
+        {{ text || 'added soon' }}
       </div>
     </div>
   <!-- </div> -->

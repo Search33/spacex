@@ -98,6 +98,7 @@ export const useProviders = () => {
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/14.svg", text: 'Lunar Lander'},
         { id: 55, imgSrc: "/images/rocketIcon/21.svg", text: 'Lunar Rover'},
+        { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1060'},
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1062'},
 
     ];

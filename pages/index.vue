@@ -8,14 +8,13 @@
         </header>
         <section v-if="pending">
             loading launches...
-
         </section>
 
         <section v-else v-for="(launch, index) in launches.result" :key="launch.id"
             :ref="el => (index === 2 ? (thirdSection = el) : '')"
             :class="{ 'hide-section': index < 2, 'first-section': index === 0, 'fade-in': true }"
             class="min-h-screen relative flex second-section ">
-            <div class="flex w-1/3 items-center justify-center  p-8">
+            <div class="flex w-1/3  items-center justify-center  p-8">
                 <ClientOnly>
                 <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
                 <LazyElectron v-else-if="launch?.vehicle.id === 18" />
@@ -24,7 +23,7 @@
                 <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>
-            <div class="inter-font  w-2/3 justify-center items-center mt-20  overflow-auto pl-6 pt-6">
+            <div class="inter-font w-2/3 py-6  justify-center items-center mt-20  overflow-auto pl-6 pt-6">
                 <div class="bg-[#eeeeee]/90 p-8 rounded-tl-3xl rounded-bl-3xl my-shadow ">
                     <div class=" text-3xl ">
                         {{ launch?.provider.name || 'launch provider not available' }}
@@ -116,20 +115,33 @@ const validTags = computed(() => {
 
 .inter-font {
     font-family: 'Inter';
+    position: relative;  // Relative to its normal position
+    transform: translateY(-20%);  // Moves the div up by 10%
 }
 
 
 section {
     scroll-snap-align: start;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     scroll-margin-top: 80px;
-    height: calc(100dvh - 80px);
+    height: calc(100vh - 80px);
     /* font-family: 'Source Sans 3'; */
     font-family: "Plus Jakarta Sans", sans-serif;
-
+    // transform: translateY(-20%); // Replace 10% with the amount you want to move it up.
 }
 
 .first-section {
     margin-top: 80px;
+    overflow-y: auto;
+    
+}
+
+.second-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
 

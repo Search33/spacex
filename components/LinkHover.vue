@@ -1,12 +1,8 @@
 <template>
     <div>
         <p>
-            <a href="#" class="a" @click="handleButtonClick($event)">
+            <a href="#" class="underline  underline-offset-2  decoration-wavy decoration-slate-400 hover:decoration-slate-700 transition duration-150 " @click="handleButtonClick($event)">
                 {{ text }}
-                <svg viewBox="0 0 70 36">
-                    <path
-                        d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
-                </svg>
             </a>
         </p>
         <div class="pop-up" :class="{ open: popUpOpen }">
@@ -282,38 +278,6 @@ const handleCloseClick = () => {
 }
 
 
-.a {
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    margin: 0 var(--spacing, 0px);
-    transition: margin .25s;
-
-
-    svg {
-        // width: 76px;
-        width: 100%;
-        height: 40px;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        fill: transparent;
-        transform: translate(-50%, 7px) translateZ(0);
-        stroke: var(--stroke, #7482d6);
-        stroke-linecap: round;
-        stroke-width: 1.5px;
-        stroke-dasharray: var(--offset, 69px) 278px;
-        stroke-dashoffset: 361px;
-        transition: stroke .25s ease var(--stroke-delay, 0s), stroke-dasharray .35s;
-    }
-
-    &:hover {
-        --stroke: #275EFE;
-        --stroke-delay: .1s;
-        --offset: 180px;
-    }
-}
 
 
 
