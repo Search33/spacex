@@ -13,7 +13,7 @@
         <img :src="imgSrc" width="40" height="40" />
       </div>
       <div class="flex items-center pl-3 z-9">
-        {{ text || 'vehicle not available' }}
+        {{ text || 'soon added' }}
       </div>
     </div>
   <!-- </div> -->
