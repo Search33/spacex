@@ -13,8 +13,10 @@
                                 :src="provider.logo" width="100" height="100" />
                         </div>
                     </a>
-                    <TwitterIcon :url="provider.twitter" />
-                    <YoutubeIcon :url="provider.youtube" />
+                    <SocialMediaIcon :url="provider.twitter" :logo="'https://cdn.svgporn.com/logos/twitter.svg'" />
+                    <SocialMediaIcon :url="provider.youtube" :logo="'https://cdn.svgporn.com/logos/youtube-icon.svg'" />
+
+                    <!-- <YoutubeIcon :url="provider.youtube" /> -->
                 </template>
             </template>
 

@@ -1,4 +1,9 @@
 
+interface Tag {
+    id: number;
+    imgSrc: string;
+    text: string;
+}
 
 export const useProviders = () => {
     const providers = ref([
@@ -88,7 +93,7 @@ export const useProviders = () => {
         }
     ]);
 
-    const tagMap = [
+    const tagMapArray: Tag[] = [
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorology" },
@@ -102,6 +107,11 @@ export const useProviders = () => {
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1062'},
 
     ];
+
+    const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {
+        obj[item.id] = item;
+        return obj;
+    }, {});
 
     return { providers, tagMap }
 }

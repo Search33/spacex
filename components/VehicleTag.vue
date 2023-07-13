@@ -27,9 +27,10 @@ const { imgSrc, text } = defineProps(['imgSrc', 'text'])
 </script>
 
 <style lang="scss" scoped>
+
 .my-inner-shadow {
-  //   box-shadow: inset 0 0 5px var(--image-color, rgba(0, 0, 0, 0.437));
-  box-shadow: none;
+    box-shadow: inset 0 0 5px rgb(0 0 0 / 0.3);
+    // box-shadow: 0px 0px 10px 4px rgb(0 0 0 / 0.2);
 }
 
 .image-container {
@@ -47,7 +48,4 @@ const { imgSrc, text } = defineProps(['imgSrc', 'text'])
   height: 100%;
 }
 
-.my-inner-shadow {
-  box-shadow: none;
-}
 </style>
