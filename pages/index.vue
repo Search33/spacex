@@ -64,8 +64,8 @@
 <script setup>
 
 // const { data: launches } = useFetch("http://localhost:3000/launches.json");
-const { data: launches, pending } = await useAsyncData('launches', () => $fetch(`https://fdo.rocketlaunch.live/json/launches/next/5`))
-
+// const { data: launches, pending } = await useAsyncData('launches', () => $fetch(`https://fdo.rocketlaunch.live/json/launches/next/5`))
+const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 const { providers, tagMap } = useProviders()
 
