@@ -7,7 +7,7 @@
             <div class="flex flex-col items-center" v-if="countdownTime.days > 0">
                 <div class="text-6xl">{{ countdownTime.days }}</div>
                 <div class="font-extralight">DAYS</div>
-            </div>
+                </div>
             <div class="flex flex-col items-center" v-if="countdownTime.hours > 0 || countdownTime.days > 0">
                 <div class="text-6xl">{{ countdownTime.hours }}</div>
                 <div class="font-extralight">HOURS</div>
@@ -25,16 +25,13 @@
 </template>
 
 <script setup>
-
 import { ref, onMounted } from 'vue';
 
-// Create launchTime as a prop
 const { countdown } = defineProps(['countdown']);
 
 const countdownTime = ref({})
 
 const calculateCountdown = () => {
-    console.log(`countdown: ${countdown}`)
     if (!countdown) {
         countdownTime.value = { message: "Launch time TBD" };
         return;
@@ -44,7 +41,7 @@ const calculateCountdown = () => {
     const now = new Date();
     const diff = launchDate - now;
 
-    
+
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -58,7 +55,7 @@ const calculateCountdown = () => {
     //     setTimeout(calculateCountdown, 1000);
     // }
     if (diff > 0) {
-        requestAnimationFrame(calculateCountdown)
+    requestAnimationFrame(calculateCountdown)
     }
 };
 

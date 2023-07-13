@@ -79,7 +79,9 @@
 
 import { useValidTags } from '~/composables/useValidTags'
 
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+
+const { data: launches } = await useFetch('~/launches.json')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
