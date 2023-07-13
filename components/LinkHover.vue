@@ -159,7 +159,10 @@ const handleCloseClick = () => {
 ========================================== */
 
 .pop-up {
-    position: absolute;
+    // position: absolute;
+    position: fixed;
+    // top: 0;
+    // left: 0;
     top: 48%;
     // bottom: 50%;
     // right: 50%;
@@ -170,7 +173,7 @@ const handleCloseClick = () => {
     visibility: hidden;
     opacity: 0;
     @include transition(all .3s);
-    z-index: 10;
+    z-index: 100;
     width: 100%;
     height: 100%;
     // background-color: aliceblue;
