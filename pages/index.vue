@@ -6,8 +6,12 @@
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
             </nav>
         </header>
+        <section v-if="pending">
+            loading launches...
 
-        <section v-for="(launch, index) in launches.result" :key="launch.id"
+        </section>
+
+        <section v-else v-for="(launch, index) in launches.result" :key="launch.id"
             :ref="el => (index === 2 ? (thirdSection = el) : '')"
             :class="{ 'hide-section': index < 2, 'first-section': index === 0, 'fade-in': true }"
             class="min-h-screen relative flex second-section ">
@@ -60,7 +64,9 @@
 <script setup>
 
 // const { data: launches } = useFetch("http://localhost:3000/launches.json");
-const { data: launches } = await useAsyncData(`https://fdo.rocketlaunch.live/json/launches/next/5`)
+const { data: launches, pending } = await useAsyncData('launches', () => $fetch(`https://fdo.rocketlaunch.live/json/launches/next/5`))
+
+
 const { providers, tagMap } = useProviders()
 
 const validTags = computed(() => {
