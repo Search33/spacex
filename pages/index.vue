@@ -23,7 +23,7 @@
                 <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>
-            <div class="inter-font w-2/3 py-6  justify-center items-center mt-20  overflow-auto pl-6 pt-6">
+            <div class="inter-font w-2/3 py-6 mb-20 justify-center items-center  overflow-auto pl-6 pt-6">
                 <div class="bg-[#eeeeee]/90 p-8 rounded-tl-3xl rounded-bl-3xl my-shadow ">
                     <div class=" text-3xl ">
                         {{ launch?.provider.name || 'launch provider not available' }}
@@ -116,7 +116,7 @@ const validTags = computed(() => {
 .inter-font {
     font-family: 'Inter';
     position: relative;  // Relative to its normal position
-    transform: translateY(-20%);  // Moves the div up by 10%
+    // transform: translateY(-20%) translate3d(0,0,0);  // Moves the div up by 10%
 }
 
 
@@ -129,7 +129,7 @@ section {
     height: calc(100vh - 80px);
     /* font-family: 'Source Sans 3'; */
     font-family: "Plus Jakarta Sans", sans-serif;
-    // transform: translateY(-20%); // Replace 10% with the amount you want to move it up.
+     // Replace 10% with the amount you want to move it up.
 }
 
 .first-section {
