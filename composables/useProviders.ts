@@ -96,13 +96,13 @@ export const useProviders = () => {
     const tagMapArray: Tag[] = [
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
+        { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorology" },
-        { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
-        { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
-        { id: 68, imgSrc: "/images/rocketIcon/earth.svg", text: "Suborbital" },
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/14.svg", text: 'Lunar Lander'},
         { id: 55, imgSrc: "/images/rocketIcon/21.svg", text: 'Lunar Rover'},
+        { id: 68, imgSrc: "/images/rocketIcon/earth.svg", text: "Suborbital" },
+        { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
         { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1060'},
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1062'},
 

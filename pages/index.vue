@@ -21,8 +21,8 @@
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
+                    <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
                     <!-- <LazyFalconHeavy v-else-if="launch?.vehicle.id === " /> -->
-                    <!-- <LazyPSLV v-else-if="launch?.vehicle.id === " /> -->
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>
@@ -67,10 +67,7 @@
             <div>
                 <p>Data by <a href="https://fdo.rocketlaunch.live" target="_blank" class="underline">DataLaunch.live</a> </p>
                 <p>Icons and vectors by <a href="https://www.svgrepo.com" target="_blank" class="underline">SVGRepo</a></p>
-
             </div>
-
-
         </div>
     </section>
 </template>
@@ -79,9 +76,10 @@
 
 import { useValidTags } from '~/composables/useValidTags'
 
-// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
-const { data: launches } = await useFetch('~/launches.json')
+// const { data: launches } = await useFetch('~/launches.json')
+// const { data: launches } = useFetch('http://localhost:3000/launches.json')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
