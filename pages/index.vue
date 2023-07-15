@@ -34,7 +34,7 @@
                     </div>
 
                     <!-- Countdown + Location -->
-                    <div class="py-8 text-lg font-extrabold flex justify-between space-x-10 ">
+                    <div class="pt-8 pb-6 text-lg font-extrabold flex justify-between space-x-10 ">
                         <Countdown :countdown="launch?.t0" />
                         <LocationDetails 
                             :launch="{
@@ -46,7 +46,7 @@
                     </div>
 
                     <!-- Launch Tags -->
-                    <div class="pb-8 grid grid-flow-col gap-3">
+                    <div class="pb-6 grid grid-flow-col gap-3">
                         <VehicleTag 
                             imgSrc="/images/rocketIcon/3.svg" 
                             :text="launch?.vehicle.name" />
@@ -76,10 +76,10 @@
 
 import { useValidTags } from '~/composables/useValidTags'
 
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 // const { data: launches } = await useFetch('~/launches.json')
-// const { data: launches } = useFetch('http://localhost:3000/launches.json')
+const { data: launches } = useFetch('https://spacex-murex.vercel.app/launches.json')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)

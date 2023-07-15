@@ -1,4 +1,3 @@
-import exec from 'child_process'
 import { useScheduler } from '#scheduler'
 
 import fs from 'fs'
@@ -21,14 +20,12 @@ async function startScheduler() {
 
         const data = correctJsonFormatting(rawData)
 
-        fs.writeFileSync(path.join(folderPath, 'launches.json'), JSON.stringify(data, null, 4), (err) => {
-            if (err) {
-                console.log('Failed to write to file:', err)
-
-            } else {
-                console.log('Data successfully written to file')
-            }
-        })
+        try {
+            fs.writeFileSync(path.join(folderPath, 'launches.json'), JSON.stringify(data, null, 4))
+            console.log('Data successfully written to file')
+        } catch (err) {
+            console.log('Failed to write to file:', err)
+        }
     }).everyFourHours()
 }
 

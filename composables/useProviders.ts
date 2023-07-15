@@ -96,8 +96,9 @@ export const useProviders = () => {
     const tagMapArray: Tag[] = [
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
+        { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
-        { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorology" },
+        { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorology Satellite" },
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/14.svg", text: 'Lunar Lander'},
         { id: 55, imgSrc: "/images/rocketIcon/21.svg", text: 'Lunar Rover'},
