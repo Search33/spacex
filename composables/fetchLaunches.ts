@@ -1,9 +1,5 @@
 import { useScheduler } from '#scheduler'
-
 import fs from 'fs'
-import path from 'path'
-
-const folderPath = './public'
 
 export default defineNitroPlugin(() => {
     startScheduler()
@@ -21,7 +17,7 @@ async function startScheduler() {
         const data = correctJsonFormatting(rawData)
 
         try {
-            fs.writeFileSync(path.join(folderPath, 'launches.json'), JSON.stringify(data, null, 4))
+            fs.writeFileSync('./public/launches.json', JSON.stringify(data, null, 4))
             console.log('Data successfully written to file')
         } catch (err) {
             console.log('Failed to write to file:', err)
