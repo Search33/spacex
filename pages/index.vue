@@ -18,11 +18,11 @@
                     <LazyRocketModel v-else-if="launch?.vehicle.id === 20" url="~/soyuz2.gltf" /> -->
 
                     <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
+                    <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
-                    <!-- <LazyFalconHeavy v-else-if="launch?.vehicle.id === " /> -->
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>
@@ -46,12 +46,14 @@
                     </div>
 
                     <!-- Launch Tags -->
-                    <div class="pb-6 grid grid-flow-col gap-3">
-                    <!-- <div class="pb-6 grid grid-flow-col-dense gap-3 grid-rows-2" > -->
+                    <!-- <div class="pb-6 grid grid-flow-col gap-3"> -->
+                    <div class="pb-6 flex flex-wrap gap-3">
                         <VehicleTag 
+                            class="flex-grow"
                             imgSrc="/images/rocketIcon/3.svg" 
                             :text="launch?.vehicle.name" />
                         <VehicleTag 
+                            class="flex-grow"
                             v-for="tag in validTags[index]" 
                             :key="tag.id" 
                             :imgSrc="tag.imgSrc" 
