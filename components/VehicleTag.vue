@@ -12,7 +12,7 @@
       <div class=" py-2 z-9 ml-4">
         <img :src="imgSrc" width="40" height="40" />
       </div>
-      <div class="flex items-center pl-3 z-9">
+      <div class="flex items-center pl-3 z-9 flex-grow min-w-0 overflow-hidden text-ellipsis  ">
         {{ text || 'added soon' }}
       </div>
     </div>

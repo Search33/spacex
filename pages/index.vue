@@ -34,7 +34,7 @@
                     </div>
 
                     <!-- Countdown + Location -->
-                    <div class="pt-8 pb-6 text-lg font-extrabold flex justify-between space-x-10 ">
+                    <div class="pt-8 pb-4 text-lg font-extrabold flex justify-between space-x-10 ">
                         <Countdown :countdown="launch?.t0" />
                         <LocationDetails 
                             :launch="{
@@ -47,6 +47,7 @@
 
                     <!-- Launch Tags -->
                     <div class="pb-6 grid grid-flow-col gap-3">
+                    <!-- <div class="pb-6 grid grid-flow-col-dense gap-3 grid-rows-2" > -->
                         <VehicleTag 
                             imgSrc="/images/rocketIcon/3.svg" 
                             :text="launch?.vehicle.name" />

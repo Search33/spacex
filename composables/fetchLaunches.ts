@@ -26,7 +26,7 @@ async function startScheduler() {
         } catch (err) {
             console.log('Failed to write to file:', err)
         }
-    }).everyFourHours()
+    }).everyTwoHours()
 }
 
 function correctJsonFormatting(obj: any): any {
