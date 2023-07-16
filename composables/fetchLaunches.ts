@@ -30,6 +30,7 @@ async function startScheduler() {
 }
 
 function correctJsonFormatting(obj: any): any {
+    console.log('correcting data..')
     if (obj instanceof Object && !(obj instanceof Array)) {
         return Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, correctJsonFormatting(v)]));
     } else if (obj instanceof Array) {
