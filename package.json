@@ -21,7 +21,6 @@
     "three": "^0.153.0"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
     "gsap": "^3.12.1",
     "node-cache": "^5.1.2",
     "node-cron": "^3.0.2"

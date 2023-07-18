@@ -29,12 +29,17 @@
 
             <div class="inter-font w-2/3 py-6 mb-20 justify-center items-center  overflow-auto pl-6 pt-6">
                 <div class="bg-[#eeeeee]/90 p-8 rounded-tl-3xl rounded-bl-3xl my-shadow ">
-                    <div class=" text-3xl ">
-                        {{ launch?.provider.name || 'launch provider not available' }}
+                    <div >
+                        <div class="flex justify-between">
+                            <p class=" text-3xl ">
+                                {{ launch?.provider.name || 'launch provider not available' }}
+                            </p>
+                            <LaunchDate :date="launch?.t0" />
+                        </div>
                     </div>
 
                     <!-- Countdown + Location -->
-                    <div class="pt-8 pb-4 text-lg font-extrabold flex justify-between space-x-10 ">
+                    <div class="pt-8 pb-8 text-lg font-extrabold flex justify-between space-x-10 ">
                         <Countdown :countdown="launch?.t0" />
                         <LocationDetails 
                             :launch="{
@@ -79,13 +84,22 @@
 
 import { useValidTags } from '~/composables/useValidTags'
 
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+useHead({
+    title: 'Rocket Launches'
+})
 
-// const { data: launches } = await useFetch('~/launches.json')
+// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+
+const { data: launches } = await useFetch('http://localhost:3000/launches.json')
 // const { data: launches } = useFetch('https://spacex-murex.vercel.app/launches.json')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
+
+
+
+
+
 
 </script>
 

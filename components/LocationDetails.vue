@@ -4,7 +4,8 @@
             {{ launch?.country === 'United States' ? 'US' : launch?.country
             }}{{ launch?.statename ? ', ' + launch.statename : '' }}
         </div>
-        <LinkHover :text="launch?.name || ''" :location="launch?.name || ''" />
+        <!-- <LinkHover :text="launch?.name || ''" :location="launch?.name || ''" /> -->
+        <LinkHover :text="convertedLaunchName || ''" :location="convertedLaunchName || ''" />
         <div>
             Pad: {{ launch?.padName || '' }}
         </div>
@@ -16,6 +17,13 @@
 import LinkHover from './LinkHover.vue';
 
 const { launch } = defineProps(['launch'])
+
+const convertedLaunchName = computed(() => {
+    return launch?.name === 'Cape Canaveral SFS' ? 'Cape Canaveral Space Force Station' : 
+           launch?.name === 'Vandenberg SFB' ? 'Vandenberg Space Force Base' : 
+           launch?.name;
+});
+
 
 </script>
 

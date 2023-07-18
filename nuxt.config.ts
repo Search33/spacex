@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   // devtools: { enabled: true }
   modules: ['@nuxtjs/tailwindcss', 'nuxt-scheduler'],
-  plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
   build: {
     transpile: ['gsap']
   }
