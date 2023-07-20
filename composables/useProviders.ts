@@ -90,6 +90,11 @@ export const useProviders = () => {
             logo: "/logos/aevum.png",
             twitter: "https://twitter.com/aevumspace",
             youtube: "https://www.youtube.com/@aevum1377"
+        },
+        {
+            name: 'Galactic Energy',
+            url: 'https://www.galactic-energy.cn/index.php/En',
+            logo: "/logos/galactic-energy.png"
         }
     ]);
 

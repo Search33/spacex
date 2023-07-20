@@ -2,7 +2,7 @@
     <div class="text-base text-right font-normal flex flex-col justify-center">
         <div class="">
             {{ launch?.country === 'United States' ? 'US' : launch?.country
-            }}{{ launch?.statename ? ', ' + launch.statename : '' }}
+            }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }}
         </div>
         <!-- <LinkHover :text="launch?.name || ''" :location="launch?.name || ''" /> -->
         <LinkHover :text="convertedLaunchName || ''" :location="convertedLaunchName || ''" />
@@ -23,6 +23,20 @@ const convertedLaunchName = computed(() => {
            launch?.name === 'Vandenberg SFB' ? 'Vandenberg Space Force Base' : 
            launch?.name;
 });
+
+
+const countryFlag = computed(() => {
+    const flags = {
+        'United States': '🇺🇸',
+        'India': '🇮🇳',
+        'China': '🇨🇳',
+        'Spain': '🇪🇸',
+        'France': '🇫🇷',
+        'Italy': '🇮🇹',
+        // add more countries here...
+    };
+    return flags[launch?.country] || '';
+})
 
 
 </script>

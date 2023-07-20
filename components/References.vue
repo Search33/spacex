@@ -13,21 +13,11 @@
                                 :src="provider.logo" width="100" height="100" />
                         </div>
                     </a>
-                    <SocialMediaIcon :url="provider.twitter" :logo="'https://cdn.svgporn.com/logos/twitter.svg'" />
-                    <SocialMediaIcon :url="provider.youtube" :logo="'https://cdn.svgporn.com/logos/youtube-icon.svg'" />
-
-                    <!-- <YoutubeIcon :url="provider.youtube" /> -->
+                    <SocialMediaIcon v-if="provider.twitter" :url="provider.twitter" :logo="'https://cdn.svgporn.com/logos/twitter.svg'" />
+                    <SocialMediaIcon v-if="provider.youtube" :url="provider.youtube" :logo="'https://cdn.svgporn.com/logos/youtube-icon.svg'" />
                 </template>
             </template>
-
         </div>
-        <!-- <p class="flex items-center justify-center text-sm font-thin  ">
-            Data by
-            <span>
-                <a href="https://www.rocketlaunch.live " target="_blank" class="underline pl-1">
-                    RocketLaunch.Live</a>
-            </span>
-        </p> -->
     </div>
 </template>
 
