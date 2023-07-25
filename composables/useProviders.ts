@@ -95,7 +95,14 @@ export const useProviders = () => {
             name: 'Galactic Energy',
             url: 'https://www.galactic-energy.cn/index.php/En',
             logo: "/logos/galactic-energy.png"
+        },
+        {
+            name: 'China',
+            url: 'https://www.cnsa.gov.cn/english/index.html',
+            logo: '/logos/CNSA.svg.png',
+            twitter: 'https://twitter.com/cnsa_en?lang=en'
         }
+
     ]);
 
     const tagMapArray: Tag[] = [
@@ -113,6 +120,8 @@ export const useProviders = () => {
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1062'},
         { id: 111, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1071'},
         { id: 112, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1073'},
+        { id: 114, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1064'},
+        { id: 115, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1065'},
         { id: 117, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1076'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1079'},
 

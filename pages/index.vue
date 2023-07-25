@@ -32,7 +32,8 @@
                     <div >
                         <div class="flex justify-between">
                             <p class=" text-3xl ">
-                                {{ launch?.provider.name || 'launch provider not available' }}
+                                {{ launch?.provider.name === 'China' ? 'China National Space Administration (CNSA)' : launch?.provider.name || 'launch provider not available' }}
+                                <!-- {{ launchProvider }} -->
                             </p>
                             <LaunchDate :date="launch?.t0" />
                         </div>
@@ -96,10 +97,10 @@ const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
 
-
-
-
-
+const launchProvider = computed(() => {
+    return launches?.provider.name === 'China' ? 'China National Space Administration (CNSA)' : 
+           launches?.provider.name || ''
+})
 
 </script>
 

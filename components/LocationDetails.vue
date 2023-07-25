@@ -1,8 +1,7 @@
 <template>
     <div class="text-base text-right font-normal flex flex-col justify-center">
         <div class="">
-            {{ launch?.country === 'United States' ? 'US' : launch?.country
-            }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }}
+            {{ launch?.country || '' }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }}
         </div>
         <!-- <LinkHover :text="launch?.name || ''" :location="launch?.name || ''" /> -->
         <LinkHover :text="convertedLaunchName || ''" :location="convertedLaunchName || ''" />
