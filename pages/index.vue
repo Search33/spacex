@@ -31,10 +31,16 @@
                 <div class="bg-[#eeeeee]/90 p-8 rounded-tl-3xl rounded-bl-3xl my-shadow ">
                     <div >
                         <div class="flex justify-between">
-                            <p class=" text-3xl ">
-                                {{ launch?.provider.name === 'China' ? 'China National Space Administration (CNSA)' : launch?.provider.name || 'launch provider not available' }}
-                                <!-- {{ launchProvider }} -->
-                            </p>
+                            <div class="flex items-end   ">
+                                <p class=" text-3xl ">
+                                    {{ launch?.provider.name === 'China' ? 'CNSA' : launch?.provider.name || 'launch provider not available' }}
+                                    <!-- {{ launchProvider }} -->
+                                </p>
+                                <p class="pl-6 text-[#656565] mb-1 ">
+                                    {{ launch?.provider.name === 'China' ? '(China National Space Association)' : launch?.provider.name === 'ISRO' ? '(Indian Space Research Organisation)' : ''}}
+                                </p>
+
+                            </div>
                             <LaunchDate :date="launch?.t0" />
                         </div>
                     </div>
