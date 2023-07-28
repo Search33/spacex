@@ -124,7 +124,7 @@ export const useProviders = () => {
         { id: 115, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1065'},
         { id: 117, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1076'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1079'},
-
+        { id: 123, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1074'},
     ];
 
     const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {
