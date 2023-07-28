@@ -108,6 +108,7 @@ export const useProviders = () => {
     const tagMapArray: Tag[] = [
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
+        { id: 12, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Cargo" },
         { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorology Satellite" },
@@ -118,13 +119,13 @@ export const useProviders = () => {
         { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
         { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1060'},
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1062'},
-        { id: 111, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1071'},
-        { id: 112, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1073'},
         { id: 114, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1064'},
         { id: 115, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1065'},
+        { id: 111, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1071'},
+        { id: 112, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1073'},
+        { id: 123, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1074'},
         { id: 117, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1076'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1079'},
-        { id: 123, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1074'},
     ];
 
     const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {
