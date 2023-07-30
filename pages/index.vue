@@ -18,11 +18,15 @@
                     <LazyRocketModel v-else-if="launch?.vehicle.id === 20" url="~/soyuz2.gltf" /> -->
 
                     <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
+                    <LazyAntares v-else-if="launch?.vehicle.id === 5" />
                     <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
+                    <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
+
+                    
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>

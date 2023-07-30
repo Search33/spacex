@@ -32,7 +32,8 @@ const countryFlag = computed(() => {
         'Spain': '🇪🇸',
         'France': '🇫🇷',
         'Italy': '🇮🇹',
-        'Russia': '🇷🇺'
+        'Russia': '🇷🇺',
+        'New Zealand': '🇳🇿'
         // add more countries here...
     };
     return flags[launch?.country] || '';

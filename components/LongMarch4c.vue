@@ -43,7 +43,7 @@ scene.add(light.target)
 
 const { load } = useGLTFModel()
 
-const { scene: model } = await load('/electron-v2.gltf')
+const { scene: model } = await load('/long-march-4c.gltf')
 
 model.traverse(function (child) {  // Enable shadow receiving for all objects in the model
     if (child instanceof Mesh) {
