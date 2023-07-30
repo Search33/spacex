@@ -99,8 +99,15 @@ export const useProviders = () => {
         {
             name: 'China',
             url: 'https://www.cnsa.gov.cn/english/index.html',
-            logo: '/logos/CNSA.svg.png',
+            logo: '/logos/cnsa.png',
             twitter: 'https://twitter.com/cnsa_en?lang=en'
+        },
+        {
+            name: 'Northrop Grumman',
+            url: 'https://www.northropgrumman.com',
+            logo: 'logos/NorthropGrumman.png',
+            twitter: 'https://twitter.com/northropgrumman',
+            youtube: 'https://www.youtube.com/@northropgrummanmedia/featured'
         }
 
     ]);
@@ -111,6 +118,7 @@ export const useProviders = () => {
         { id: 12, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Cargo" },
         { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
+        { id: 26, imgSrc: "/images/rocketIcon/40.svg", text: "Navigation Satellite" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorology Satellite" },
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/14.svg", text: 'Lunar Lander'},
