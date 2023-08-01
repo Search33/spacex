@@ -17,7 +17,7 @@ const experience: Ref<HTMLCanvasElement | null> = ref(null)
 const scene = new Scene()
 
 const { width, height } = useWindowSize()
-const aspectRatio = computed(() => (width.value * 0.3)  / (height.value * 0.8))
+const aspectRatio = computed(() => (width.value * 0.3)  / (height.value * 0.7))
 // const aspectRatio = computed(() => width.value  / height.value )
 
 // const bgColour = new Color('#333333')
@@ -30,7 +30,7 @@ const camera = new PerspectiveCamera(75, aspectRatio.value, 0.1, 1000)
 camera.position.set(0, 4, 10)
 
 scene.add(camera)
-const ambientLight = new AmbientLight(0xffffff, 1)
+const ambientLight = new AmbientLight(0xffffff, 0.7)
 scene.add(ambientLight)
 
 let light = new DirectionalLight(0xffffff, 0.8)
@@ -43,7 +43,7 @@ scene.add(light.target)
 
 const { load } = useGLTFModel()
 
-const { scene: model } = await load('/soyuz2.gltf')
+const { scene: model } = await load('/soyuz2-v2.gltf')
 
 model.traverse(function (child) {  // Enable shadow receiving for all objects in the model
     if (child instanceof Mesh) {
