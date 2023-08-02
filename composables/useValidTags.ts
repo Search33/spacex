@@ -23,11 +23,12 @@ export const useValidTags = (launches: Ref<any>) => {
                         imgSrc: tagMapEntry ? tagMapEntry.imgSrc : null,
                         text: tagMapEntry ? tagMapEntry.text : null,
                     };
-                }) || [];
+                }).filter(tag => tag && tag.id !== 66) || [];
             });
         } else {
             return [];
         }
     });
-      return { validTags }
+    console.log('validTags:', validTags)
+    return { validTags }
 }

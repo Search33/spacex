@@ -112,6 +112,10 @@ const launchProvider = computed(() => {
            launches?.provider.name || ''
 })
 
+const filteredTags = computed(() => {
+    return validTags.map(tags => tags.filter(tag => tag.text !== 'No Live Video Expected'))
+})
+
 </script>
 
 
