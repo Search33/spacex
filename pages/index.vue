@@ -99,6 +99,7 @@ useHead({
     title: 'Rocket Launches'
 })
 
+
 const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 // const { data: launches } = await useFetch('http://localhost:3000/launches.json')

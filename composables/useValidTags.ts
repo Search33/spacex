@@ -29,6 +29,6 @@ export const useValidTags = (launches: Ref<any>) => {
             return [];
         }
     });
-    console.log('validTags:', validTags)
+    // console.log('validTags:', validTags)
     return { validTags }
 }
