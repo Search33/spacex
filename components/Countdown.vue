@@ -42,7 +42,7 @@ const calculateCountdown = () => {
     const diff = launchDate - now;
 
     if (diff <= 0) {
-        countdownTime.value = { message: "Liftoff! or rescheduled.." };
+        countdownTime.value = { message: "Liftoff!🚀 🛸 🔭 or rescheduled 🗓️ .." };
         return;
     }
 

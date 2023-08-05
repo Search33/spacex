@@ -134,6 +134,7 @@ export const useProviders = () => {
         { id: 113, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1077'},
         { id: 123, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1074'},
         { id: 117, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1076'},
+        { id: 118, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1078'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1079'},
     ];
 
