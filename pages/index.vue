@@ -26,6 +26,7 @@
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
                     <!-- <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" /> -->
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
+                    <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
                     
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
