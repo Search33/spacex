@@ -24,7 +24,7 @@
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
-                    <!-- <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" /> -->
+                    <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
                     <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
                     
@@ -42,7 +42,7 @@
                                     <!-- {{ launchProvider }} -->
                                 </p>
                                 <p class="pl-6 text-[#656565] mb-1 ">
-                                    {{ launch?.provider.name === 'China' ? '(China National Space Association)' : launch?.provider.name === 'ISRO' ? '(Indian Space Research Organisation)' : ''}}
+                                    {{ launch?.provider.name === 'China' ? '(China National Space Association)' : launch?.provider.name === 'ISRO' ?  '(Indian Space Research Organisation)' : launch?.provider.name === 'Roscosmos' ? 'Russian Federal Space Agency' : ''}}
                                 </p>
 
                             </div>
