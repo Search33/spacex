@@ -24,8 +24,10 @@
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
+                    <LazyLongMarch3b v-else-if="launch?.vehicle.id === 28" />
                     <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
+                    <LazyCeres1 v-else-if="launch?.vehicle.id === 113" />
                     <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
                     
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
@@ -87,6 +89,10 @@
             <div>
                 <p>Data by <a href="https://fdo.rocketlaunch.live" target="_blank" class="underline">DataLaunch.live</a> </p>
                 <p>Icons and vectors by <a href="https://www.svgrepo.com" target="_blank" class="underline">SVGRepo</a></p>
+                
+                <div v-for="launch in launches.result" :key="launch.id">
+                    <p v-if="launch?.vehicle.id === 120">SpaceShipTwo model by <span><a href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00" target="_blank" class="underline">agreene</a></span></p>
+                </div>
             </div>
         </div>
     </section>
