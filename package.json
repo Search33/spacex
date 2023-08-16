@@ -23,6 +23,7 @@
   "dependencies": {
     "gsap": "^3.12.1",
     "node-cache": "^5.1.2",
-    "node-cron": "^3.0.2"
+    "node-cron": "^3.0.2",
+    "swiper": "^10.1.0"
   }
 }

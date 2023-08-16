@@ -1,8 +1,9 @@
 <template>
     <div class="text-[#141414] relative">
         <header>
-            <nav class=" w-full h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
+            <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
+                <NuxtLink to="test" class="ml-auto">Rockets</NuxtLink>
             </nav>
         </header>
 
@@ -27,6 +28,8 @@
                     <LazyLongMarch3b v-else-if="launch?.vehicle.id === 28" />
                     <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
+                    <!-- <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" /> -->
+
                     <LazyCeres1 v-else-if="launch?.vehicle.id === 113" />
                     <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
                     
