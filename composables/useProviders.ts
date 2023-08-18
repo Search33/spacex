@@ -116,7 +116,8 @@ export const useProviders = () => {
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
         { id: 12, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Cargo" },
-        { id: 22, imgSrc: "/images/rocketIcon/iss.svg", text: "NASA Commercial Crew Program (CCP)" },
+        { id: 13, imgSrc: "/images/rocketIcon/15.svg", text: "Landing Zone 1" },
+        { id: 22, imgSrc: "/images/rocketIcon/CCP.svg.png", text: "NASA Commercial Crew Program (CCP)" },
         { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
         { id: 26, imgSrc: "/images/rocketIcon/40.svg", text: "Navigation Satellite" },
@@ -141,7 +142,7 @@ export const useProviders = () => {
         { id: 118, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1078'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1079'},
         { id: 129, imgSrc: "/images/rocketIcon/booster.svg", text: 'B1081'},
-        { id: 130, imgSrc: "/images/rocketIcon/booster.svg", text: 'Dragon Endurance'},
+        { id: 130, imgSrc: "/images/rocketIcon/Crew7.png", text: 'Dragon Endurance'},
     ];
 
     const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {
