@@ -21,6 +21,7 @@
                     <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
                     <LazyAntares v-else-if="launch?.vehicle.id === 5" />
                     <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
+                    <LazyH-IIA v-else-if="launch?.vehicle.id === 17" />
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
