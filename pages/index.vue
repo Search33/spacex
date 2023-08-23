@@ -19,6 +19,7 @@
                     <LazyRocketModel v-else-if="launch?.vehicle.id === 20" url="~/soyuz2.gltf" /> -->
 
                     <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
+                    <LazyAtlasV v-if="launch?.vehicle.id === 3" />
                     <LazyAntares v-else-if="launch?.vehicle.id === 5" />
                     <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
                     <LazyH-IIA v-else-if="launch?.vehicle.id === 17" />
