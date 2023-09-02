@@ -22,12 +22,15 @@
                     <LazyAtlasV v-if="launch?.vehicle.id === 3" />
                     <LazyAntares v-else-if="launch?.vehicle.id === 5" />
                     <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
+                    <LazyPSLV v-else-if="launch?.vehicle.id === 14" />
+                    <!-- <LazyPSLVxl v-else-if="launch?.vehicle.id === 14" /> To be created.. -->
                     <LazyH-IIA v-else-if="launch?.vehicle.id === 17" />
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
                     <LazyLongMarch3b v-else-if="launch?.vehicle.id === 28" />
+                    <!-- <LazyLongMarch2d v-else-if="launch?.vehicle.id === 35" /> -->
                     <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
                     <!-- <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" /> -->
