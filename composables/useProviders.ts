@@ -143,6 +143,7 @@ export const useProviders = () => {
         { id: 112, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1073'},
         { id: 113, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1077'},
         { id: 123, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1074'},
+        { id: 120, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1075'},
         { id: 117, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1076'},
         { id: 118, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1078'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1079'},
