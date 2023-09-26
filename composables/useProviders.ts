@@ -131,6 +131,7 @@ export const useProviders = () => {
         { id: 68, imgSrc: "/images/rocketIcon/earth.svg", text: "Suborbital" },
         { id: 78, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 4" },
         { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
+        { id: 100, imgSrc: "/images/rocketIcon/mars.svg", text: "Mars Flyby" },
         { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1060'},
         { id: 104, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1061'},
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1062'},
