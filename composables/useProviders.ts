@@ -113,12 +113,14 @@ export const useProviders = () => {
     ]);
 
     const tagMapArray: Tag[] = [
+        { id: 1, imgSrc: "/images/rocketIcon/expendable.svg", text: "Expendable" },
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
         { id: 12, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Cargo" },
         { id: 13, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 1" },
         { id: 17, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Expedition" },
         { id: 22, imgSrc: "/images/rocketIcon/CCP.svg.png", text: "NASA Commercial Crew Program (CCP)" },
+        { id: 23, imgSrc: "/images/rocketIcon/test1.svg", text: "Test Flight" },
         { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
         { id: 26, imgSrc: "/images/rocketIcon/40.svg", text: "Navigation Satellite" },

@@ -38,6 +38,7 @@
 
                     <!-- <LazyAlpha v-else-if="launch?.vehicle.id === 91" /> -->
                     <LazyCeres1 v-else-if="launch?.vehicle.id === 113" />
+                    <LazyStarship v-else-if="launch?.vehicle.id === 115" />
                     <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
                     <LazyMiura1 v-else-if="launch?.vehicle.id === 144" />
                     
