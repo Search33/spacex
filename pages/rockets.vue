@@ -3,7 +3,10 @@
         <header>
             <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <NuxtLink to="/" class="z-50">&lt- 🏠 home</NuxtLink>
+                <div class="flex w-full items-top justify-start">
+                    <NuxtLink to="/" class="z-50 mb-auto p-2">&lt- Launches</NuxtLink>
+                </div>
+
             </nav>
         </header>
 

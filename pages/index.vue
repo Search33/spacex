@@ -1,9 +1,11 @@
 <template>
     <div class="text-[#141414] relative">
         <header>
-            <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
+            <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain  bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <NuxtLink to="rockets" class="ml-auto borde">Rockets 🚀 -&gt</NuxtLink>
+                <div class="flex w-full items-top justify-end">
+                    <NuxtLink to="rockets" class="  mb-auto p-2">Rockets 🚀 -&gt</NuxtLink>
+                </div>
             </nav>
         </header>
 
