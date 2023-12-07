@@ -3,7 +3,7 @@
         <header>
             <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <NuxtLink to="test" class="ml-auto">Rockets</NuxtLink>
+                <NuxtLink to="rockets" class="ml-auto borde">Rockets 🚀 -&gt</NuxtLink>
             </nav>
         </header>
 

@@ -67,7 +67,7 @@ function updateCamera() {
 }
 
 function updateRenderer() {
-    renderer.setSize(width.value * 0.3 , height.value * 0.8)
+    renderer.setSize(width.value * 0.3 , height.value * 0.7)
     renderer.render(scene, camera)
 }
 
