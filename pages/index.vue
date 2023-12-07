@@ -4,7 +4,7 @@
             <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain  bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
                 <div class="flex w-full items-top justify-end">
-                    <NuxtLink to="rockets" class="  mb-auto p-2">Rockets 🚀 -&gt</NuxtLink>
+                    <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink>
                 </div>
             </nav>
         </header>
@@ -147,7 +147,9 @@ const filteredTags = computed(() => {
 .my-shadow {
     box-shadow: 0px 0px 20px 4px rgba(24, 31, 39, 0.4);
 }
-
+.code-font {
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+}
 .inter-font {
     font-family: 'Inter';
 }
