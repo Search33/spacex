@@ -10,7 +10,7 @@
             </nav>
         </header>
 
-        <div class="mt-52 ">
+        <div class="mt-[20vh] ">
             <div>
                 <Swiper class="" :height="600" :modules="[SwiperAutoplay, SwiperEffectCreative]" :slides-per-view="4"
                     :spaceBetween="20" :pagination="{
@@ -32,7 +32,7 @@
                         class="relative rounded-lg border-[1px]  border-black overflow-hidden"
                         :style="`background-color: ${slide.bg}; color: ${slide.color}`">
                         <ClientOnly >
-                            <component :is="slide.component" class="z-0 max-h-[550px]" />
+                            <component :is="slide.component" class="z-0 max-h-[450px]" />
                         </ClientOnly>
                         <p class="absolute bottom-0 text-base font-normal pb-1">
                             {{ slide.name }}
@@ -78,8 +78,8 @@ const rockets = ref([
     { component: LazySoyuz2, name: 'Soyuz-2', bg: 'rgb(75,167,187,100)', color: 'white' },
     { component: LazyAtlasV, name: 'Atlas V', bg: 'rgb(20,34,74,100)', color: 'white' },
     { component: LazyAntares, name: 'Antares', bg: 'rgb(34,137,117,100)', color: 'white' },
-    { component: LazyCeres1, name: 'Ceres1', bg: 'rgb(49,117,157,100)', color: 'white' },
-    { component: LazyStarship, name: 'Starship', bg: 'rgb(64,201,166,100)', color: 'white' },
+    { component: LazyCeres1, name: 'Ceres-1', bg: 'rgb(49,117,157,100)', color: 'white' },
+    { component: LazyStarship, name: 'Starship', bg: 'rgb(64,201,166,100)', color: 'black' },
     { component: LazyLongMarch2c, name: 'Long March 2c', bg: 'rgb(131,72,105,100)', color: 'white' },
     { component: LazyLongMarch3b, name: 'Long March 3b', bg: 'rgb(71,109,198,100)', color: 'white' },
     { component: LazyLongMarch4c, name: 'Long March 4c', bg: 'rgb(114,98,150,100)', color: 'white' },
