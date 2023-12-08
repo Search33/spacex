@@ -26,7 +26,7 @@ const aspectRatio = computed(() => (width.value * 0.3)  / (height.value * 0.7))
 
 // scene.background = bgColour
 
-const camera = new PerspectiveCamera(75, aspectRatio.value, 0.1, 1000)
+const camera = new PerspectiveCamera(40, aspectRatio.value, 0.1, 1000)
 camera.position.set(0, 4, 10)
 
 scene.add(camera)
