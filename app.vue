@@ -1,6 +1,7 @@
 <template>
   <div>
     <NuxtPage />
+
   </div>
 </template>
 
@@ -13,6 +14,22 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+useHead({
+    title: 'Rocket Launches',
+    meta: [
+      { name: 'msapplication-TileColor', content: '#da532c' },
+      { name: 'theme-color', content: '#ffffff'}
+    ],
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/public/favicon.ico'},
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/public/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/public/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/public/favicon-16x16.png' },
+      { rel: 'manifest', href: '/public/site.webmanifest' },
+      { rel: 'mask-icon', href: '/public/safari-pinned-tab.svg', color: '#5bbad5' }
+
+    ]
+})
 
 </script>
 <style>

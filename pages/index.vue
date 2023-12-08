@@ -1,5 +1,14 @@
 <template>
+
     <div class="text-[#141414] relative">
+        <Head>
+            <Link rel="icon" type="image/png" href="/favicon.ico">
+
+            </Link>
+
+
+        </Head>
+
         <header>
             <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain  bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
@@ -115,10 +124,6 @@
 <script setup>
 
 import { useValidTags } from '~/composables/useValidTags'
-
-useHead({
-    title: 'Rocket Launches'
-})
 
 
 const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
