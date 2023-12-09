@@ -33,7 +33,7 @@
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
                     <LazyLongMarch3b v-else-if="launch?.vehicle.id === 28" />
-                    <!-- <LazyLongMarch2d v-else-if="launch?.vehicle.id === 35" /> -->
+                    <LazyLongMarch2d v-else-if="launch?.vehicle.id === 35" />
                     <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
                     <!-- <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" /> -->
@@ -42,6 +42,9 @@
                     <LazyCeres1 v-else-if="launch?.vehicle.id === 113" />
                     <LazyStarship v-else-if="launch?.vehicle.id === 115" />
                     <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
+
+                    <!-- <LazyZhuque2 id === 131 /> -->
+
                     <LazyMiura1 v-else-if="launch?.vehicle.id === 144" />
                     
                     <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->

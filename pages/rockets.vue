@@ -32,10 +32,10 @@
                         class="relative rounded-lg border-[1px]  border-black overflow-hidden"
                         :style="`background-color: ${slide.bg}; color: ${slide.color}`">
                         <ClientOnly >
-                            <component :is="slide.component" class="z-0 max-h-[450px]" />
+                            <component :is="slide.component" class="z-0 h-[60vh] " />
                         </ClientOnly>
-                        <p class="absolute bottom-0 text-base font-normal pb-1">
-                            {{ slide.name }} {{ slide.height }}m
+                        <p class="absolute z-[4] bottom-0 text-base font-normal pb-1">
+                            <span class="pr-2">{{ slide.name }}</span> {{ slide.height }}m
                         </p>
                         <div>
                             <p>
@@ -65,12 +65,14 @@ const LazyFalconHeavy = lazyLoadComponent('FalconHeavy');
 const LazyGSLVIII = lazyLoadComponent('GSLVIII');
 const LazyHIIA = lazyLoadComponent('H-IIA');
 const LazyLongMarch2c = lazyLoadComponent('LongMarch2c');
+const LazyLongMarch2d = lazyLoadComponent('LongMarch2d');
 const LazyLongMarch3b = lazyLoadComponent('LongMarch3b');
 const LazyLongMarch4c = lazyLoadComponent('LongMarch4c');
 const LazyPSLV = lazyLoadComponent('PSLV');
 const LazySoyuz2 = lazyLoadComponent('Soyuz2');
 const LazySpaceShipTwo = lazyLoadComponent('SpaceShipTwo');
 const LazyStarship = lazyLoadComponent('Starship');
+const LazyZhuque2 = lazyLoadComponent('Zhuque2');
 
 const rockets = ref([
     { component: LazyFalconHeavy, name: 'Falcon Heavy', height: 70, bg: 'rgb(216,106,96,100)', color: 'white' },
@@ -88,13 +90,15 @@ const rockets = ref([
     { component: LazyFalcon9, name: 'Falcon 9', height: 70, bg: 'rgb(133,214,157,100)', color: 'black' },
     { component: LazyElectron, name: 'Electron', height: 18, bg: 'rgb(217,152,125,100)', color: 'white' },
     { component: LazySpaceShipTwo, name: 'SpaceShipTwo', height: 5.5, bg: 'rgb(71,128,148,100)', color: 'white' },
+    { component: LazyZhuque2, name: 'Zhuque-2', height: 49.5, bg: 'rgb(71,128,148,100)', color: 'white' },
+    { component: LazyLongMarch2d, name: 'Long March 2d', height: 41, bg: 'rgb(38,84,92,100)', color: 'white' },
     // ... other slides
 ]);
 
 const sortRocketsByHeight = () => {
 
     rockets.value.sort((a, b) => a.height - b.height);
-    combinedSlides.value = rockets.value.map(rocket => ({ ...rocket }));
+    // combinedSlides.value = rockets.value.map(rocket => ({ ...rocket }));
 
 };
 
@@ -106,7 +110,7 @@ function shuffleArray(array: any[]) {
 }
 shuffleArray(rockets.value);
 
-const combinedSlides = ref(rockets.value.map(rocket => ({
+const combinedSlides = computed(() => rockets.value.map(rocket => ({
     ...rocket,
     component: rocket.component,
     name: rocket.name
