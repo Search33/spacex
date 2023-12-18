@@ -98,9 +98,9 @@ const rockets = ref([
     {   modelPath: '/long-march-2f.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2f', height: 62, bg: '#214489', color: 'white',
     styles: ['linear-gradient(90deg, #FD4898, #CD25FC)', '#FD4898']
     },
-    {   modelPath: '/Alpha.gltf', fov: 75, camY: 4, camZ: 10, name: 'Alpha', height: 29, bg: 'rgb(71,128,148,100)', color: 'white',
-        styles: ['#37C694', '#E0AF96', '#A8A75F', 'linear-gradient(270deg, #52140B, #9E2512)']
-    },    
+    {   modelPath: '/Alpha.gltf', fov: 75, camY: 4, camZ: 10, name: 'Alpha', height: 29, bg: '#994E4C', color: 'white',
+        styles: ['#E0AF96', '#A8A75F', 'linear-gradient(290deg, #52140B, #9E2512)']
+    },   
     {   modelPath: '/new-shepard.gltf', fov: 40, camY: 4, camZ: 10, name: 'New Shepard', height: 18, bg: '#543452', color: 'white',
         styles: ['linear-gradient(170deg, #5EA9CF, #386C86)']
     },      

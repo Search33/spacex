@@ -12,7 +12,8 @@
         </header>
 
         <div class="mt-[24vh] z-[50] flex w-full items-bottom justify-end pr-4 pb-4">
-            <NuxtLink to="rockets2" class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page 🚀 -&gt</NuxtLink>
+            <NuxtLink to="rockets2" class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page 🚀
+                -&gt</NuxtLink>
         </div>
 
         <div class=" grid grid-cols-4 gap-5 py-4 ">
@@ -36,9 +37,16 @@
 
             </div>
         </div>
-        <div class="flex w-full items-bottom justify-end pr-4 pb-4">
-            <NuxtLink to="rockets2" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page 🚀 -&gt</NuxtLink>
+        <div>
+            <div class="grid grid-cols-7 w-full items-center pr-4 pb-4">
+                <p class="col-start-1 col-span-2 pl-3">SpaceShipTwo model by <span><a
+                            href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
+                            target="_blank" class="underline">agreene</a></span></p>
+                <NuxtLink to="rockets2" class="col-start-7 ml-auto mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page
+                    🚀 -&gt</NuxtLink>
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -50,11 +58,13 @@ const rockets = ref([
         styles: ['linear-gradient(45deg, #FFC371, #FF6F5F)', '#F0F74D', '#52EAD1', '#B45018']
     },
 
-    {   modelPath: '/PSLV.gltf', fov: 75, camY: 4, camZ: 10, name: 'PSLV', height: 44, bg: '#2C5698', color: 'white',
+    {
+        modelPath: '/PSLV.gltf', fov: 75, camY: 4, camZ: 10, name: 'PSLV', height: 44, bg: '#2C5698', color: 'white',
         styles: ['linear-gradient(45deg, #FD9609, #E1C438)', '#89ACE1']
-     },
-    
-    {   modelPath: '/soyuz2-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Soyuz-2', height: 46.3, bg: 'rgb(75,167,187,100)', color: 'white',
+    },
+
+    {
+        modelPath: '/soyuz2-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Soyuz-2', height: 46.3, bg: 'rgb(75,167,187,100)', color: 'white',
         styles: ['#F7DE03', '#73D38D']
     },
     {
@@ -62,41 +72,53 @@ const rockets = ref([
         styles: ['linear-gradient(45deg, #024DB2, #5D99FE)', 'linear-gradient(45deg, #FFC47A, #9C5403)', '#F45BA0']
     },
 
-    {   modelPath: '/Antares.gltf', fov: 75, camY: 4, camZ: 10, name: 'Antares', height: 42.5, bg: 'rgb(34,137,117,100)', color: 'white',
-        styles: ['#3DD690',  '#ffffff']
+    {
+        modelPath: '/Antares.gltf', fov: 75, camY: 4, camZ: 10, name: 'Antares', height: 42.5, bg: 'rgb(34,137,117,100)', color: 'white',
+        styles: ['#3DD690', '#ffffff']
     },
-    {   modelPath: '/ceres1_2.gltf', fov: 45, camY: 4, camZ: 10, name: 'Ceres-1', height: 20, bg: 'rgb(49,117,157,100)', color: 'white',
+    {
+        modelPath: '/ceres1_2.gltf', fov: 45, camY: 4, camZ: 10, name: 'Ceres-1', height: 20, bg: 'rgb(49,117,157,100)', color: 'white',
         styles: ['#71CECF']
-    }, 
+    },
     // {   modelPath: '/starship.gltf', fov: 70, camY: 8, camZ: 18, name: 'Starship', height: 120, bg: 'rgb(227,217,133,100)', color: 'black',
-    {   modelPath: '/starship.gltf', fov: 70, camY: 8, camZ: 18, name: 'Starship', height: 120, bg: '#21457E', color: 'white',
+    {
+        modelPath: '/starship.gltf', fov: 70, camY: 8, camZ: 18, name: 'Starship', height: 120, bg: '#21457E', color: 'white',
         styles: ['#8F84E8', 'linear-gradient(180deg, #FF718D, #A30808)', 'linear-gradient(270deg, #9971FF, #B69DF5)']
     },
-    {   modelPath: '/long-march-2c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2c', height: 42, bg: 'rgb(131,72,105,100)', color: 'white',
+    {
+        modelPath: '/long-march-2c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2c', height: 42, bg: 'rgb(131,72,105,100)', color: 'white',
         styles: ['#4F0E1F', '#FE81C8', '#D6D77F']
     },
-    {   modelPath: '/long-march-3b.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 3b', height: 54.8, bg: 'rgb(71,109,198,100)', color: 'white',
+    {
+        modelPath: '/long-march-3b.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 3b', height: 54.8, bg: 'rgb(71,109,198,100)', color: 'white',
         styles: ['#15DAB7']
     },
-    {   modelPath: '/long-march-4c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 4c', height: 45.8, bg: 'rgb(114,98,150,100)', color: 'white',
+    {
+        modelPath: '/long-march-4c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 4c', height: 45.8, bg: 'rgb(114,98,150,100)', color: 'white',
         styles: ['#FD4898', '#F9AF4D']
     },
-    {   modelPath: '/H-IIA.gltf', fov: 75, camY: 4, camZ: 10, name: 'H-IIA', height: 53, bg: 'rgb(38,84,92,100)', color: 'white',
+    {
+        modelPath: '/H-IIA.gltf', fov: 75, camY: 4, camZ: 10, name: 'H-IIA', height: 53, bg: 'rgb(38,84,92,100)', color: 'white',
         styles: ['linear-gradient(150deg, #74FFDF, #06B088)', '#E5B169']
     },
-    {   modelPath: '/LVM3.gltf', fov: 75, camY: 4, camZ: 10, name: 'HLVM3', height: 53, bg: 'rgb(44,138,186,100)', color: 'white',
+    {
+        modelPath: '/LVM3.gltf', fov: 75, camY: 4, camZ: 10, name: 'HLVM3', height: 53, bg: 'rgb(44,138,186,100)', color: 'white',
         styles: ['#76DD4D', '#CCCF9A']
     },
-    {   modelPath: '/falcon9-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, bg: '#7BC090', color: 'white',
+    {
+        modelPath: '/falcon9-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, bg: '#7BC090', color: 'white',
         styles: ['#01718E', '#0A9B77']
     },
-    {   modelPath: '/electron-v2.gltf', fov: 40, camY: 4, camZ: 10, name: 'Electron', height: 18, bg: 'rgb(217,152,125,100)', color: 'white',
+    {
+        modelPath: '/electron-v2.gltf', fov: 40, camY: 4, camZ: 10, name: 'Electron', height: 18, bg: 'rgb(217,152,125,100)', color: 'white',
         styles: ['#EBDB1C']
     },
-    {   modelPath: '/spaceshiptwo.gltf', fov: 20, camY: 4, camZ: 10, name: 'SpaceShipTwo', height: 5.5, bg: 'rgb(71,128,148,100)', color: 'white',
+    {
+        modelPath: '/spaceshiptwo.gltf', fov: 20, camY: 4, camZ: 10, name: 'SpaceShipTwo', height: 5.5, bg: 'rgb(71,128,148,100)', color: 'white',
         styles: ['linear-gradient(90deg, #C6CE5D, #25FCDA)', 'linear-gradient(180deg, #C6CE5D, #25FCDA)']
     },
-    {   modelPath: '/Zhuque-2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Zhuque-2', height: 49.5, bg: 'rgb(71,128,148,100)', color: 'white',
+    {
+        modelPath: '/Zhuque-2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Zhuque-2', height: 49.5, bg: 'rgb(71,128,148,100)', color: 'white',
         styles: ['linear-gradient(90deg, #8A0111, #FF6F7D)', '#37C694', '#E0AF96']
     },
     // { modelPath: '/long-march-2d.gltf', name: 'Long March 2d', height: 41, bg: 'rgb(38,84,92,100)', color: 'white' },
@@ -128,16 +150,16 @@ function selectRandomStyle(styles: any) {
 const combinedSlides = computed(() => {
     return rockets.value.map(rocket => {
         let textStyle = {};
-        
+
         if (rocket.styles && rocket.styles.length > 0) {
             const selectedStyle = selectRandomStyle(rocket.styles);
             const isGradient = selectedStyle.includes('linear-gradient');
 
             textStyle = isGradient
                 ? { background: selectedStyle, '-webkit-background-clip': 'text', color: 'transparent' }
-                : { color: selectedStyle}
+                : { color: selectedStyle }
         } else {
-            textStyle = { color: rocket.color}
+            textStyle = { color: rocket.color }
         }
 
         return {
