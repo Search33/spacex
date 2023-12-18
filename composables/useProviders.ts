@@ -125,7 +125,7 @@ export const useProviders = () => {
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
         { id: 26, imgSrc: "/images/rocketIcon/40.svg", text: "Navigation Satellite" },
         { id: 29, imgSrc: "/images/rocketIcon/polar.svg", text: "Polar Orbit" },
-        { id: 44, imgSrc: "/images/rocketIcon/32.svg", text: "Return to flight" },
+        { id: 44, imgSrc: "/images/rocketIcon/return.svg", text: "Return to flight" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorological Satellite" },
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/lander.svg", text: 'Lunar Lander'},

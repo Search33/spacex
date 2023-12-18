@@ -92,17 +92,20 @@ const rockets = ref([
     // {   modelPath: '/spaceshiptwo.gltf', fov: 20, camY: 4, camZ: 10, name: 'SpaceShipTwo', height: 5.5, bg: 'rgb(71,128,148,100)', color: 'white',
     //     styles: ['linear-gradient(90deg, #C6CE5D, #25FCDA)', 'linear-gradient(180deg, #C6CE5D, #25FCDA)']
     // },
-    // {   modelPath: '/Zhuque-2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Zhuque-2', height: 49.5, bg: 'rgb(71,128,148,100)', color: 'white',
-    //     styles: ['linear-gradient(90deg, #8A0111, #FF6F7D)', '#37C694', '#E0AF96']
-    // },
     {   modelPath: '/long-march-2d.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2d', height: 41, bg: 'rgb(38,84,92,100)', color: 'white',
-        styles: ['linear-gradient(190deg, #5D9DCE, #76AE27)']
+    styles: ['linear-gradient(190deg, #5D9DCE, #76AE27)']
     },
     {   modelPath: '/long-march-2f.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2f', height: 62, bg: '#214489', color: 'white',
-        styles: ['linear-gradient(90deg, #FD4898, #CD25FC)', '#FD4898']
+    styles: ['linear-gradient(90deg, #FD4898, #CD25FC)', '#FD4898']
     },
-    // ... other slides
-]);
+    {   modelPath: '/Alpha.gltf', fov: 75, camY: 4, camZ: 10, name: 'Alpha', height: 29, bg: 'rgb(71,128,148,100)', color: 'white',
+        styles: ['#37C694', '#E0AF96', '#A8A75F', 'linear-gradient(270deg, #52140B, #9E2512)']
+    },    
+    {   modelPath: '/new-shepard.gltf', fov: 40, camY: 4, camZ: 10, name: 'New Shepard', height: 18, bg: '#543452', color: 'white',
+        styles: ['linear-gradient(170deg, #5EA9CF, #386C86)']
+    },      
+    // ... other slides  
+]);  
 
 
 const sortRocketsByHeight = () => {
