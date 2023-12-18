@@ -1,14 +1,18 @@
 <template>
-    <div>
+    <div class="relative">
         <canvas ref="experience" />
+        <button @click="playAnimation" class="p-2 text-base bg-red-400 absolute z-20 top-0 right-0">Play Animation</button>
+
     </div>
 </template>
 
 <script setup lang="ts">
-import { Scene, PerspectiveCamera, Mesh, SphereGeometry, MeshBasicMaterial, WebGLRenderer, Color, Fog, AmbientLight, Vector3, Box3, DirectionalLight} from 'three'
+import { Scene, PerspectiveCamera, Mesh, SphereGeometry, MeshBasicMaterial, WebGLRenderer, Color, Fog, AmbientLight, Vector3, Box3, DirectionalLight  } from 'three'
 import { Ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { AnimationMixer, Clock } from 'three'
+import { useGLTFModel } from '~/composables/useGLTFModel'
 
 let renderer: WebGLRenderer
 let controls: OrbitControls
@@ -17,7 +21,7 @@ const experience: Ref<HTMLCanvasElement | null> = ref(null)
 const scene = new Scene()
 
 const { width, height } = useWindowSize()
-const aspectRatio = computed(() => (width.value * 0.3)  / (height.value * 0.7))
+const aspectRatio = computed(() => (width.value * 0.3) / (height.value * 0.7))
 // const aspectRatio = computed(() => width.value  / height.value )
 
 // const bgColour = new Color('#333333')
@@ -34,8 +38,8 @@ const ambientLight = new AmbientLight(0xffffff, 0.7)
 scene.add(ambientLight)
 
 let light = new DirectionalLight(0xffffff, 0.8)
-light.position.set(7,8,10)
-light.target.position.set(0,0,0)
+light.position.set(7, 8, 10)
+light.target.position.set(0, 0, 0)
 light.castShadow = true
 scene.add(light)
 scene.add(light.target)
@@ -43,7 +47,17 @@ scene.add(light.target)
 
 const { load } = useGLTFModel()
 
-const { scene: model } = await load('/GSLV III.gltf')
+const clock = new Clock();
+let mixer: AnimationMixer | undefined;
+let model: any;
+
+// const { scene: model, mixer: loadedMixer } = await load('/animation.gltf')
+
+const loadedModel = await load('/animation.gltf');
+model = loadedModel.scene;
+mixer = loadedModel.mixer || undefined;
+console.log('Mixer assigned:', mixer);
+
 
 model.traverse(function (child) {  // Enable shadow receiving for all objects in the model
     if (child instanceof Mesh) {
@@ -67,13 +81,13 @@ function updateCamera() {
 }
 
 function updateRenderer() {
-    renderer.setSize(width.value * 0.3 , height.value * 0.7)
+    renderer.setSize(width.value * 0.3, height.value * 0.7)
     renderer.render(scene, camera)
 }
 
 function setRenderer() {
     if (experience.value) {
-        renderer = new WebGLRenderer({ canvas: experience.value , alpha: true})
+        renderer = new WebGLRenderer({ canvas: experience.value, alpha: true })
         renderer.shadowMap.enabled = true
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         controls = new OrbitControls(camera, renderer.domElement)
@@ -91,7 +105,27 @@ watch(aspectRatio, () => {
     updateRenderer()
 })
 
-onMounted(() => {
+let isPlaying = false;
+function playAnimation() {
+    console.log('Attempting to play animation, mixer:', mixer);
+    console.log('Model at the time of playing animation:', model);
+
+    if (mixer && model?.animations?.length > 0) {
+        console.log('Animations are available', model.animations);
+        const action = mixer.clipAction(model.animations[0]);
+        if (isPlaying) {
+            action.stop(); // Stop the animation
+        } else {
+            action.play(); // Play the animation
+        }
+        isPlaying = !isPlaying; // Toggle the animation state
+    } else {
+        console.error('mixer not found or no animations');
+    }
+}
+
+
+onMounted( () => {
     setRenderer()
     // controls.target.set(0, 5, 6)
     controls.update()
@@ -99,13 +133,20 @@ onMounted(() => {
 })
 
 const loop = () => {
+
+    if (mixer) {
+        const delta = clock.getDelta();
+        mixer.update(delta);
+    }
     controls.update()
     renderer.render(scene, camera)
     requestAnimationFrame(loop)
 }
 
+
+
+
+
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

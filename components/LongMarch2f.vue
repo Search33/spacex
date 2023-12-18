@@ -26,7 +26,7 @@ const aspectRatio = computed(() => (width.value * 0.3)  / (height.value * 0.7))
 
 // scene.background = bgColour
 
-const camera = new PerspectiveCamera(40, aspectRatio.value, 0.1, 1000)
+const camera = new PerspectiveCamera(75, aspectRatio.value, 0.1, 1000)
 camera.position.set(0, 4, 10)
 
 scene.add(camera)
@@ -43,7 +43,7 @@ scene.add(light.target)
 
 const { load } = useGLTFModel()
 
-const { scene: model } = await load('/ceres1_2.gltf')
+const { scene: model } = await load('/long-march-2f.gltf')
 
 model.traverse(function (child) {  // Enable shadow receiving for all objects in the model
     if (child instanceof Mesh) {
@@ -98,58 +98,11 @@ onMounted(() => {
     loop()
 })
 
-
-let animationFrameId: number;
-
 const loop = () => {
     controls.update()
     renderer.render(scene, camera)
-    animationFrameId = requestAnimationFrame(loop)
+    requestAnimationFrame(loop)
 }
-
-const cleanUpResources = () => {
-
-    cancelAnimationFrame(animationFrameId);
-    // Dispose of Three.js resources
-    scene.traverse(object => {
-        if (object instanceof Mesh) {
-            object.geometry.dispose();
-            if (object.material.isMaterial) {
-                cleanMaterial(object.material);
-            }
-        }
-    });
-
-    renderer.dispose();
-    controls.dispose();
-}
-
-onBeforeUnmount(() => {
-    console.log('Ceres1 Component is about to be unmounted, cleaning up resources...');
-    cleanUpResources();
-    console.log('Resources cleaned up.')
-
-})
-
-onUnmounted(() => {
-    console.log('Ceres1 Component unmounted.');
-});
-
-const cleanMaterial = (material: THREE.Material) => {
-    material.dispose();
-
-    (material as THREE.MeshStandardMaterial).map?.dispose();
-    (material as THREE.MeshStandardMaterial).bumpMap?.dispose();
-    (material as THREE.MeshStandardMaterial).normalMap?.dispose();
-
-    // Dispose textures
-    // for (const key of Object.keys(material)) {
-    //     const value = material[key];
-    //     if (value && typeof value === 'object' && 'minFilter' in value) {
-    //         value.dispose();
-    //     }
-    // }
-};
 
 </script>
 

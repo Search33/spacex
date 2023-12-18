@@ -4,6 +4,7 @@
             <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain  bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
                 <div class="flex w-full items-top justify-end">
+                    <!-- <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink> -->
                     <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink>
                 </div>
             </nav>
@@ -15,39 +16,40 @@
             class="min-h-screen relative flex second-section ">
             <div class="flex w-1/3 items-center justify-center  p-8">
                 <ClientOnly>
-                    <!-- <LazyRocketModel v-if="launch?.vehicle.id === 1" url="~/falcon9.gltf" />
-                    <LazyRocketModel v-else-if="launch?.vehicle.id === 18" url="~/electron.gltf" />
-                    <LazyRocketModel v-else-if="launch?.vehicle.id === 19" url="~/GSLV III.gltf" />
-                    <LazyRocketModel v-else-if="launch?.vehicle.id === 20" url="~/soyuz2.gltf" /> -->
 
-                    <LazyFalcon9 v-if="launch?.vehicle.id === 1" />
+                    <LazyRocketModel :fov="75" :camY="4" :camZ="10" :modelPath="getModelPath(launch.vehicle.id)"/>
+                    <!-- <LazyFalcon9Test v-if="launch?.vehicle.id === 1" />
                     <LazyAtlasV v-if="launch?.vehicle.id === 3" />
                     <LazyAntares v-else-if="launch?.vehicle.id === 5" />
                     <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
-                    <!-- <LazyVega v-else-if="launch?.vehicle.id === 11" /> -->
+                    <LazyVega v-else-if="launch?.vehicle.id === 11" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 14" />
-                    <!-- <LazyPSLVxl v-else-if="launch?.vehicle.id === 14" /> To be created.. -->
+                    <LazyPSLVxl v-else-if="launch?.vehicle.id === 14" />
                     <LazyH-IIA v-else-if="launch?.vehicle.id === 17" />
                     <LazyElectron v-else-if="launch?.vehicle.id === 18" />
-                    <LazyGSLVIII v-else-if="launch?.vehicle.id === 19" />
+                    <LazyLVM3 v-else-if="launch?.vehicle.id === 19" />
+
                     <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
                     <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
                     <LazyLongMarch3b v-else-if="launch?.vehicle.id === 28" />
                     <LazyLongMarch2d v-else-if="launch?.vehicle.id === 35" />
                     <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
+                    <LazyLongMarch5 v-else-if="launch?.vehicle.id === 39" />
                     <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
-                    <!-- <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" /> -->
+                    <LazyLongMarch2f v-else-if="launch?.vehicle.id === 76" />
+                    <LazyHyperbola1 v-else-if="launch?.vehicle.id === 67" />
+                    <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" />
 
-                    <!-- <LazyAlpha v-else-if="launch?.vehicle.id === 91" /> -->
+                    <LazyAlpha v-else-if="launch?.vehicle.id === 91" />
                     <LazyCeres1 v-else-if="launch?.vehicle.id === 113" />
                     <LazyStarship v-else-if="launch?.vehicle.id === 115" />
                     <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
 
-                    <!-- <LazyZhuque2 id === 131 /> -->
+                    <LazyZhuque2 v-else-if="launch?.vehicle.id" id === 131 />
 
                     <LazyMiura1 v-else-if="launch?.vehicle.id === 144" />
                     
-                    <!-- <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
+                    <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
                 </ClientOnly>
             </div>
 
@@ -140,6 +142,33 @@ const launchProvider = computed(() => {
 const filteredTags = computed(() => {
     return validTags.map(tags => tags.filter(tag => tag.text !== 'No Live Video Expected'))
 })
+
+const getModelPath = (vehicleId) => {
+  const modelPaths = {
+    1: '/falcon9-v2.gltf',
+    3: '/atlasV.gltf',
+    5: '/Antares.gltf',
+    7: '/falcon-heavy-v2.gltf',
+    14: '/PSLV.gltf',
+    17: '/H-IIA.gltf',
+    18: '/electron-v2.gltf',
+    19: '/LVM3.gltf',
+    20: '/soyuz2-v2.gltf',
+    21: '/PSLV.gltf', // Assuming same model for different variants
+    28: '/long-march-3b.gltf',
+    35: '/long-march-2d.gltf',
+    38: '/long-march-2c.gltf',
+    41: '/long-march-4c.gltf',
+    76: '/long-march-2f.gltf',
+    // 67: '/hyperbola1.gltf',
+    113: '/ceres1_2.gltf',
+    115: '/starship.gltf',
+    120: '/spaceShipTwo.gltf',
+    // 144: '/miura1.gltf',
+    // Add more mappings as needed
+  };
+  return modelPaths[vehicleId] || null; // Fallback model
+};
 
 </script>
 

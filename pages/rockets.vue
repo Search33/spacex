@@ -1,125 +1,162 @@
 <template>
     <div>
         <header>
-            <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain bg-no-repeat"
+            <nav class=" w-full flex h-[24vh] fixed top-0 z-20  bg-cover bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <div class="flex w-full items-top justify-start">
-                    <NuxtLink to="/" class="text-white z-50 mb-auto p-2 bg-[#389373] border-[1px] border-black rounded-lg">&lt- Launches</NuxtLink>
+                <div class="flex w-full items-top justify-start p-8">
+                    <NuxtLink to="/" class="text-white z-50 mb-auto p-2 bg-[#389373] border-[1px] border-black rounded-lg">
+                        &lt- Launches</NuxtLink>
                 </div>
 
             </nav>
         </header>
 
-        <div class="mt-[20vh] ">
-            <div>
-                <Swiper class="" :height="600" :modules="[SwiperAutoplay, SwiperEffectCreative]" :slides-per-view="4"
-                    :spaceBetween="20" :pagination="{
-                        clickable: true,
-                    }" :loop="true" :speed="2000" :effect="'slide'" :autoplay="{
-    delay: 5000,
-    disableOnInteraction: true
-}" :creative-effect="{
-    prev: {
-        shadow: false,
-        translate: ['-20%', 0, -1]
-    },
-    next: {
-        translate: ['100%', 0, 0]
-    }
-}">
+        <div class="mt-[24vh] z-[50] flex w-full items-bottom justify-end pr-4 pb-4">
+            <NuxtLink to="rockets2" class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page 🚀 -&gt</NuxtLink>
+        </div>
 
-                    <SwiperSlide v-for="(slide, idx) in combinedSlides" :key="idx"
-                        class="relative rounded-lg border-[1px]  border-black overflow-hidden"
-                        :style="`background-color: ${slide.bg}; color: ${slide.color}`">
-                        <ClientOnly >
-                            <component :is="slide.component" class="z-0 h-[60vh] " />
-                        </ClientOnly>
-                        <p class="absolute z-[4] bottom-0 text-base font-normal pb-1">
-                            <span class="pr-2">{{ slide.name }}</span> {{ slide.height }}m
-                        </p>
-                        <div>
-                            <p>
+        <div class=" grid grid-cols-4 gap-5 py-4 ">
+            <div v-for="(rocket, idx) in combinedSlides" :key="idx"
+                class="relative flex flex-col justify-center items-center h-[60vh] rounded-lg border-[1px]  border-black overflow-hidden"
+                :style="`background-color: ${rocket.bg}; color: ${rocket.color}`">
+                <ClientOnly>
+                    <LazyRocketModel :fov="rocket.fov" :camY="rocket.camY" :camZ="rocket.camZ" :modelPath="rocket.modelPath"
+                        class="z-0 h-[40vh]" />
+                </ClientOnly>
+                <p class="absolute z-[4] flex flex-col items-center top-0 text-base font-normal pt-3">
+                    <span class="pr-2 text-4xl cool-font" :style="rocket.textStyle">
+                        {{ rocket.name }}
+                    </span>
+                    <span>{{ rocket.height }}m</span>
 
-                            </p>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperControls class="z-50 " @sort-rockets="sortRocketsByHeight" />
-                </Swiper>
+                    <!-- <span class="pl-2">index: 
+                        {{ idx }}
+                    </span> -->
+                </p>
+
             </div>
+        </div>
+        <div class="flex w-full items-bottom justify-end pr-4 pb-4">
+            <NuxtLink to="rockets2" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page 🚀 -&gt</NuxtLink>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 
-function lazyLoadComponent(name: String) {
-    return defineAsyncComponent(() => import(`~/components/${name}.vue`));
-}
-
-const LazyAntares = lazyLoadComponent('Antares');
-const LazyAtlasV = lazyLoadComponent('AtlasV');
-const LazyCeres1 = lazyLoadComponent('Ceres1');
-const LazyElectron = lazyLoadComponent('Electron');
-const LazyFalcon9 = lazyLoadComponent('Falcon9');
-const LazyFalconHeavy = lazyLoadComponent('FalconHeavy');
-const LazyGSLVIII = lazyLoadComponent('GSLVIII');
-const LazyHIIA = lazyLoadComponent('H-IIA');
-const LazyLongMarch2c = lazyLoadComponent('LongMarch2c');
-const LazyLongMarch2d = lazyLoadComponent('LongMarch2d');
-const LazyLongMarch3b = lazyLoadComponent('LongMarch3b');
-const LazyLongMarch4c = lazyLoadComponent('LongMarch4c');
-const LazyPSLV = lazyLoadComponent('PSLV');
-const LazySoyuz2 = lazyLoadComponent('Soyuz2');
-const LazySpaceShipTwo = lazyLoadComponent('SpaceShipTwo');
-const LazyStarship = lazyLoadComponent('Starship');
-const LazyZhuque2 = lazyLoadComponent('Zhuque2');
-
 const rockets = ref([
-    { component: LazyFalconHeavy, name: 'Falcon Heavy', height: 70, bg: 'rgb(216,106,96,100)', color: 'white' },
-    { component: LazyPSLV, name: 'PSLV', height: 44, bg: 'rgb(44,86,152,100)', color: 'white' },
-    { component: LazySoyuz2, name: 'Soyuz-2', height: 46.3, bg: 'rgb(75,167,187,100)', color: 'white' },
-    { component: LazyAtlasV, name: 'Atlas V', height: 58.3, bg: 'rgb(20,34,74,100)', color: 'white' },
-    { component: LazyAntares, name: 'Antares', height: 42.5, bg: 'rgb(34,137,117,100)', color: 'white' },
-    { component: LazyCeres1, name: 'Ceres-1', height: 20, bg: 'rgb(49,117,157,100)', color: 'white' },
-    { component: LazyStarship, name: 'Starship', height: 120, bg: 'rgb(64,201,166,100)', color: 'black' },
-    { component: LazyLongMarch2c, name: 'Long March 2c', height: 42, bg: 'rgb(131,72,105,100)', color: 'white' },
-    { component: LazyLongMarch3b, name: 'Long March 3b', height: 54.8, bg: 'rgb(71,109,198,100)', color: 'white' },
-    { component: LazyLongMarch4c, name: 'Long March 4c', height: 45.8, bg: 'rgb(114,98,150,100)', color: 'white' },
-    { component: LazyHIIA, name: 'H-IIA', height: 53, bg: 'rgb(38,84,92,100)', color: 'white' },
-    { component: LazyGSLVIII, name: 'LVM3', height: 43.4, bg: 'rgb(44,138,186,100)', color: 'white' },
-    { component: LazyFalcon9, name: 'Falcon 9', height: 70, bg: 'rgb(133,214,157,100)', color: 'black' },
-    { component: LazyElectron, name: 'Electron', height: 18, bg: 'rgb(217,152,125,100)', color: 'white' },
-    { component: LazySpaceShipTwo, name: 'SpaceShipTwo', height: 5.5, bg: 'rgb(71,128,148,100)', color: 'white' },
-    { component: LazyZhuque2, name: 'Zhuque-2', height: 49.5, bg: 'rgb(71,128,148,100)', color: 'white' },
-    { component: LazyLongMarch2d, name: 'Long March 2d', height: 41, bg: 'rgb(38,84,92,100)', color: 'white' },
+    {
+        modelPath: '/falcon-heavy-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Falcon Heavy', height: 70, bg: '#D86A60', color: 'white',
+        styles: ['linear-gradient(45deg, #FFC371, #FF6F5F)', '#F0F74D', '#52EAD1', '#B45018']
+    },
+
+    {   modelPath: '/PSLV.gltf', fov: 75, camY: 4, camZ: 10, name: 'PSLV', height: 44, bg: '#2C5698', color: 'white',
+        styles: ['linear-gradient(45deg, #FD9609, #E1C438)', '#89ACE1']
+     },
+    
+    {   modelPath: '/soyuz2-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Soyuz-2', height: 46.3, bg: 'rgb(75,167,187,100)', color: 'white',
+        styles: ['#F7DE03', '#73D38D']
+    },
+    {
+        modelPath: '/atlasV.gltf', fov: 75, camY: 4, camZ: 10, name: 'Atlas V', height: 58.3, bg: 'rgb(20,34,74,100)', color: 'white',
+        styles: ['linear-gradient(45deg, #024DB2, #5D99FE)', 'linear-gradient(45deg, #FFC47A, #9C5403)', '#F45BA0']
+    },
+
+    {   modelPath: '/Antares.gltf', fov: 75, camY: 4, camZ: 10, name: 'Antares', height: 42.5, bg: 'rgb(34,137,117,100)', color: 'white',
+        styles: ['#3DD690',  '#ffffff']
+    },
+    {   modelPath: '/ceres1_2.gltf', fov: 45, camY: 4, camZ: 10, name: 'Ceres-1', height: 20, bg: 'rgb(49,117,157,100)', color: 'white',
+        styles: ['#71CECF']
+    }, 
+    // {   modelPath: '/starship.gltf', fov: 70, camY: 8, camZ: 18, name: 'Starship', height: 120, bg: 'rgb(227,217,133,100)', color: 'black',
+    {   modelPath: '/starship.gltf', fov: 70, camY: 8, camZ: 18, name: 'Starship', height: 120, bg: '#21457E', color: 'white',
+        styles: ['#8F84E8', 'linear-gradient(180deg, #FF718D, #A30808)', 'linear-gradient(270deg, #9971FF, #B69DF5)']
+    },
+    {   modelPath: '/long-march-2c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2c', height: 42, bg: 'rgb(131,72,105,100)', color: 'white',
+        styles: ['#4F0E1F', '#FE81C8', '#D6D77F']
+    },
+    {   modelPath: '/long-march-3b.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 3b', height: 54.8, bg: 'rgb(71,109,198,100)', color: 'white',
+        styles: ['#15DAB7']
+    },
+    {   modelPath: '/long-march-4c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 4c', height: 45.8, bg: 'rgb(114,98,150,100)', color: 'white',
+        styles: ['#FD4898', '#F9AF4D']
+    },
+    {   modelPath: '/H-IIA.gltf', fov: 75, camY: 4, camZ: 10, name: 'H-IIA', height: 53, bg: 'rgb(38,84,92,100)', color: 'white',
+        styles: ['linear-gradient(150deg, #74FFDF, #06B088)', '#E5B169']
+    },
+    {   modelPath: '/LVM3.gltf', fov: 75, camY: 4, camZ: 10, name: 'HLVM3', height: 53, bg: 'rgb(44,138,186,100)', color: 'white',
+        styles: ['#76DD4D', '#CCCF9A']
+    },
+    {   modelPath: '/falcon9-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, bg: '#7BC090', color: 'white',
+        styles: ['#01718E', '#0A9B77']
+    },
+    {   modelPath: '/electron-v2.gltf', fov: 40, camY: 4, camZ: 10, name: 'Electron', height: 18, bg: 'rgb(217,152,125,100)', color: 'white',
+        styles: ['#EBDB1C']
+    },
+    {   modelPath: '/spaceshiptwo.gltf', fov: 20, camY: 4, camZ: 10, name: 'SpaceShipTwo', height: 5.5, bg: 'rgb(71,128,148,100)', color: 'white',
+        styles: ['linear-gradient(90deg, #C6CE5D, #25FCDA)', 'linear-gradient(180deg, #C6CE5D, #25FCDA)']
+    },
+    {   modelPath: '/Zhuque-2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Zhuque-2', height: 49.5, bg: 'rgb(71,128,148,100)', color: 'white',
+        styles: ['linear-gradient(90deg, #8A0111, #FF6F7D)', '#37C694', '#E0AF96']
+    },
+    // { modelPath: '/long-march-2d.gltf', name: 'Long March 2d', height: 41, bg: 'rgb(38,84,92,100)', color: 'white' },
+    // { modelPath: '/long-march-2f.gltf', name: 'Long March 2f', height: 62, bg: 'rgb(38,84,92,100)', color: 'white' },
     // ... other slides
 ]);
 
+
 const sortRocketsByHeight = () => {
-
     rockets.value.sort((a, b) => a.height - b.height);
-    // combinedSlides.value = rockets.value.map(rocket => ({ ...rocket }));
-
 };
 
 function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-      [array[i], array[j]] = [array[j], array[i]]; // swap elements
-  }
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+        [array[i], array[j]] = [array[j], array[i]]; // swap elements
+    }
 }
-shuffleArray(rockets.value);
+onMounted(() => {
+    shuffleArray(rockets.value);
+})
 
-const combinedSlides = computed(() => rockets.value.map(rocket => ({
-    ...rocket,
-    component: rocket.component,
-    name: rocket.name
-})));
+function selectRandomStyle(styles: any) {
+    const randomIndex = Math.floor(Math.random() * styles.length);
+    return styles[randomIndex];
+}
 
+
+const combinedSlides = computed(() => {
+    return rockets.value.map(rocket => {
+        let textStyle = {};
+        
+        if (rocket.styles && rocket.styles.length > 0) {
+            const selectedStyle = selectRandomStyle(rocket.styles);
+            const isGradient = selectedStyle.includes('linear-gradient');
+
+            textStyle = isGradient
+                ? { background: selectedStyle, '-webkit-background-clip': 'text', color: 'transparent' }
+                : { color: selectedStyle}
+        } else {
+            textStyle = { color: rocket.color}
+        }
+
+        return {
+            ...rocket,
+            textStyle
+        }
+    });
+});
 
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@800&display=swap');
+
+.cool-font {
+    font-family: 'Turret Road', sans-serif;
+    /* opacity: 30%; */
+}
+
 .swiper-slide {
     display: flex;
     justify-content: center;

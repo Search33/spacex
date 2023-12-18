@@ -98,11 +98,58 @@ onMounted(() => {
     loop()
 })
 
+
+let animationFrameId: number;
+
 const loop = () => {
     controls.update()
     renderer.render(scene, camera)
-    requestAnimationFrame(loop)
+    animationFrameId = requestAnimationFrame(loop)
 }
+
+const cleanUpResources = () => {
+
+    cancelAnimationFrame(animationFrameId);
+    // Dispose of Three.js resources
+    scene.traverse(object => {
+        if (object instanceof Mesh) {
+            object.geometry.dispose();
+            if (object.material.isMaterial) {
+                cleanMaterial(object.material);
+            }
+        }
+    });
+
+    renderer.dispose();
+    controls.dispose();
+}
+
+onBeforeUnmount(() => {
+    console.log('AtlasV Component is about to be unmounted, cleaning up resources...');
+    cleanUpResources();
+    console.log('Resources cleaned up.')
+
+})
+
+onUnmounted(() => {
+    console.log('AtlasV Component unmounted.');
+});
+
+const cleanMaterial = (material: THREE.Material) => {
+    material.dispose();
+
+    (material as THREE.MeshStandardMaterial).map?.dispose();
+    (material as THREE.MeshStandardMaterial).bumpMap?.dispose();
+    (material as THREE.MeshStandardMaterial).normalMap?.dispose();
+
+    // Dispose textures
+    // for (const key of Object.keys(material)) {
+    //     const value = material[key];
+    //     if (value && typeof value === 'object' && 'minFilter' in value) {
+    //         value.dispose();
+    //     }
+    // }
+};
 
 </script>
 
