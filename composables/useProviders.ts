@@ -119,6 +119,7 @@ export const useProviders = () => {
         { id: 12, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Cargo" },
         { id: 13, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 1" },
         { id: 17, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Expedition" },
+        { id: 21, imgSrc: "/images/rocketIcon/seat.svg", text: "Uncrewed" },
         { id: 22, imgSrc: "/images/rocketIcon/CCP.svg.png", text: "NASA Commercial Crew Program (CCP)" },
         { id: 23, imgSrc: "/images/rocketIcon/test1.svg", text: "Test Flight" },
         { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },

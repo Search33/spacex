@@ -104,9 +104,15 @@ const rockets = ref([
     {   modelPath: '/new-shepard.gltf', fov: 40, camY: 4, camZ: 10, name: 'New Shepard', height: 18, bg: '#543452', color: 'white',
         styles: ['linear-gradient(170deg, #5EA9CF, #386C86)']
     },      
-    // ... other slides  
+    {   modelPath: '/new-glenn.gltf', fov: 75, camY: 8, camZ: 18, name: 'New Glenn', height: 98, bg: '#6387AB', color: 'white',
+        styles: ['#46EC46', '#410C3E']
+    },        
+    {   modelPath: '/vulcan.gltf', fov: 75, camY: 4, camZ: 10, name: 'Vulcan', height: 61.6, bg: '#63AB9B', color: 'white',
+        styles: ['#093B09', '#A4142C', '#06F3FF']
+    },       
+    // ... other slides    
 ]);  
-
+ 
 
 const sortRocketsByHeight = () => {
     rockets.value.sort((a, b) => a.height - b.height);
