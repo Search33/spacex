@@ -110,11 +110,20 @@ const rockets = ref([
     {   modelPath: '/vulcan.gltf', fov: 75, camY: 4, camZ: 10, name: 'Vulcan', height: 61.6, bg: '#63AB9B', color: 'white',
         styles: ['#093B09', '#A4142C', '#06F3FF']
     },       
-    // ... other slides    
-]);  
+    {   modelPath: '/deltaiv.gltf', fov: 75, camY: 4, camZ: 10, name: 'Delta IV', height: 70, bg: '#6398AB', color: 'white',
+        styles: ['#EBD13C', '#303E75']
+    },        
+    {   modelPath: '/ariane5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Ariane 5', height: 50, bg: '#A2B4BA', color: 'white',
+        styles: ['linear-gradient(270deg, #925800, #443327)', '#303E75', 'linear-gradient(170deg, #E765DC, #006674)']
+    },        
+    {   modelPath: '/ariane6.gltf', fov: 75, camY: 4, camZ: 10, name: 'Ariane 6', height: 63, bg: '#A2C2A8', color: 'white',
+        styles: [ '#0F7D00', 'linear-gradient(170deg, #1900FF, #00740F)']
+    },  
+    // ... other slides   
+]);     
  
 
-const sortRocketsByHeight = () => {
+const sortRocketsByHeight = () => { 
     rockets.value.sort((a, b) => a.height - b.height);
 };
 
