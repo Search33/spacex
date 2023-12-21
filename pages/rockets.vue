@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <nav class=" w-full flex h-[24vh] fixed top-0 z-20  bg-cover bg-no-repeat"
+            <nav class=" w-full flex h-56 top-0 z-20 bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
                 <div class="flex w-full items-top justify-start p-8">
                     <NuxtLink to="/" class="text-white z-50 mb-auto p-2 bg-[#389373] border-[1px] border-black rounded-lg">
@@ -11,7 +11,7 @@
             </nav>
         </header>
 
-        <div class="mt-[24vh] z-[50] flex w-full items-bottom justify-end pr-4 pb-4">
+        <div class=" z-[50] flex w-full items-bottom justify-end pr-4 pb-4">
             <NuxtLink to="rockets2" class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Next Page 🚀
                 -&gt</NuxtLink>
         </div>

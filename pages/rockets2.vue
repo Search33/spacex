@@ -1,17 +1,17 @@
 <template>
     <div>
         <header>
-            <nav class=" w-full flex h-[24vh] fixed top-0 z-20  bg-cover bg-no-repeat"
+            <nav class=" w-full flex h-56 top-0 z-20  bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <button class="flex w-full items-top justify-start p-8">
+                <div class="flex w-full items-top justify-start p-8">
                     <NuxtLink to="/" class="text-white z-50 mb-auto p-2 bg-[#389373] border-[1px] border-black rounded-lg">
                         &lt- Launches</NuxtLink>
-                </button>
+                    </div>
 
             </nav>
         </header>
 
-        <div class="mt-[24vh] z-[50] flex w-full items-bottom justify-start pl-4 pb-4">
+        <div class=" z-[50] flex w-full items-bottom justify-start pl-4 pb-4">
             <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">&lt- Previous Page 🚀</NuxtLink>
         </div>
 
@@ -34,6 +34,15 @@
                     </span> -->
                 </p>
 
+            </div>
+        </div>
+        <div>
+            <div class="grid grid-cols-7 w-full items-center pl-4 pb-4">
+                <NuxtLink to="rockets" class="col-start-1 mr-auto mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
+                    &lt- Previous Page 🚀</NuxtLink>
+                <p class="col-start-6 col-span-2 ml-auto pr-3">SLS launch pad model by <span><a
+                            href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
+                            target="_blank" class="underline">nasa</a></span></p>
             </div>
         </div>
     </div>
@@ -104,7 +113,7 @@ const rockets = ref([
     {   modelPath: '/new-shepard.gltf', fov: 40, camY: 4, camZ: 10, name: 'New Shepard', height: 18, bg: '#543452', color: 'white',
         styles: ['linear-gradient(170deg, #5EA9CF, #386C86)']
     },      
-    {   modelPath: '/new-glenn.gltf', fov: 75, camY: 8, camZ: 18, name: 'New Glenn', height: 98, bg: '#6387AB', color: 'white',
+    {   modelPath: '/new-glenn.gltf', fov: 75, camY: 6, camZ: 14, name: 'New Glenn', height: 98, bg: '#6387AB', color: 'white',
         styles: ['#46EC46', '#410C3E']
     },        
     {   modelPath: '/vulcan.gltf', fov: 75, camY: 4, camZ: 10, name: 'Vulcan', height: 61.6, bg: '#63AB9B', color: 'white',
@@ -118,6 +127,15 @@ const rockets = ref([
     },        
     {   modelPath: '/ariane6.gltf', fov: 75, camY: 4, camZ: 10, name: 'Ariane 6', height: 63, bg: '#A2C2A8', color: 'white',
         styles: [ '#0F7D00', 'linear-gradient(170deg, #1900FF, #00740F)']
+    },  
+    {   modelPath: '/sls-block-1.gltf', fov: 75, camY: 6, camZ: 14, name: 'SLS Block 1', height: 98, bg: '#80B8C7', color: 'white',
+        styles: [ '#631515', '#154563']
+    },  
+    {   modelPath: '/n1.gltf', fov: 75, camY: 6, camZ: 14, name: 'n1', height: 105, bg: '#2E5D55', color: 'white',
+        styles: [ '#ffffff', ]
+    },  
+    {   modelPath: '/saturnv.gltf', fov: 75, camY: 6, camZ: 14, name: 'Saturn V', height: 110, bg: '#837EB4', color: 'white',
+        styles: [ '#75FFA8', '#D8FF75', '#75CFFF']
     },  
     // ... other slides   
 ]);     
