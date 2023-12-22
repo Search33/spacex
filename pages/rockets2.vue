@@ -41,7 +41,7 @@
                 <NuxtLink to="rockets" class="col-start-1 mr-auto mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
                     &lt- Previous Page 🚀</NuxtLink>
                 <p class="col-start-6 col-span-2 ml-auto pr-3">SLS launch pad model by <span><a
-                            href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
+                            href="https://nasa3d.arc.nasa.gov/detail/mobile-launcher-lp"
                             target="_blank" class="underline">nasa</a></span></p>
             </div>
         </div>
