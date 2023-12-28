@@ -108,6 +108,11 @@ export const useProviders = () => {
             logo: 'logos/NorthropGrumman.png',
             twitter: 'https://twitter.com/northropgrumman',
             youtube: 'https://www.youtube.com/@northropgrummanmedia/featured'
+        },
+        {
+            name: 'Expace (China)',
+            url: 'http://english.spacechina.com',
+            
         }
 
     ]);
@@ -136,6 +141,7 @@ export const useProviders = () => {
         { id: 89, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 2" },
         { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
         { id: 100, imgSrc: "/images/rocketIcon/mars.svg", text: "Mars Flyby" },
+        { id: 96, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1058'},
         { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1060'},
         { id: 104, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1061'},
         { id: 105, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1062'},
@@ -156,6 +162,7 @@ export const useProviders = () => {
         { id: 129, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1081'},
         { id: 130, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Endurance'},
         { id: 131, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: Space Development Agency - Transport Tracking Layers'},
+        { id: 132, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1082'},
     ];
 
     const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {

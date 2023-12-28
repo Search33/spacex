@@ -55,7 +55,7 @@
 const rockets = ref([
     {
         modelPath: '/falcon-heavy-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Falcon Heavy', height: 70, bg: '#D86A60', color: 'white',
-        styles: ['linear-gradient(45deg, #FFC371, #FF6F5F)', '#F0F74D', '#52EAD1', '#B45018']
+        styles: ['linear-gradient(45deg, #FFC371, #FF6F5F)', '#F0F74D', '#52EAD1', '#863227']
     },
 
     {
