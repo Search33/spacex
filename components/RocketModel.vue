@@ -21,7 +21,7 @@ const props = defineProps({
 const route = useRoute();
 
 const isComponentVisible = computed(() => {
-    return route.path === '/' || route.path === '/rockets' || route.path === '/rockets2' || props.isVisible;
+    return route.path === '/' || route.path === '/rockets' || route.path === '/rockets2' || route.path.startsWith('/rockets') || props.isVisible;
 })
 
 
@@ -49,11 +49,11 @@ const { load } = useGLTFModel()
 let currentModel: THREE.Group | null = null;
 
 const initialise = async () => {
-    console.log(`(${props.modelPath}) Attempting to Initialise model`)
+    // console.log(`(${props.modelPath}) Attempting to Initialise model`)
     try {
         if (props.modelPath) {
             const { scene: model } = await load(props.modelPath);
-            console.log(`${props.modelPath} gltf loaded`)
+            console.log(`${props.modelPath} loaded`)
             model.traverse(function (child) {  // Enable shadow receiving for all objects in the model
                 if (child instanceof Mesh) {
                     child.receiveShadow = true;
@@ -64,7 +64,7 @@ const initialise = async () => {
             const center = box.getCenter(new Vector3());  // Get the center of the bounding box
             currentModel = model;
             scene.add((model))
-            console.log(`${props.modelPath} scene added`);
+            // console.log(`${props.modelPath} scene added`);
         }
     } catch (error) {
         console.error(`(${props.modelPath}) Error loading model:`, error)
@@ -234,10 +234,10 @@ const cleanUpResources = () => {
 }
 
 onMounted(async() => {
-    console.log(`(${props.modelPath}) onMounted triggered. isVisible:`, props.isVisible);
+    // console.log(`(${props.modelPath}) onMounted triggered. isVisible:`, props.isVisible);
     setupRenderer();
     if (isComponentVisible.value) {
-        console.log('Component is visible on mount. Initialising...');
+        // console.log('Component is visible on mount. Initialising...');
         // if (renderer) {
         await initialiseResources();
         // }

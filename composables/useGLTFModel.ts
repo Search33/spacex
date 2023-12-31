@@ -15,8 +15,8 @@ export function useGLTFModel() {
             // gltfloader.load(url, resolve, undefined, reject)
 gltfloader.load(url, (gltf: GLTF) => {
                 const extendedGltf = gltf as GLTFExtended;
-                console.log('Loaded GLTF:', extendedGltf)
-                console.log('Loaded GLTF in composable:', gltf)
+                // console.log('Loaded GLTF:', extendedGltf)
+                // console.log('Loaded GLTF in composable:', gltf)
                 if (extendedGltf.animations && extendedGltf.animations.length) {
                     extendedGltf.mixer = new AnimationMixer(extendedGltf.scene);
                     extendedGltf.animations.forEach((clip) => {

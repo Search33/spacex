@@ -5,7 +5,7 @@
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
                 <div class="flex w-full items-top justify-end">
                     <!-- <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink> -->
-                    <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink>
+                    <NuxtLink to="rockets/1" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink>
                 </div>
             </nav>
         </header>
@@ -160,6 +160,7 @@ const getModelPath = (vehicleId) => {
     38: '/long-march-2c.gltf',
     41: '/long-march-4c.gltf',
     42: '/longmarch11.gltf',
+    43: '/vulcan-v2.gltf',
     56: '/new-shepard.gltf',
     58: '/Alpha.gltf',
     76: '/long-march-2f.gltf',
