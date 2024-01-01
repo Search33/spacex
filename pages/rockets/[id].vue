@@ -27,7 +27,7 @@
             <div v-else class="w-[134px] invisible"></div>
         </div>
 
-        <div :key="activeCountry" class=" grid grid-cols-4 gap-5 py-4 ">
+        <div :key="`grid-${activeCountry}-${isSortingActive}`" class=" grid grid-cols-4 gap-5 py-4 ">
             <div v-for="(rocket, idx) in paginatedRockets" :key="`model-${rocket.name}-${rocket.height}`"
                 class="relative flex flex-col justify-center items-center h-[60vh] rounded-lg border-[1px]  border-black overflow-hidden"
                 :style="`background-color: ${rocket.bg}; color: ${rocket.color}`">
