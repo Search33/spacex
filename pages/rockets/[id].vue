@@ -44,16 +44,13 @@
             </div>
         </div>
 
-        <div class=" z-[50] flex w-full items-bottom justify-between px-4 pb-4">
+        <div class=" z-[50] flex w-full items-bottom justify-between px-4 pb-6 pt-1">
             <!-- Dynamic Navigation -->
             <!-- <div v-if="page <= 1" class="w-[164px] invisible"></div> -->
-            <p v-if="hasSpaceShipTwo" class="w-[164px] pl-3">SpaceShipTwo model by <span><a
+            <p v-if="page === 1 && hasSpaceShipTwo" class="w-[164px] pl-3">SpaceShipTwo model by <span><a
                             href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
                             target="_blank" class="underline">agreene</a></span></p>
-            <div v-else class="invisible w-[164px]">placeholder1
-
-            </div>
-            <NuxtLink v-if="page > 1" :to="`/rockets/${page - 1}`"
+            <NuxtLink v-else-if="page > 1" :to="`/rockets/${page - 1}`"
                 class="w-[164px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
                 &lt- Previous Page 🚀
             </NuxtLink>
@@ -78,8 +75,8 @@ const { displayRockets, isSortingActive, activeCountry, totalPages } = useRocket
 
 function shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-        [array[i], array[j]] = [array[j], array[i]]; // swap elements
+        const j = Math.floor(Math.random() * (i + 1)); 
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array
 }
@@ -93,10 +90,10 @@ function chunkArray(array: any[], chunkSize: any) {
     return result;
 }
 
-function selectRandomStyle(styles: any) {
-    const randomIndex = Math.floor(Math.random() * styles.length);
-    return styles[randomIndex];
-}
+// function selectRandomStyle(styles: any) {
+//     const randomIndex = Math.floor(Math.random() * styles.length);
+//     return styles[randomIndex];
+// }
 
 
 const hasSpaceShipTwo = computed(() => {
@@ -111,6 +108,11 @@ console.log('Initial page:', page.value);
 
 const modelsPerPage = 16;
 
+function selectRandomStyle(styles: string[]): string {
+    if (!styles || styles.length === 0) return '';
+    return styles[Math.floor(Math.random() * styles.length)];
+}
+
 const paginatedRockets = computed(() => {
     const start = (page.value - 1) * modelsPerPage;
     const end = start + modelsPerPage;
@@ -120,7 +122,7 @@ const paginatedRockets = computed(() => {
     if (isSortingActive.value) {
         currentRockets.sort((a, b) => a.height - b.height);
     } else {
-        shuffleArray(currentRockets)
+        shuffleArray(currentRockets);
     }
     return currentRockets.map(rocket => {
         let textStyle = {};
@@ -140,18 +142,20 @@ const paginatedRockets = computed(() => {
             ...rocket,
             textStyle
         }
-    });
+    });;
 
 });
+
+
+
 
 const router = useRouter();
 
 watch(activeCountry, (newCountry) => {
     const filteredRocketCount = displayRockets.value.filter(rocket => rocket.country === newCountry).length;
     if (filteredRocketCount <= modelsPerPage && page.value !== 1) {
-        page.value = 1; // Reset page to 1 if the new country has 16 or fewer rockets
-        router.push('/rockets/1'); // Navigate to the first page
-
+        page.value = 1; 
+        router.push('/rockets/1'); 
     }
 });
 

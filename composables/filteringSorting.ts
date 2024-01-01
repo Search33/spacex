@@ -28,8 +28,8 @@ const rockets = [
         styles: ['#71CECF']
     },
     {
-        modelPath: '/starship.gltf', fov: 70, camY: 8, camZ: 18, name: 'Starship', height: 120, country: 'USA', bg: '#21457E', color: 'white',
-        styles: ['#8F84E8', 'linear-gradient(180deg, #FF718D, #A30808)', 'linear-gradient(270deg, #9971FF, #B69DF5)']
+        modelPath: '/starship.gltf', fov: 90, camY: 6, camZ: 15, name: 'Starship', height: 120, country: 'USA', bg: '#4780AD', color: 'white',
+        styles: ['#D0ACFF', 'linear-gradient(270deg, #E49EFF, #D5C4FF)', '#DFAF97']
     },
     {
         modelPath: '/long-march-2c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2c', height: 42, country: 'China', bg: 'rgb(131,72,105,100)', color: 'white',
@@ -108,15 +108,15 @@ const rockets = [
         styles: ['#F26430', '#CBEF43', '#009DDC']
     },
     {
-        modelPath: '/n1.gltf', fov: 75, camY: 6, camZ: 14, name: 'n1', height: 105, country: 'Russia', bg: '#2E5D55', color: 'white',
+        modelPath: '/n1.gltf', fov: 75, camY: 6, camZ: 15, name: 'n1', height: 105, country: 'Russia', bg: '#2E5D55', color: 'white',
         styles: ['#ffffff',]
     },
     {
-        modelPath: '/saturnv.gltf', fov: 75, camY: 6, camZ: 14, name: 'Saturn V', height: 110, country: 'USA', bg: '#837EB4', color: 'white',
+        modelPath: '/saturnv.gltf', fov: 80, camY: 6, camZ: 15, name: 'Saturn V', height: 110, country: 'USA', bg: '#837EB4', color: 'white',
         styles: ['#75FFA8', '#D8FF75', '#75CFFF']
     },
     {
-        modelPath: '/longmarch9-v2.gltf', fov: 75, camY: 6, camZ: 14, name: 'Long March 9', height: 114, country: 'China', bg: '#934683', color: 'white',
+        modelPath: '/longmarch9-v2.gltf', fov: 80, camY: 6, camZ: 15, name: 'Long March 9', height: 114, country: 'China', bg: '#934683', color: 'white',
         styles: ['#F433AB', '#EDCB96']
     },
     {
@@ -150,6 +150,7 @@ const sortCriteria = ref<any>({
     'Europe': 'default',
 });
 
+
 const isSortingActive = ref(false)
 
 const sortedAndFilteredRockets = computed(() => {
@@ -161,7 +162,7 @@ const sortedAndFilteredRockets = computed(() => {
         filteredRockets.sort((a, b) => a.height - b.height);
     }
 
-    return filteredRockets;
+    return filteredRockets
 });
 
 const filterRockets = (country: string) => {
@@ -197,6 +198,7 @@ export function useRockets() {
 
     const numberOfRockets = computed(() => sortedAndFilteredRockets.value.length);
     const totalPages = computed(() => Math.ceil(numberOfRockets.value / modelsPerPage))
+
 
     return { activeCountry, countryFlags, displayRockets: sortedAndFilteredRockets, existingCountries, filterRockets, isSortingActive, showAllRockets, sortRocketsByHeight, totalPages };
 }
