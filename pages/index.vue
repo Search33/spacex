@@ -161,6 +161,7 @@ const getModelPath = (vehicleId) => {
     41: '/long-march-4c.gltf',
     42: '/longmarch11.gltf',
     43: '/vulcan-v2.gltf',
+    // 52: '/.gltf',
     56: '/new-shepard.gltf',
     58: '/Alpha.gltf',
     76: '/long-march-2f.gltf',

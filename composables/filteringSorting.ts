@@ -13,7 +13,7 @@ const rockets = [
     },
     {
         modelPath: '/soyuz2-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Soyuz-2', height: 46.3, country: 'Russia', bg: 'rgb(75,167,187,100)', color: 'white',
-        styles: ['#F7DE03', '#73D38D']
+        styles: ['#F7DE03', '#6AEA8C']
     },
     {
         modelPath: '/atlasV.gltf', fov: 75, camY: 4, camZ: 10, name: 'Atlas V', height: 58.3, country: 'USA', bg: 'rgb(20,34,74,100)', color: 'white',
@@ -24,12 +24,12 @@ const rockets = [
         styles: ['#3DD690', '#ffffff']
     },
     {
-        modelPath: '/ceres1_2.gltf', fov: 45, camY: 4, camZ: 10, name: 'Ceres-1', height: 20, country: 'China', bg: 'rgb(49,117,157,100)', color: 'white',
+        modelPath: '/ceres1.gltf', fov: 40, camY: 4, camZ: 10, name: 'Ceres-1', height: 20, country: 'China', bg: 'rgb(49,117,157,100)', color: 'white',
         styles: ['#71CECF']
     },
     {
         modelPath: '/starship.gltf', fov: 90, camY: 6, camZ: 15, name: 'Starship', height: 120, country: 'USA', bg: '#4780AD', color: 'white',
-        styles: ['#D0ACFF', 'linear-gradient(270deg, #E49EFF, #D5C4FF)', '#DFAF97']
+        styles: ['#D0ACFF', 'linear-gradient(180deg, #DB87FC, #DDBDEF)', '#DFAF97']
     },
     {
         modelPath: '/long-march-2c.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2c', height: 42, country: 'China', bg: 'rgb(131,72,105,100)', color: 'white',
@@ -68,8 +68,8 @@ const rockets = [
         styles: ['linear-gradient(90deg, #8A0111, #FF6F7D)', '#37C694', '#E0AF96']
     },
     {
-        modelPath: '/long-march-2d.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2d', height: 41, country: 'China', bg: 'rgb(38,84,92,100)', color: 'white',
-        styles: ['linear-gradient(190deg, #5D9DCE, #76AE27)']
+        modelPath: '/long-march-2d.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2d', height: 41, country: 'China', bg: '#B0D8C7', color: 'white',
+        styles: ['linear-gradient(190deg, #2D3ED3, #9F5BC6)']
     },
     {
         modelPath: '/long-march-2f.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 2f', height: 62, country: 'China', bg: '#214489', color: 'white',
@@ -85,11 +85,11 @@ const rockets = [
     },
     {
         modelPath: '/new-glenn.gltf', fov: 75, camY: 6, camZ: 14, name: 'New Glenn', height: 98, country: 'USA', bg: '#6387AB', color: 'white',
-        styles: ['#46EC46', '#410C3E']
+        styles: ['#46EC46']
     },
     {
         modelPath: '/vulcan-v2.gltf', fov: 75, camY: 4, camZ: 10, name: 'Vulcan', height: 61.6, country: 'USA', bg: '#63AB9B', color: 'white',
-        styles: ['#4F345A', '#D1FFE1', '#E2FFC1']
+        styles: ['#D1FFE1', '#E2FFC1']
     },
     {
         modelPath: '/deltaiv.gltf', fov: 75, camY: 4, camZ: 10, name: 'Delta IV', height: 70, country: 'USA', bg: '#6398AB', color: 'white',
@@ -97,7 +97,7 @@ const rockets = [
     },
     {
         modelPath: '/ariane5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Ariane 5', height: 50, country: 'Europe', bg: '#A2B4BA', color: 'white',
-        styles: ['linear-gradient(270deg, #925800, #443327)', '#303E75', 'linear-gradient(170deg, #E765DC, #006674)']
+        styles: [ '#303E75', 'linear-gradient(170deg, #E765DC, #006674)']
     },
     {
         modelPath: '/ariane6.gltf', fov: 75, camY: 4, camZ: 10, name: 'Ariane 6', height: 63, country: 'Europe', bg: '#AD7A99', color: 'white',
@@ -116,7 +116,7 @@ const rockets = [
         styles: ['#75FFA8', '#D8FF75', '#75CFFF']
     },
     {
-        modelPath: '/longmarch9-v2.gltf', fov: 80, camY: 6, camZ: 15, name: 'Long March 9', height: 114, country: 'China', bg: '#934683', color: 'white',
+        modelPath: '/longmarch9-v2.gltf', fov: 90, camY: 6, camZ: 15, name: 'Long March 9', height: 114, country: 'China', bg: '#934683', color: 'white',
         styles: ['#F433AB', '#EDCB96']
     },
     {
@@ -131,12 +131,57 @@ const rockets = [
         modelPath: '/longmarch11.gltf', fov: 40, camY: 4, camZ: 10, name: 'Long March 11', height: 20, country: 'China', bg: '#43A4DC', color: 'white',
         styles: ['#4932E3', '#3FEA70']
     },
+    // {
+    //     modelPath: '/longmarch11.gltf', fov: 40, camY: 4, camZ: 10, name: 'Long March 33', height: 20, country: 'China', bg: '#43A4DC', color: 'white',
+    //     styles: ['#4932E3', '#3FEA70']
+    // },
+    // {
+    //     modelPath: '/Angara-A5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Angara A5', height: 64, country: 'Russia', bg: '#9BA7C0', color: 'white',
+    //     styles: [ '#843433', '#49416D', '#DDDBF1']
+    // },
     {
-        modelPath: '/longmarch11.gltf', fov: 40, camY: 4, camZ: 10, name: 'Long March 33', height: 20, country: 'China', bg: '#43A4DC', color: 'white',
-        styles: ['#4932E3', '#3FEA70']
+        modelPath: '/Angara-A5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Angara A5', height: 64, country: 'Russia', bg: '#9BA7C0', color: 'white',
+        styles: ['#FFD1BE', '#A33E00']
+    },
+    // {
+        //     modelPath: '/ProtonM.gltf', fov: 75, camY: 4, camZ: 10, name: 'Proton M', height: 58.2, country: 'Russia', bg: '#DDDBCB', color: 'white',
+        //     styles: [ '#B48291', '#DE541E']
+        // },
+    {
+        modelPath: '/ProtonM.gltf', fov: 75, camY: 4, camZ: 10, name: 'Proton M', height: 58.2, country: 'Russia', bg: '#4AA0D1', color: 'white',
+        styles: [ '#2AEF62']
+    },
+    {
+        modelPath: '/Kinetica1.gltf', fov: 75, camY: 4, camZ: 10, name: 'Kinetica 1', height: 30, country: 'China', bg: '#616283', color: 'white',
+        styles: [ '#DC80D5']
+    },
+    {
+        modelPath: '/LongMarch7.gltf', fov: 75, camY: 4, camZ: 10, name: 'Long March 7', height: 60, country: 'China', bg: '#15616D', color: 'white',
+        styles: [ '#FFECD1', '#FF7D00', '#FFF2C6']
+    },
+    {
+        modelPath: '/Miura5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Miura 5', height: 34, country: 'Europe', bg: '#2C363F', color: 'white',
+        styles: [ '#CC3363', '#FCFFBA']
+    },
+    {
+        modelPath: '/Zephyr.gltf', fov: 40, camY: 4, camZ: 10, name: 'Zephyr', height: 19, country: 'Europe', bg: '#948B89', color: 'white',
+        styles: [ '#D0D1AC', '#364958']
+    },
+    {
+        modelPath: '/Vega.gltf', fov: 75, camY: 4, camZ: 10, name: 'Vega', height: 30, country: 'Europe', bg: '#61A0AF', color: 'white',
+        styles: [ '#FFFB46', '#5F4BB6']
+    },
+    {
+        modelPath: '/rfa1.gltf', fov: 75, camY: 4, camZ: 10, name: 'RFA ONE', height: 30, country: 'Europe', bg: '#307473', color: 'white',
+        styles: [ '#2DC2BD', '#35CE8D', '#99F7AB']
+    },
+    {
+        modelPath: '/spectrum.gltf', fov: 75, camY: 4, camZ: 10, name: 'Spectrum', height: 28, country: 'Europe', bg: '#5A7684', color: 'white',
+        styles: [ '#92AFD7', '#C5D1EB', '#FFDDD2']
     },
     // ... other slides   
 ];
+// '#C4F7A1'
 
 const displayRockets = ref([...rockets])
 const activeCountry = ref('all');

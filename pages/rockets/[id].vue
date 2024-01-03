@@ -44,28 +44,31 @@
             </div>
         </div>
 
-        <div class=" z-[50] flex w-full items-bottom justify-between px-4 pb-6 pt-1">
-            <!-- Dynamic Navigation -->
-            <!-- <div v-if="page <= 1" class="w-[164px] invisible"></div> -->
-            <p v-if="page === 1 && hasSpaceShipTwo" class="w-[164px] pl-3">SpaceShipTwo model by <span><a
-                            href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
-                            target="_blank" class="underline">agreene</a></span></p>
-            <NuxtLink v-else-if="page > 1" :to="`/rockets/${page - 1}`"
+        <div class="z-[50] flex w-full items-center justify-between px-4 pb-6 pt-1">
+            <!-- Left Navigation Link or Placeholder -->
+            <NuxtLink v-if="page > 1" :to="`/rockets/${page - 1}`"
                 class="w-[164px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
                 &lt- Previous Page 🚀
             </NuxtLink>
+            <div v-else-if="page === 1 && !hasSpaceShipTwo" class="w-[164px] "></div> <!-- Invisible Placeholder -->
+            <p v-if="page === 1 && hasSpaceShipTwo" class="w-[164px] pl-3">SpaceShipTwo model by <span><a
+                        href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
+                        target="_blank" class="underline">agreene</a></span></p>
 
-            <div class="">
-                <p class="px-2.5 py-2 mr-8 text-md code-font font-semibold rounded-xl border-[1px] border-transparent hover:border-[#5db9bf] text-[#23585c] ">
-                    Page: {{ page }}
-                </p>
-            </div>
+            <!-- Page Indicator -->
+            <p
+                class="px-2.5 py-2 mr-6 text-md code-font font-semibold rounded-xl border-[1px] border-transparent hover:border-[#5db9bf] text-[#23585c]">
+                Page: {{ page }}
+            </p>
+
+            <!-- Right Navigation Link or Placeholder -->
             <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
                 class="w-[134px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
                 Next Page 🚀 -&gt
             </NuxtLink>
-            <div v-else class="w-[134px] invisible"></div>
+            <div v-else class="w-[134px] "></div> <!-- Invisible Placeholder -->
         </div>
+
     </div>
 </template>
 
@@ -75,7 +78,7 @@ const { displayRockets, isSortingActive, activeCountry, totalPages } = useRocket
 
 function shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); 
+        const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array
@@ -154,8 +157,8 @@ const router = useRouter();
 watch(activeCountry, (newCountry) => {
     const filteredRocketCount = displayRockets.value.filter(rocket => rocket.country === newCountry).length;
     if (filteredRocketCount <= modelsPerPage && page.value !== 1) {
-        page.value = 1; 
-        router.push('/rockets/1'); 
+        page.value = 1;
+        router.push('/rockets/1');
     }
 });
 
@@ -169,5 +172,4 @@ watch(activeCountry, (newCountry) => {
 .cool-font {
     font-family: 'Turret Road', sans-serif;
     /* opacity: 30%; */
-}
-</style>
+}</style>
