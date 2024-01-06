@@ -16,40 +16,18 @@
             class="min-h-screen relative flex second-section ">
             <div class="flex w-1/3 items-center justify-center  p-8">
                 <ClientOnly>
-
                     <LazyRocketModel :fov="75" :camY="4" :camZ="10" :modelPath="getModelPath(launch.vehicle.id)"/>
-                    <!-- <LazyFalcon9Test v-if="launch?.vehicle.id === 1" />
-                    <LazyAtlasV v-if="launch?.vehicle.id === 3" />
-                    <LazyAntares v-else-if="launch?.vehicle.id === 5" />
-                    <LazyFalconHeavy v-else-if="launch?.vehicle.id === 7" />
-                    <LazyVega v-else-if="launch?.vehicle.id === 11" />
-                    <LazyPSLV v-else-if="launch?.vehicle.id === 14" />
+                    <!-- <LazyVega v-else-if="launch?.vehicle.id === 11" />
                     <LazyPSLVxl v-else-if="launch?.vehicle.id === 14" />
                     <LazyH-IIA v-else-if="launch?.vehicle.id === 17" />
-                    <LazyElectron v-else-if="launch?.vehicle.id === 18" />
                     <LazyLVM3 v-else-if="launch?.vehicle.id === 19" />
-
-                    <LazySoyuz2 v-else-if="launch?.vehicle.id === 20" />
-                    <LazyPSLV v-else-if="launch?.vehicle.id === 21" />
-                    <LazyLongMarch3b v-else-if="launch?.vehicle.id === 28" />
-                    <LazyLongMarch2d v-else-if="launch?.vehicle.id === 35" />
-                    <LazyLongMarch2c v-else-if="launch?.vehicle.id === 38" />
                     <LazyLongMarch5 v-else-if="launch?.vehicle.id === 39" />
-                    <LazyLongMarch4c v-else-if="launch?.vehicle.id === 41" />
-                    <LazyLongMarch2f v-else-if="launch?.vehicle.id === 76" />
                     <LazyHyperbola1 v-else-if="launch?.vehicle.id === 67" />
                     <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" />
-
                     <LazyAlpha v-else-if="launch?.vehicle.id === 91" />
-                    <LazyCeres1 v-else-if="launch?.vehicle.id === 113" />
-                    <LazyStarship v-else-if="launch?.vehicle.id === 115" />
-                    <LazySpaceShipTwo v-else-if="launch?.vehicle.id === 120" />
-
-                    <LazyZhuque2 v-else-if="launch?.vehicle.id" id === 131 />
-
+                    <LazyZhuque2 v-else-if="launch?.vehicle.id id === 131" />
                     <LazyMiura1 v-else-if="launch?.vehicle.id === 144" />
-                    
-                    <Ariane5 v-else-if="launch?.vehicle.id === 2" /> -->
+                    <Ariane5 v-else-if="launch?.vehicle.id === 2" />  -->
                 </ClientOnly>
             </div>
 
@@ -72,7 +50,7 @@
                     </div>
 
                     <!-- Countdown + Location -->
-                    <div class="pt-8 pb-8 text-lg font-extrabold flex justify-between space-x-10 ">
+                    <div class="pt-8 pb-8 text-lg font-extrabold responsive-container  flex justify-between space-x-10 ">
                         <Countdown :countdown="launch?.t0" />
                         <LocationDetails 
                             :launch="{
@@ -170,6 +148,7 @@ const getModelPath = (vehicleId) => {
     115: '/starship.gltf',
     120: '/spaceShipTwo.gltf',
     // 144: '/miura1.gltf',
+    146: '/Kinetica1.gltf',
     // Add more mappings as needed
   };
   return modelPaths[vehicleId] || null; // Fallback model
@@ -208,5 +187,24 @@ section {
     align-items: center;
     justify-content: center;
 }
+
+.responsive-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Media Query for medium screens (e.g., tablets) */
+@media screen and (max-width: 1024px) {
+    .responsive-container {
+        /* Adjustments for medium screens */
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .responsive-container > *:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
 </style>
 
