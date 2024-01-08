@@ -26,7 +26,8 @@ export const useProviders = () => {
             url: "https://www.ulalaunch.com",
             logo: "/logos/ula.svg",
             twitter: "https://twitter.com/ulalaunch",
-            youtube: "https://www.youtube.com/@unitedlaunchalliance/featured"
+            youtube: "https://www.youtube.com/@unitedlaunchalliance/featured",
+            instagram: 'https://www.instagram.com/ulalaunch/',
         },
         {
             name: "Roscosmos",
@@ -99,7 +100,7 @@ export const useProviders = () => {
         {
             name: 'China',
             url: 'https://www.cnsa.gov.cn/english/index.html',
-            logo: '/logos/cnsa.png',
+            logo: '/logos/cnsa2.png',
             twitter: 'https://twitter.com/cnsa_en?lang=en'
         },
         {
@@ -113,6 +114,25 @@ export const useProviders = () => {
             name: 'Expace (China)',
             url: 'http://english.spacechina.com',
             
+        },
+        {
+            name: 'OrienSpace',
+            url: 'https://www.orienspace.com',
+            logo: '/logos/orienspace3.png'
+
+        },
+        {
+            name: 'CAS Space',
+            url: 'https://en.cas-space.com',
+            logo: '/logos/casspace2.png',
+            twitter: 'https://twitter.com/cas_space',
+        },
+        {
+            name: 'Mitsubishi Heavy Industries',
+            url: 'https://www.mhi.com',
+            logo: '/logos/mhi.png',
+            twitter: 'https://twitter.com/MHI_Group',
+            youtube: 'https://www.youtube.com/@DiscoverMHI/featured',
         }
 
     ]);
@@ -131,6 +151,7 @@ export const useProviders = () => {
         { id: 24, imgSrc: "/images/rocketIcon/35.svg", text: "Communications Satellite" },
         { id: 25, imgSrc: "/images/rocketIcon/34.svg", text: "Earth Observation Satellite" },
         { id: 26, imgSrc: "/images/rocketIcon/40.svg", text: "Navigation Satellite" },
+        { id: 28, imgSrc: "/images/rocketIcon/recon.svg", text: "Reconnaissance Satellite" },
         { id: 29, imgSrc: "/images/rocketIcon/polar.svg", text: "Polar Orbit" },
         { id: 44, imgSrc: "/images/rocketIcon/return.svg", text: "Return to flight" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorological Satellite" },
