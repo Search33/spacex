@@ -179,6 +179,10 @@ const rockets = [
         modelPath: '/spectrum.gltf', fov: 75, camY: 4, camZ: 10, name: 'Spectrum', height: 28, country: 'Europe', bg: '#5A7684', color: 'white',
         styles: [ '#92AFD7', '#C5D1EB', '#FFDDD2']
     },
+    {
+        modelPath: '/gravity1.gltf', fov: 75, camY: 4, camZ: 10, name: 'Gravity 1', height: 31.4, country: 'China', bg: '#16425B', color: 'white',
+        styles: [ '#8FBAF6', '#C5D1EB', '#FFDDD2']
+    },
     // ... other slides   
 ];
 // '#C4F7A1'

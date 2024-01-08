@@ -149,6 +149,7 @@ const getModelPath = (vehicleId) => {
     120: '/spaceShipTwo.gltf',
     // 144: '/miura1.gltf',
     146: '/Kinetica1.gltf',
+    149: '/gravity1.gltf',
     // Add more mappings as needed
   };
   return modelPaths[vehicleId] || null; // Fallback model
