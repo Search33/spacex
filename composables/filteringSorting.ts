@@ -28,7 +28,7 @@ const rockets = [
         styles: ['#71CECF']
     },
     {
-        modelPath: '/starship.gltf', fov: 90, camY: 6, camZ: 15, name: 'Starship', height: 120, country: 'USA', bg: '#4780AD', color: 'white',
+        modelPath: '/starship-v3.gltf', fov: 90, camY: 6, camZ: 15, name: 'Starship', height: 120, country: 'USA', bg: '#4780AD', color: 'white',
         styles: ['#D0ACFF', 'linear-gradient(180deg, #DB87FC, #DDBDEF)', '#DFAF97']
     },
     {
