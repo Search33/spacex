@@ -147,7 +147,7 @@ const getModelPath = (vehicleId) => {
     // 67: '/hyperbola1.gltf',
     113: '/ceres1_2.gltf',
     115: '/starship.gltf',
-    120: '/spaceShipTwo.gltf',
+    120: '/spaceshiptwo.gltf',
     // 144: '/miura1.gltf',
     146: '/Kinetica1.gltf',
     149: '/gravity1.gltf',
