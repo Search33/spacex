@@ -183,6 +183,7 @@ export const useProviders = () => {
         { id: 118, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1078'},
         { id: 122, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1079'},
         { id: 124, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1084'},
+        { id: 125, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1072'},
         { id: 126, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1080'},
         { id: 127, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Freedom'},
         { id: 128, imgSrc: "/images/rocketIcon/css.svg", text: 'Chinese Space Station Cargo'},
