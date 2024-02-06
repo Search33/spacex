@@ -1,15 +1,19 @@
 <template>
-    <div class="bg-[#292929] text-[#dddddd] text-sm code-font rounded-xl p-3">
-        <div v-for="(m, index) in launch?.missions" class="px-2 py-px  my-2 ">
+    <div class="bg-[#292929] text-[#dddddd] text-sm code-font rounded-xl p-3 red-inner-shadow">
+        <div v-for="(m, index) in launch?.missions" 
+            class="  m-2 "
+            :class="{'pb-2 border-b-[1px] border-[#434343]': index < launch.missions.length - 1 && launch.missions.length > 1}">
             <p class="rounded-2xl">
-                {{ launch.missions.length > 1 ? `| $: > Booting Mission (${index +
-                    1}/${launch.missions.length}):` : '| $: > Booting Mission:' }}
-                {{ m.name || '' }}
+                <span class="text-[#8d8d8d] ">
+                    {{ launch.missions.length > 1 ? `| $: > Booting Mission (${index +
+                        1}/${launch.missions.length}):` : '| $: > Booting Mission:' }}
+                </span>
+                    {{ m.name || '' }}
             </p>
-            <p>
-                ■■■■■■■■■■■ 100%
+            <p class="text-[#8d8d8d]">
+                ■■■■■■■■■■■ <span class="text-[#8d8d8d]">100%</span>
             </p>
-            <p class="">
+            <p  class=" pt-0.5">
                 {{ m.description || '' }}
             </p>
         </div>
@@ -27,5 +31,10 @@ const { launch } = defineProps(['launch'])
 .code-font {
     font-family: Monaco, Consolas, "Lucida Console", monospace;
 }
+
+.red-inner-shadow {
+    box-shadow: inset 0 0 10px #191919;
+}
+
 
 </style>

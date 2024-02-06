@@ -14,9 +14,11 @@
                         </div>
                     </a>
                     <!-- <SocialMediaIcon v-if="provider.twitter" :url="provider.twitter" :logo="'https://cdn.svgporn.com/logos/twitter.svg'" /> -->
-                    <SocialMediaIcon v-if="provider.twitter" :url="provider.twitter" :logo="'https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png'"  />
-                    <SocialMediaIcon v-if="provider.youtube" :url="provider.youtube" :logo="'https://cdn.svgporn.com/logos/youtube-icon.svg'" />
-                    <SocialMediaIcon v-if="provider.instagram" :url="provider.instagram" :logo="'https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg'" />
+                    <SocialMediaIcon v-if="provider.twitter" :url="provider.twitter" :logo="'/logos/XLogo.png'"  />
+                    <!-- <SocialMediaIcon v-if="provider.twitter" :url="provider.twitter" :logo="'https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png'"  /> -->
+                    <SocialMediaIcon v-if="provider.youtube" :url="provider.youtube" :logo="'/logos/yt.png'" />
+                    <!-- <SocialMediaIcon v-if="provider.youtube" :url="provider.youtube" :logo="'https://cdn.svgporn.com/logos/youtube-icon.svg'" /> -->
+                    <!-- <SocialMediaIcon v-if="provider.instagram" :url="provider.instagram" :logo="'https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg'" /> -->
                 </template>
             </template>
         </div>

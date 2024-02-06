@@ -1,7 +1,7 @@
 <!-- SocialMediaIcon.vue -->
 <template>
     <a :href="url" target="_blank">
-        <div :class="['relative flex items-center justify-center w-10 h-10 rounded-[10%] overflow-hidden shadow-inner', isTwitter ? 'twitter-gradient' : '']">
+        <div :class="['relative flex items-center justify-center black w-10 h-10 rounded-[10%] overflow-hidden shadow-inner', isTwitter ? 'twitter-gradient' : '']">
             <img alt="" aria-hidden
                 class="absolute z-10 w-full h-full transform scale-200 filter blur-[13px] opacity-20"
                 :src="logo" />
@@ -15,15 +15,14 @@
 
 const { url, logo } = defineProps(['url', 'logo'])
 
-const isTwitter = computed(() => {
-  return logo.includes('X_logo'); // or any other logic to identify Twitter
-});
+
 </script>
 
 <style scoped>
 
 .twitter-gradient {
   background: linear-gradient(to bottom, #191919, #4A4A4A); /* Example gradient from Twitter blue to a lighter blue */
+  color: black;
 }
 
 

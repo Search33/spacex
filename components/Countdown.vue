@@ -1,7 +1,7 @@
 <template>
     <div class="flex space-x-10">
         <div v-if="countdownTime.message" class="text-2xl flex flex-col justify-center">
-            {{ countdownTime.message }}..
+            {{ countdownTime.message }}
         </div>
         <template v-else>
             <div class="flex flex-col items-center" v-if="countdownTime.days > 0">
@@ -42,7 +42,7 @@ const calculateCountdown = () => {
     const diff = launchDate - now;
 
     if (diff <= 0) {
-        countdownTime.value = { message: "Liftoff!🚀 🛸 🔭 or rescheduled 🗓️ .." };
+        countdownTime.value = { message: `Liftoff!🚀 🛸 🔭 or scrubbed🗓️` };
         return;
     }
 

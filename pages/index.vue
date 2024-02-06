@@ -17,22 +17,11 @@
             <div class="flex w-1/3 items-center justify-center  p-8">
                 <ClientOnly>
                     <LazyRocketModel :fov="75" :camY="4" :camZ="10" :modelPath="getModelPath(launch.vehicle.id)"/>
-                    <!-- <LazyVega v-else-if="launch?.vehicle.id === 11" />
-                    <LazyPSLVxl v-else-if="launch?.vehicle.id === 14" />
-                    <LazyH-IIA v-else-if="launch?.vehicle.id === 17" />
-                    <LazyLVM3 v-else-if="launch?.vehicle.id === 19" />
-                    <LazyLongMarch5 v-else-if="launch?.vehicle.id === 39" />
-                    <LazyHyperbola1 v-else-if="launch?.vehicle.id === 67" />
-                    <LazyKuaizhou1A v-else-if="launch?.vehicle.id === 52" />
-                    <LazyAlpha v-else-if="launch?.vehicle.id === 91" />
-                    <LazyZhuque2 v-else-if="launch?.vehicle.id id === 131" />
-                    <LazyMiura1 v-else-if="launch?.vehicle.id === 144" />
-                    <Ariane5 v-else-if="launch?.vehicle.id === 2" />  -->
                 </ClientOnly>
             </div>
 
-            <div class="inter-font w-2/3 py-6 mb-20 justify-center items-center  overflow-auto pl-6 pt-6">
-                <div class="bg-[#eeeeee]/90 p-8 rounded-tl-3xl rounded-bl-3xl my-shadow ">
+            <div class="inter-font w-2/3 py-6 mb-20 justify-center items-center  overflow-auto pl-6 ">
+                <div class="bg-[#eeeeee]/90 px-8 pt-8 pb-6 rounded-tl-3xl rounded-bl-3xl my-shadow ">
                     <div >
                         <div class="flex justify-between">
                             <div class="flex items-end   ">
@@ -50,7 +39,7 @@
                     </div>
 
                     <!-- Countdown + Location -->
-                    <div class="pt-8 pb-8 text-lg font-extrabold responsive-container  flex justify-between space-x-10 ">
+                    <div class="pt-6 pb-6 text-lg font-extrabold responsive-container  flex justify-between space-x-10 ">
                         <Countdown :countdown="launch?.t0" />
                         <LocationDetails 
                             :launch="{
@@ -63,7 +52,7 @@
 
                     <!-- Launch Tags -->
                     <!-- <div class="pb-6 grid grid-flow-col gap-3"> -->
-                    <div class="pb-6 flex flex-wrap gap-3">
+                    <div class="pb-4 flex flex-wrap gap-3">
                         <VehicleTag 
                             class="flex-grow"
                             imgSrc="/images/rocketIcon/3.svg" 
