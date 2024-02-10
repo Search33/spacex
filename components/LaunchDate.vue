@@ -1,7 +1,8 @@
 <template>
-    <div class="flex items-center justify-end text-base font-normal ">
-        {{ formattedDate }}
-
+    <div class="z-20 flex -mb-3 flex-col items-center justify-end text-base font-normal ">
+        <span class="text-[#656565] text-xs mr-auto ">
+            {{ dayNumber }}<sup class="ordinal">{{ ordinalSuffix }}</sup> {{ monthYear }}</span>
+        <span class=" text-xl font-medium mr-auto">{{ time }}</span>
     </div>
 </template>
 
@@ -10,44 +11,51 @@
 const { date } = defineProps(['date'])
 
 const getOrdinalSuffix = (day) => {
-    if (day % 10 === 1 && day !== 11) {
-        return day + "st";
-    }
-    else if (day % 10 === 2 && day !== 12) {
-        return day + "nd";
-    }
-    else if (day % 10 === 3 && day !== 13) {
-        return day + "rd";
-    }
-    else {
-        return day + "th";
-    }
+    if (day % 10 === 1 && day !== 11) return "st";
+    else if (day % 10 === 2 && day !== 12) return "nd";
+    else if (day % 10 === 3 && day !== 13) return "rd";
+    else return "th";
 }
 
-const formattedDate = computed(() => {
-    if (date) {
-        const d = new Date(date);
-        const dayWithSuffix = getOrdinalSuffix(d.getDate());
-        return `${dayWithSuffix} ${d.toLocaleString(undefined, { month: 'short' })}, ${d.toLocaleString(undefined, { hour: '2-digit', minute: '2-digit' })}`;
-    }
+const dayNumber = computed(() => {
+    if (!date) return '';
+    const d = new Date(date);
+    return d.getDate();
 });
 
-// const formattedDate = computed(() => {
-//     if (date) {
-//         const d = new Date(date);
-//         return d.toLocaleString(undefined, 
-//         { 
-//             month: 'long', 
-//             day: '2-digit', 
-//             hour: '2-digit', 
-//             minute: '2-digit' 
-//         }
-//         );
-//     }
-// });
+const ordinalSuffix = computed(() => {
+    if (!date) return '';
+    const d = new Date(date);
+    return getOrdinalSuffix(d.getDate());
+});
+
+
+
+const monthYear = computed(() => {
+    if (!date) return '';
+    const d = new Date(date);
+    // return d.toLocaleString(undefined, { month: 'long', year: 'numeric' });
+    return d.toLocaleString(undefined, { month: 'long' });
+
+});
+
+const time = computed(() => {
+    if (!date) return '';
+    const d = new Date(date);
+    let timeString = d.toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', hour12: true });
+
+    // return d.toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', hour12: true });
+    // return timeString.replace(/\s(?=am|pm)/, '');
+    // return timeString.replace(/^0(?=\d:)|\s(?=am|pm)/, '');
+    return timeString.replace(/^0|(\s)(?=[AaPp][Mm])/, '').replace(/(\s)(?=[AaPp][Mm])/, '');
+
+
+
+});
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+
 
 </style>

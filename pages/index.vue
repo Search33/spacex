@@ -1,5 +1,5 @@
 <template>
-    <div class="text-[#141414] relative">
+    <div class="text-[#141414] relative ">
         <header>
             <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain  bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
@@ -39,8 +39,9 @@
                     </div>
 
                     <!-- Countdown + Location -->
-                    <div class="pt-6 pb-6 text-lg font-extrabold responsive-container  flex justify-between space-x-10 ">
-                        <Countdown :countdown="launch?.t0" />
+                    <div class="pt-6 pb-6  text-lg font-extrabold responsive-container  flex justify-between space-x-10 ">
+                        <Countdown :countdown="launch?.t0" class="" />
+
                         <LocationDetails 
                             :launch="{
                                 country: launch?.pad.location.country,
@@ -93,9 +94,9 @@ useHead({
 })
 
 
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
-// const { data: launches } = await useFetch('http://localhost:3000/launches.json')
+const { data: launches } = await useFetch('http://localhost:3000/launches.json')
 // const { data: launches } = useFetch('https://spacex-murex.vercel.app/launches.json')
 
 const { providers } = useProviders()

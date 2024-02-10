@@ -109,7 +109,7 @@
           "name": "Vandenberg SFB",
           "state": "CA",
           "statename": "California",
-          "country": "United States",
+          "country": "Japan",
           "slug": "vandenberg-sfb"
         }
       },
@@ -175,7 +175,7 @@
           "name": "Cape Canaveral SFS",
           "state": "FL",
           "statename": "Florida",
-          "country": "United States",
+          "country": "France",
           "slug": "cape-canaveral-sfs"
         }
       },
@@ -189,12 +189,12 @@
       "mission_description": null,
       "launch_description": "A SpaceX Falcon 9 rocket will launch the Starlink (6-6) mission. The launch date is currently targeted for July 22, 2023 (UTC).",
       "win_open": null,
-      "t0": null,
+      "t0": "2024-03-23T02:15Z",
       "win_close": null,
       "est_date": {
         "month": 7,
         "day": 22,
-        "year": 2023,
+        "year": 2024,
         "quarter": null
       },
       "date_str": "Jul 22",
@@ -241,7 +241,7 @@
           "name": "Satish Dhawan Space Centre",
           "state": null,
           "statename": null,
-          "country": "India",
+          "country": "Spain",
           "slug": "satish-dhawan-space-centre"
         }
       },
@@ -307,7 +307,7 @@
           "name": "Kennedy Space Center",
           "state": "FL",
           "statename": "Florida",
-          "country": "United States",
+          "country": "kazakhstan",
           "slug": "kennedy-space-center"
         }
       },

@@ -29,7 +29,7 @@ const { imgSrc, text } = defineProps(['imgSrc', 'text'])
 <style lang="scss" scoped>
 
 .my-inner-shadow {
-    box-shadow: inset 0 0 5px rgb(0 0 0 / 0.3);
+    box-shadow: inset 0 0 5px rgba(206, 206, 206, 0.3);
     // box-shadow: 0px 0px 10px 4px rgb(0 0 0 / 0.2);
 }
 

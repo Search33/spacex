@@ -1,29 +1,35 @@
 <template>
     <div>
         <p>
-            <a href="#" class="underline  underline-offset-2  decoration-wavy decoration-slate-400 hover:decoration-slate-700 transition duration-150 " @click="handleButtonClick($event)">
+            <a href="#"
+                class="underline  underline-offset-2  decoration-wavy decoration-slate-400 hover:decoration-slate-700 transition duration-150 "
+                @click="handleButtonClick($event)">
                 {{ text }}
             </a>
         </p>
-        <div class="pop-up" :class="{ open: popUpOpen }">
-            <div class="content">
-                <div class="container">
-                    <div class="dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <span class="close" @click="handleCloseClick">close</span>
-                    <div>
-                        <iframe width="530" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                            id="gmap_canvas"
-                            :src="`https://maps.google.com/maps?width=781&amp;height=400&amp;hl=en&amp;q=${location}&amp;t=&amp;z=4&amp;ie=UTF8&amp;iwloc=B&amp;output=embed`"></iframe><a
-                            href='https://maps-generator.com/'>Maps Generator</a>
-                    </div>
+        <Teleport to="body">
 
+
+            <div class="pop-up" :class="{ open: popUpOpen }">
+                <div class="content">
+                    <div class="container">
+                        <div class="dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="close" @click="handleCloseClick">close</span>
+                        <div>
+                            <iframe width="530" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                                id="gmap_canvas"
+                                :src="`https://maps.google.com/maps?width=781&amp;height=400&amp;hl=en&amp;q=${location}&amp;t=&amp;z=4&amp;ie=UTF8&amp;iwloc=B&amp;output=embed`"></iframe><a
+                                href='https://maps-generator.com/'>Maps Generator</a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
+        </Teleport>
 
     </div>
 </template>
@@ -173,7 +179,7 @@ const handleCloseClick = () => {
     visibility: hidden;
     opacity: 0;
     @include transition(all .3s);
-    z-index: 100;
+    z-index: 1000;
     width: 100%;
     height: 100%;
     // background-color: aliceblue;
@@ -222,7 +228,7 @@ const handleCloseClick = () => {
             letter-spacing: 0.05rem;
             color: #141414;
             @include transition(all .4s);
-            z-index: 12;
+            z-index: 120;
 
             &:hover {
                 cursor: pointer;
@@ -234,7 +240,7 @@ const handleCloseClick = () => {
             .dot {
                 position: absolute;
                 border-radius: 100%;
-                z-index: 11;
+                z-index: 110;
 
                 &:nth-of-type(1) {
                     bottom: -120px;

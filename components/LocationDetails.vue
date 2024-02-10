@@ -1,13 +1,24 @@
 <template>
-    <div class="text-base text-right font-normal flex flex-col justify-center">
-        <div class="">
-            {{ launch?.country || '' }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }}
+    <div class="container  w-1/2 mx-auto relative text-xs  ">
+        <div class="absolute  right-0  blur-[1px]  top-1/2 -translate-y-1/2 scale-[1.25] z-0 w-[72px] ">
+            <img :src="countryImagePath" @error="setDefaultImage" alt="Country Flag" class=" inset-0   " />
         </div>
-        <!-- <LinkHover :text="launch?.name || ''" :location="launch?.name || ''" /> -->
-        <LinkHover :text="convertedLaunchName || ''" :location="convertedLaunchName || ''" />
-        <div>
-            Pad: {{ launch?.padName || '' }}
+
+        <div
+            class=" font-normal pr-8   relative overflow-hidden text-sm  text-right  flex flex-col justify-center ">
+            <div class="">
+                <!-- {{ launch?.country || '' }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }} -->
+                <!-- {{ launch?.country || '' }} -->
+            </div>
+
+            <LinkHover class="z-10 text-[#1f1f1f] relative overlapping-text  bg-opacity-60  "
+                :text="convertedLaunchName || ''" :location="convertedLaunchName || ''" />
+
+            <div class="pad-text text-[#6a6a6a]">
+                Pad: {{ launch?.padName || '' }}
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -18,10 +29,15 @@ import LinkHover from './LinkHover.vue';
 const { launch } = defineProps(['launch'])
 
 const convertedLaunchName = computed(() => {
-    return launch?.name === 'Cape Canaveral SFS' ? 'Cape Canaveral Space Force Station' : 
-           launch?.name === 'Vandenberg SFB' ? 'Vandenberg Space Force Base' : 
-           launch?.name;
+    return launch?.name === 'Cape Canaveral SFS' ? 'Cape Canaveral Space Force Station' :
+        launch?.name === 'Vandenberg SFB' ? 'Vandenberg Space Force Base' :
+            launch?.name;
 });
+
+const setDefaultImage = (event) => {
+  event.target.src = '/images/backup.png';
+};
+
 
 
 const countryFlag = computed(() => {
@@ -40,7 +56,27 @@ const countryFlag = computed(() => {
     return flags[launch?.country] || '';
 })
 
+const countryImagePath = computed(() => {
+    if (!launch?.country) return '';
+    // Replace spaces with hyphens and convert to lowercase for the image filename
+    const imageName = launch.country.replace(/\s+/g, '-').toLowerCase();
+    return `/images/${imageName}.png`; // Adjust the path as needed
+});
+
 
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+
+.container .overlapping-text {
+  /* mix-blend-mode: difference; */
+  /* color: black; */
+  text-shadow: 0 0 8px #fff;
+
+}
+
+.pad-text {
+    text-shadow: 0 0 10px #fff;
+
+}
+</style>
