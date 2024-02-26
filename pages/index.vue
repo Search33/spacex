@@ -34,7 +34,16 @@
                                 </p>
 
                             </div>
-                            <LaunchDate :date="launch?.t0" />
+                            <!-- <div class="border-[1px] border-teal-600 flex ">
+                                <div class="text-[#656565] text-xs ">
+                                    Local Time
+                                </div> -->
+
+                                <!-- <div class="px-4"></div> -->
+                                <div class="border-[1px] border-amber-500">
+                                    <LaunchDate :date="launch?.t0" />
+                                </div>
+                            <!-- </div> -->
                         </div>
                     </div>
 
