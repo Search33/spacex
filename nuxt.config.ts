@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', 'nuxt-scheduler', 'nuxt-swiper'],
   build: {
     transpile: ['gsap']
-  }
+  },
+  app: {
+    head: {
+           link: [{ rel: 'icon', type: 'image/png', href: "/favicon.ico" }]
+        }
+   }
 
 })

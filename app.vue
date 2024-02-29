@@ -6,12 +6,23 @@
 
 
 <script setup>
+
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+useHead({
+  title: 'Rocket Launches',
+  link: [
+    { rel: 'icon', type: "image/png", href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
+  ],
+})
 
 
 </script>

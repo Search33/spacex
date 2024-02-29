@@ -40,7 +40,7 @@
                                 </div> -->
 
                                 <!-- <div class="px-4"></div> -->
-                                <div class="border-[1px] border-amber-500">
+                                <div class="">
                                     <LaunchDate :date="launch?.t0" />
                                 </div>
                             <!-- </div> -->
