@@ -8,7 +8,8 @@ const rockets = [
         styles: ['linear-gradient(45deg, #FFC371, #FF6F5F)', '#F0F74D', '#52EAD1', '#863227']
     },
     {
-        modelPath: '/PSLV.gltf', id: 14, fov: 75, camY: 4, camZ: 10, name: 'PSLV', height: 44, country: 'India', bg: '#2C5698', color: 'white',
+        // i think this also has an id of 14 due to rocket +4 (extra boosters) don't know specifics
+        modelPath: '/PSLV.gltf', id: 21, fov: 75, camY: 4, camZ: 10, name: 'PSLV', height: 44, country: 'India', bg: '#2C5698', color: 'white',
         styles: ['linear-gradient(45deg, #FD9609, #E1C438)', '#89ACE1']
     },
     {
