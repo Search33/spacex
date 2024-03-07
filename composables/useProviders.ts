@@ -133,6 +133,13 @@ export const useProviders = () => {
             logo: '/logos/mhi.png',
             twitter: 'https://twitter.com/MHI_Group',
             youtube: 'https://www.youtube.com/@DiscoverMHI/featured',
+        },
+        {
+            name: 'Space One',
+            url: 'https://www.space-one.co.jp/index_e.html',
+            // logo: '/logos/mhi.png',
+            // twitter: 'https://twitter.com/MHI_Group',
+            // youtube: 'https://www.youtube.com/@DiscoverMHI/featured',
         }
 
     ]);

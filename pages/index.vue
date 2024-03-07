@@ -16,7 +16,7 @@
             class="min-h-screen relative flex second-section ">
             <div class="flex w-1/3 items-center justify-center  p-8">
                 <ClientOnly>
-                    <LazyRocketModel :fov="75" :camY="4" :camZ="10" :modelPath="getModelPath(launch.vehicle.id)"/>
+                    <LazyRocketModel :fov="getModelSettings(launch.vehicle.id).fov" :camY="getModelSettings(launch.vehicle.id).camY" :camZ="getModelSettings(launch.vehicle.id).camZ" :modelPath="getModelSettings(launch.vehicle.id).modelPath" />
                 </ClientOnly>
             </div>
 
@@ -61,7 +61,6 @@
                     </div>
 
                     <!-- Launch Tags -->
-                    <!-- <div class="pb-6 grid grid-flow-col gap-3"> -->
                     <div class="pb-4 flex flex-wrap gap-3">
                         <VehicleTag 
                             class="flex-grow"
@@ -102,7 +101,6 @@ useHead({
     title: 'Rocket Launches'
 })
 
-
 const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 // const { data: launches } = await useFetch('http://localhost:3000/launches.json')
@@ -120,40 +118,18 @@ const filteredTags = computed(() => {
     return validTags.map(tags => tags.filter(tag => tag.text !== 'No Live Video Expected'))
 })
 
-const getModelPath = (vehicleId) => {
-  const modelPaths = {
-    1: '/falcon9-v2.gltf',
-    3: '/atlasV.gltf',
-    5: '/Antares.gltf',
-    7: '/falcon-heavy-v2.gltf',
-    14: '/PSLV.gltf',
-    17: '/H-IIA.gltf',
-    18: '/electron-v2.gltf',
-    19: '/LVM3.gltf',
-    20: '/soyuz2-v2.gltf',
-    21: '/PSLV.gltf', // Assuming same model for different variants
-    28: '/long-march-3b.gltf',
-    35: '/long-march-2d.gltf',
-    38: '/long-march-2c.gltf',
-    41: '/long-march-4c.gltf',
-    42: '/longmarch11.gltf',
-    43: '/vulcan-v2.gltf',
-    // 52: '/.gltf',
-    56: '/new-shepard.gltf',
-    58: '/Alpha.gltf',
-    72: '/LongMarch7.gltf',
-    76: '/long-march-2f.gltf',
-    // 67: '/hyperbola1.gltf',
-    113: '/ceres1_2.gltf',
-    115: '/starship.gltf',
-    120: '/spaceshiptwo.gltf',
-    // 144: '/miura1.gltf',
-    146: '/Kinetica1.gltf',
-    149: '/gravity1.gltf',
-    // Add more mappings as needed
-  };
-  return modelPaths[vehicleId] || null; // Fallback model
-};
+const { rockets } = useRockets();
+
+const getModelSettings = (vehicleId) => {
+    console.log('vehicleId: ', vehicleId)
+    const rocket = rockets.find(r => r.id === vehicleId);
+    return rocket ? {
+        modelPath: rocket.modelPath,
+        fov: rocket.fov,
+        camY: rocket.camY,
+        camZ: rocket.camZ
+    } : { modelPath: null, fov: 75, camY: 4, camZ: 10 };
+}
 
 </script>
 
