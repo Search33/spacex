@@ -16,7 +16,7 @@
             :ref="el => (index === 2 ? (thirdSection = el) : '')"
             :class="{ 'hide-section': index < 2, 'first-section': index === 0, 'fade-in': true }"
             class="min-h-screen relative flex second-section ">
-            <div class="flex w-1/3 items-center justify-center  p-8">
+            <div class="flex w-1/3 sm:max-lg:hidden items-center justify-center p-8">
                 <ClientOnly>
                     <LazyRocketModel :fov="getModelSettings(launch.vehicle.id).fov"
                         :camY="getModelSettings(launch.vehicle.id).camY"
@@ -103,7 +103,7 @@ useHead({
     title: 'Rocket Launches'
 })
 
-// const { data: launches } = await useFetch('http://localhost:3000/launches.json')
+//  const { data: launches } = await useFetch('http://localhost:3000/launches.json')
 const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 const { providers } = useProviders()

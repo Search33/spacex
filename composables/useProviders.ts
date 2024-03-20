@@ -166,6 +166,7 @@ export const useProviders = () => {
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/lander.svg", text: 'Lunar Lander'},
         { id: 55, imgSrc: "/images/rocketIcon/rover.svg", text: 'Lunar Rover'},
+        { id: 66, imgSrc: "/images/rocketIcon/noVideo.svg", text: "No Live Video Expected" },
         { id: 68, imgSrc: "/images/rocketIcon/earth.svg", text: "Suborbital" },
         { id: 78, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 4" },
         { id: 89, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 2" },
