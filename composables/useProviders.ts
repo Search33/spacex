@@ -148,6 +148,7 @@ export const useProviders = () => {
         { id: 1, imgSrc: "/images/rocketIcon/expendable.svg", text: "Expendable" },
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
+        { id: 10, imgSrc: "/images/rocketIcon/finallaunch.svg", text: "Final Launch of Vehicle" },
         { id: 12, imgSrc: "/images/rocketIcon/iss.svg", text: "ISS Cargo" },
         { id: 13, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 1" },
         { id: 14, imgSrc: "/images/rocketIcon/return.svg", text: "Vehicle Debut" },

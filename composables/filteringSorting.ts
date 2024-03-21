@@ -93,7 +93,7 @@ const rockets = [
         styles: ['#D1FFE1', '#E2FFC1']
     },
     {
-        modelPath: '/deltaiv.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Delta IV', height: 70, country: 'USA', bg: '#6398AB', color: 'white',
+        modelPath: '/deltaiv.gltf', id: 26, fov: 75, camY: 4, camZ: 10, name: 'Delta IV', height: 70, country: 'USA', bg: '#6398AB', color: 'white',
         styles: ['#EBD13C', '#303E75']
     },
     {
