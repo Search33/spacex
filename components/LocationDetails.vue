@@ -4,11 +4,10 @@
             <img :src="countryImagePath" @error="setDefaultImage" alt="Country Flag" class=" inset-0   " />
         </div>
 
-        <div
-            class=" font-normal pr-8   relative overflow-hidden text-sm  text-right  flex flex-col justify-center ">
+        <div class=" font-normal pr-8   relative overflow-hidden text-sm  text-right  flex flex-col justify-center ">
             <div class="">
                 <!-- {{ launch?.country || '' }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }} -->
-                {{ launch?.country || '' }}
+                <!-- {{ launch?.country || '' }} -->
             </div>
 
             <LinkHover class="z-10 text-[#1f1f1f] relative overlapping-text  bg-opacity-60  "
@@ -35,7 +34,7 @@ const convertedLaunchName = computed(() => {
 });
 
 const setDefaultImage = (event) => {
-  event.target.src = '/images/backup.png';
+    event.target.src = '/images/backup.png';
 };
 
 
@@ -58,24 +57,30 @@ const countryFlag = computed(() => {
 
 const countryImagePath = computed(() => {
     if (!launch?.country) return '';
-    // Replace spaces with hyphens and convert to lowercase for the image filename
-    const imageName = launch.country.replace(/\s+/g, '-').toLowerCase();
-    console.log('(location) country image path:', launch.country)
-    // console.log('imageName')
-    console.log(`/images/${imageName}.png`)
-    return `/images/${imageName}.png`; // Adjust the path as needed
 
+    const imageName = launch.country.replace(/\s+/g, '-').toLowerCase();
+    const imagePath = `/images/${imageName}.png`;
+
+    console.log('(location) Launch.country:', launch.country)
+
+    // const baseURL = 'http://localhost:3000';
+    const baseURL = 'https://spacex-murex.vercel.app'
+    const fullURL = `${baseURL}${imagePath}`;
+
+    console.log('(imagePath):', fullURL);
+
+    return imagePath;
 });
+
 
 
 </script>
 
-<style  scoped>
-
+<style scoped>
 .container .overlapping-text {
-  /* mix-blend-mode: difference; */
-  /* color: black; */
-  text-shadow: 0 0 8px #fff;
+    /* mix-blend-mode: difference; */
+    /* color: black; */
+    text-shadow: 0 0 8px #fff;
 
 }
 

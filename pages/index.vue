@@ -103,8 +103,8 @@ useHead({
     title: 'Rocket Launches'
 })
 
-//  const { data: launches } = await useFetch('http://localhost:3000/launches.json')
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+ const { data: launches } = await useFetch('http://localhost:3000/launches.json')
+// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
@@ -120,8 +120,10 @@ const filteredTags = computed(() => {
 
 const { rockets } = useRockets();
 
+console.log('duplicate kazakhstan.png image but different name: https://spacex-murex.vercel.app/images/kaz')
+
 const getModelSettings = (vehicleId) => {
-    console.log('vehicleId: ', vehicleId)
+    // console.log('vehicleId: ', vehicleId)
     const rocket = rockets.find(r => r.id === vehicleId);
     return rocket ? {
         modelPath: rocket.modelPath,

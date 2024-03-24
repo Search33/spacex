@@ -92,7 +92,7 @@
       "name": "Starlink-93 (6-15)",
       "provider": {
         "id": 1,
-        "name": "SpaceX",
+        "name": "China",
         "slug": "spacex"
       },
       "vehicle": {
@@ -311,7 +311,7 @@
           "name": "Kennedy Space Center",
           "state": "FL",
           "statename": "Florida",
-          "country": "kazakhstan",
+          "country": "Kazakhstan",
           "slug": "kennedy-space-center"
         }
       },

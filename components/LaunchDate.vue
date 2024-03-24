@@ -29,12 +29,9 @@ const ordinalSuffix = computed(() => {
     return getOrdinalSuffix(d.getDate());
 });
 
-
-
 const monthYear = computed(() => {
     if (!date) return '';
     const d = new Date(date);
-    // return d.toLocaleString(undefined, { month: 'long', year: 'numeric' });
     return d.toLocaleString(undefined, { month: 'long' });
 
 });
@@ -43,13 +40,7 @@ const time = computed(() => {
     if (!date) return '';
     const d = new Date(date);
     let timeString = d.toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', hour12: true });
-
-    // return d.toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', hour12: true });
-    // return timeString.replace(/\s(?=am|pm)/, '');
-    // return timeString.replace(/^0(?=\d:)|\s(?=am|pm)/, '');
-    return timeString.replace(/^0|(\s)(?=[AaPp][Mm])/, '').replace(/(\s)(?=[AaPp][Mm])/, '');
-
-
+    return timeString.replace(/^0|(\s)(?=[AaPp][Mm])/, '').replace(/(\s)(?=[AaPp][Mm])/, '').toLowerCase();
 
 });
 
