@@ -8,7 +8,7 @@
             class=" font-normal pr-8   relative overflow-hidden text-sm  text-right  flex flex-col justify-center ">
             <div class="">
                 <!-- {{ launch?.country || '' }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }} -->
-                <!-- {{ launch?.country || '' }} -->
+                {{ launch?.country || '' }}
             </div>
 
             <LinkHover class="z-10 text-[#1f1f1f] relative overlapping-text  bg-opacity-60  "
@@ -60,7 +60,11 @@ const countryImagePath = computed(() => {
     if (!launch?.country) return '';
     // Replace spaces with hyphens and convert to lowercase for the image filename
     const imageName = launch.country.replace(/\s+/g, '-').toLowerCase();
+    console.log('(location) country image path:', launch.country)
+    // console.log('imageName')
+    console.log(`/images/${imageName}.png`)
     return `/images/${imageName}.png`; // Adjust the path as needed
+
 });
 
 
