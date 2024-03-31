@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-
 import LinkHover from './LinkHover.vue';
 
 const { launch } = defineProps(['launch'])
@@ -37,28 +36,17 @@ const setDefaultImage = (event) => {
     event.target.src = '/images/backup.png';
 };
 
-
-
-const countryFlag = computed(() => {
-    const flags = {
-        'United States': '🇺🇸',
-        'India': '🇮🇳',
-        'China': '🇨🇳',
-        'Spain': '🇪🇸',
-        'France': '🇫🇷',
-        'Italy': '🇮🇹',
-        'Russia': '🇷🇺',
-        'New Zealand': '🇳🇿',
-        'Japan': '🇯🇵',
-        // add more countries here...
-    };
-    return flags[launch?.country] || '';
-})
-
 const countryImagePath = computed(() => {
     if (!launch?.country) return '';
 
-    const imageName = launch.country.replace(/\s+/g, '-').toLowerCase();
+    let imageName = '';
+
+    if (launch.country === 'Kazakhstan') {
+        imageName = 'kaz';
+    } else {
+        imageName = launch.country.replace(/\s+/g, '-').toLowerCase();
+    }
+
     const imagePath = `/images/${imageName}.png`;
 
     console.log('(location) Launch.country:', launch.country)
@@ -71,7 +59,6 @@ const countryImagePath = computed(() => {
 
     return imagePath;
 });
-
 
 
 </script>

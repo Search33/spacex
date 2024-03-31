@@ -294,7 +294,7 @@
       "name": "EchoStar-24 (Jupiter 3)",
       "provider": {
         "id": 1,
-        "name": "SpaceX",
+        "name": "ABL Space",
         "slug": "spacex"
       },
       "vehicle": {
