@@ -40,6 +40,8 @@ let light = new DirectionalLight(0xffffff, 0.8)
 light.position.set(7, 8, 10)
 light.target.position.set(0, 0, 0)
 light.castShadow = true
+light.shadow.bias = -0.0005
+// light.shadow.radius = 2
 scene.add(light)
 scene.add(light.target)
 
@@ -77,8 +79,6 @@ let controls: OrbitControls | null = null;
 let animationFrameId: number | null = null;
 
 const setupRendererAndControls = async () => {
-    // console.log(`(${props.modelPath}) setting up render`)
-
     await nextTick();
 
     if (!experience.value) {
@@ -109,7 +109,6 @@ const setupRendererAndControls = async () => {
         controls.update();
     }
 }
-
 
 const updateCamera = () => {
     camera.aspect = aspectRatio.value
