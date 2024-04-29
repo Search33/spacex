@@ -125,7 +125,7 @@ const rockets = [
         styles: ['#D95D39', '#5B8CA7']
     },
     {
-        modelPath: '/longmarch5-v2.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Long March 5', height: 56, country: 'China', bg: '#CA9E74', color: 'white',
+        modelPath: '/longmarch5-v2.gltf', id: 39, fov: 75, camY: 4, camZ: 10, name: 'Long March 5', height: 56, country: 'China', bg: '#CA9E74', color: 'white',
         styles: ['#FFD898', '#C92819']
     },
     {
