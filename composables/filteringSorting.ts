@@ -33,6 +33,10 @@ const rockets = [
         styles: ['#D0ACFF', 'linear-gradient(180deg, #DB87FC, #DDBDEF)', '#DFAF97']
     },
     {
+        modelPath: '/starship-v3.gltf', id: 119, fov: 90, camY: 6, camZ: 15, name: 'Super Heavy / Starship Prototype', height: 120, country: 'USA', bg: '#4780AD', color: 'white',
+        styles: ['#D0ACFF', 'linear-gradient(180deg, #DB87FC, #DDBDEF)', '#DFAF97']
+    },
+    {
         modelPath: '/long-march-2c.gltf', id: 38, fov: 75, camY: 4, camZ: 10, name: 'Long March 2c', height: 42, country: 'China', bg: 'rgb(131,72,105,100)', color: 'white',
         styles: ['#4F0E1F', '#FE81C8', '#D6D77F']
     },
