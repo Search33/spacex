@@ -60,6 +60,10 @@ const rockets = [
         modelPath: '/falcon9-v2.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, country: 'USA', bg: '#7BC090', color: 'white',
         styles: ['#01718E', '#0A9B77']
     },
+    // {
+    //     modelPath: '/animation3.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, country: 'USA', bg: '#7BC090', color: 'white',
+    //     styles: ['#01718E', '#0A9B77']
+    // },
     {
         modelPath: '/electron-v2.gltf', id: 18, fov: 40, camY: 4, camZ: 10, name: 'Electron', height: 18, country: 'USA', bg: 'rgb(217,152,125,100)', color: 'white',
         styles: ['#EBDB1C']

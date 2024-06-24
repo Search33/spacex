@@ -1,11 +1,17 @@
 <template>
     <div>
         <canvas ref="experience" />
+        <!-- below works -->
+        <!-- <div v-if="hasAnimations">
+            <button v-if="!isAnimationPlaying" @click="playAnimation">Play animation</button>
+            <button v-else @click="stopAnimation">Stop animation</button>
+        </div>
+        <button v-else @click="rotateModel">Rotate</button> -->
     </div>
 </template>
 
 <script setup lang="ts">
-import { Scene, PerspectiveCamera, Mesh, SphereGeometry, MeshBasicMaterial, WebGLRenderer, Color, Fog, AmbientLight, Vector3, Box3, DirectionalLight } from 'three'
+import { Scene, AnimationMixer, Clock, PerspectiveCamera, Mesh, SphereGeometry, MeshBasicMaterial, WebGLRenderer, Color, Fog, AmbientLight, Vector3, Box3, DirectionalLight } from 'three'
 import { Ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -24,15 +30,20 @@ const isComponentVisible = computed(() => {
     return route.path === '/' || route.path === '/rockets' || route.path === '/rockets2' || route.path.startsWith('/rockets') || props.isVisible;
 })
 
-
 const experience: Ref<HTMLCanvasElement | null> = ref(null)
-    
+
 const scene = new Scene()
 const { width, height } = useWindowSize()
 const aspectRatio = computed(() => (width.value * 0.3) / (height.value * 0.7))
 const camera = new PerspectiveCamera(props.fov ?? 75, aspectRatio.value, 0.1, 1000)
 camera.position.set(0, props.camY ?? 8, props.camZ ?? 18)
 scene.add(camera)
+
+let mixer: AnimationMixer | null = null;
+let animations: THREE.AnimationClip[] = [];
+const clock = new Clock();
+const hasAnimations = ref(false);
+const isAnimationPlaying = ref(false);
 
 const ambientLight = new AmbientLight(0xffffff, 0.7)
 scene.add(ambientLight)
@@ -45,34 +56,78 @@ light.shadow.bias = -0.0005
 scene.add(light)
 scene.add(light.target)
 
-
 const { load } = useGLTFModel()
 
 let currentModel: THREE.Group | null = null;
 
 const initialise = async () => {
-    // console.log(`(${props.modelPath}) Attempting to Initialise model`)
     try {
         if (props.modelPath) {
-            const { scene: model } = await load(props.modelPath);
+            const { scene: model, animations: modelAnimations } = await load(props.modelPath);
             console.log(`${props.modelPath} loaded`)
-            model.traverse(function (child) {  // Enable shadow receiving for all objects in the model
+            model.traverse(function (child) {
                 if (child instanceof Mesh) {
                     child.receiveShadow = true;
                     child.castShadow = true;
                 }
             });
-            const box = new Box3().setFromObject(model);  // Compute the bounding box
-            const center = box.getCenter(new Vector3());  // Get the center of the bounding box
+            const box = new Box3().setFromObject(model);
+            const center = box.getCenter(new Vector3());
             currentModel = model;
             scene.add((model))
-            // console.log(`${props.modelPath} scene added`);
+
+            if (modelAnimations && modelAnimations.length > 0) {
+                animations = modelAnimations;
+                mixer = new AnimationMixer(model);
+                hasAnimations.value = true;
+                console.log(`${modelAnimations.length} animations loaded for ${props.modelPath}`);
+            } else {
+                hasAnimations.value = false;
+                console.log(`No animations found for ${props.modelPath}`);
+            }
+
         }
     } catch (error) {
         console.error(`(${props.modelPath}) Error loading model:`, error)
     }
-    
+
 }
+
+const playAnimation = () => {
+    if (mixer && animations.length > 0) {
+        mixer.stopAllAction();
+        const action = mixer.clipAction(animations[0]);
+        action.reset();
+        action.play();
+        isAnimationPlaying.value = true;
+        console.log('Animation started');
+    } else {
+        console.log('No animations available for this model');
+        // Optionally, you could trigger some default behavior here
+        // For example, rotating the model:
+        if (currentModel) {
+            rotateModel();
+        }
+    }
+}
+const stopAnimation = () => {
+    if (mixer) {
+        mixer.stopAllAction();
+        isAnimationPlaying.value = false;
+        console.log('Animation stopped');
+    }
+}
+
+const rotateModel = () => {
+    if (currentModel) {
+        const rotationAnimation = () => {
+            currentModel!.rotation.y += 0.01;
+            requestAnimationFrame(rotationAnimation);
+        };
+        rotationAnimation();
+    }
+}
+
 
 let renderer: WebGLRenderer;
 let controls: OrbitControls | null = null;
@@ -134,13 +189,8 @@ const getRenderer = (canvas: HTMLCanvasElement): WebGLRenderer => {
 }
 
 const setupRenderer = () => {
-    // console.log('Experience value:', experience.value);
     if (experience.value && !renderer) {
         renderer = getRenderer(experience.value)
-        // renderer = new WebGLRenderer({ canvas: experience.value, alpha: true });
-        // renderer.setSize(width.value * 0.3, height.value * 0.7);
-        // renderer.shadowMap.enabled = true;
-        // renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     }
 }
 
@@ -149,6 +199,11 @@ const render = () => {
         console.warn("Render called before controls were initialised");
         return;
     }
+    const delta = clock.getDelta();
+    if (mixer) {
+        mixer.update(delta);
+    }
+
     controls.update();
     renderer.render(scene, camera);
     animationFrameId = requestAnimationFrame(render)
@@ -172,24 +227,22 @@ const initialiseResources = async () => {
         await initialise();
         if (controls) {
             render();
-            isInitialised = true;    
+            isInitialised = true;
         } else {
             console.error("Failed to initialise controls")
         }
     } catch (error) {
         console.error('Error during initialisation:', error);
     } finally {
-        // isInitialised = true;
         isInitialising = false;
     }
 }
 
 // Initialize resources when component becomes visible
-watch(() => isComponentVisible.value , async (isVisible) => {
+watch(() => isComponentVisible.value, async (isVisible) => {
     // console.log(`visibility changed to: ${isVisible} for model ${props.modelPath}`);
     try {
         if (isVisible) {
-            // console.log(`${props.modelPath} Component is visible. Initialising now`);
             setupRenderer();
             if (!isInitialised) {
                 await initialiseResources();
@@ -210,10 +263,6 @@ const cleanUpResources = () => {
     }
     if (currentModel) {
         scene.remove(currentModel);
-        // if (animationFrameId) {
-        //     cancelAnimationFrame(animationFrameId);
-        // }
-        // Dispose of Three.js resources
         currentModel.traverse(object => {
             if (object instanceof Mesh) {
                 object.geometry.dispose();
@@ -225,6 +274,13 @@ const cleanUpResources = () => {
         currentModel = null;
         console.log(`${props.modelPath} disposed`)
     }
+    if (mixer) {
+        mixer.stopAllAction();
+        mixer = null;
+    }
+    hasAnimations.value = false;
+    isAnimationPlaying.value = false;
+
     if (controls) {
         controls.dispose();
         controls = null;
@@ -232,14 +288,10 @@ const cleanUpResources = () => {
     isInitialised = false
 }
 
-onMounted(async() => {
-    // console.log(`(${props.modelPath}) onMounted triggered. isVisible:`, props.isVisible);
+onMounted(async () => {
     setupRenderer();
     if (isComponentVisible.value) {
-        // console.log('Component is visible on mount. Initialising...');
-        // if (renderer) {
         await initialiseResources();
-        // }
     } else {
         console.log('Component is not visible on mount. Skipping initialisation.');
     }
@@ -250,7 +302,7 @@ onBeforeUnmount(() => {
         sharedRenderer = null;
     }
     cleanUpResources();
-    })
+})
 
 
 onUnmounted(() => {

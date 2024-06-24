@@ -16,7 +16,7 @@
             :ref="el => (index === 2 ? (thirdSection = el) : '')"
             :class="{ 'hide-section': index < 2, 'first-section': index === 0, 'fade-in': true }"
             class="min-h-screen relative flex second-section ">
-            <div class="flex w-1/3 sm:max-lg:hidden items-center justify-center p-8">
+            <div class="w-1/3 md:block hidden items-center justify-center p-8">
                 <ClientOnly>
                     <LazyRocketModel :fov="getModelSettings(launch.vehicle.id).fov"
                         :camY="getModelSettings(launch.vehicle.id).camY"
@@ -25,25 +25,26 @@
                 </ClientOnly>
             </div>
 
-            <div class="inter-font w-2/3 py-6 mb-20 justify-center items-center  overflow-auto pl-6 ">
+            <div
+                class="inter-font w-[95%] lg:w-3/4 ml-auto py-6 mb-20 justify-center items-center  overflow-auto pl-6 ">
                 <div class="bg-[#eeeeee]/90 px-8 pt-8 pb-6 rounded-tl-3xl rounded-bl-3xl my-shadow ">
 
                     <div class="flex justify-between">
                         <div class="flex items-end   ">
                             <p class=" text-3xl ">
                                 {{ launch?.provider.name === 'China' ?
-                                    'CNSA' 
-                                    : launch?.provider.name 
+                                    'CNSA'
+                                    : launch?.provider.name
                                     || 'launch provider not available' }}
                             </p>
                             <p class="pl-6 text-[#656565] mb-1 ">
                                 {{ launch?.provider.name === 'China' ?
                                     '(China National Space Association)' :
-                                    launch?.provider.name === 'ISRO' ? 
-                                    '(Indian Space Research Organisation)' :
-                                    launch?.provider.name === 'Roscosmos' ? 
-                                    'Russian Federal Space Agency' : 
-                                    '' }}
+                                    launch?.provider.name === 'ISRO' ?
+                                        '(Indian Space Research Organisation)' :
+                                        launch?.provider.name === 'Roscosmos' ?
+                                            'Russian Federal Space Agency' :
+                                            '' }}
                             </p>
                         </div>
                         <div class="">
@@ -54,15 +55,18 @@
 
                     <!-- Countdown + Location -->
                     <div
-                        class="pt-6 pb-6  text-lg font-extrabold responsive-container  flex justify-between space-x-10 ">
-                        <Countdown :countdown="launch?.t0" class="" />
+                        class="pt-6 pb-6  text-lg font-extrabold responsive-container flex justify-between  ">
+                        <!-- <div class="flex-grow sm:flex-grow-0"> -->
+                            <Countdown :countdown="launch?.t0" class="mr-auto " />
 
-                        <LocationDetails :launch="{
-                    country: launch?.pad.location.country,
-                    statename: launch?.pad.location.statename,
-                    name: launch?.pad.location.name,
-                    padName: launch?.pad.name
-                }" />
+                        <!-- </div> -->
+
+                        <LocationDetails class="lg:block hidden" :launch="{
+                            country: launch?.pad.location.country,
+                            statename: launch?.pad.location.statename,
+                            name: launch?.pad.location.name,
+                            padName: launch?.pad.name
+                        }" />
                     </div>
 
                     <!-- Launch Tags -->
