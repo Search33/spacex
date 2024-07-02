@@ -1,5 +1,6 @@
+<!-- /components/LocationDetails.vue -->
 <template>
-    <div class="container  w-1/2 mx-auto relative text-xs  ">
+    <div class=" w-auto relative text-xs  ">
         <div class="absolute  right-0  blur-[1px]  top-1/2 -translate-y-1/2 scale-[1.25] z-0 w-[72px] ">
             <img :src="countryImagePath" @error="setDefaultImage" alt="Country Flag" class=" inset-0   " />
         </div>

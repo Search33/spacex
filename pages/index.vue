@@ -55,13 +55,11 @@
 
                     <!-- Countdown + Location -->
                     <div
-                        class="pt-6 pb-6  text-lg font-extrabold responsive-container flex justify-between  ">
-                        <!-- <div class="flex-grow sm:flex-grow-0"> -->
-                            <Countdown :countdown="launch?.t0" class="mr-auto " />
+                        class="pt-6 pb-6  text-lg font-extrabold responsive-container flex justify-end">
+                        <Countdown :countdown="launch?.t0" class="" />
 
-                        <!-- </div> -->
 
-                        <LocationDetails class="lg:block hidden" :launch="{
+                        <LocationDetails class="lg:block hidden ml-auto " :launch="{
                             country: launch?.pad.location.country,
                             statename: launch?.pad.location.statename,
                             name: launch?.pad.location.name,

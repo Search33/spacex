@@ -109,7 +109,7 @@ const rockets = [
         styles: [ '#303E75', 'linear-gradient(170deg, #E765DC, #006674)']
     },
     {
-        modelPath: '/ariane6.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Ariane 6', height: 63, country: 'Europe', bg: '#AD7A99', color: 'white',
+        modelPath: '/ariane6.gltf', id: 32, fov: 75, camY: 4, camZ: 10, name: 'Ariane 6', height: 63, country: 'Europe', bg: '#AD7A99', color: 'white',
         styles: ['#F5F1ED ', '#7C2B28']
     },
     {

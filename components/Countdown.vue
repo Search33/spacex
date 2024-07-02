@@ -1,3 +1,4 @@
+<!-- /components/Countdown.vue -->
 <template>
     <div class="flex space-x-10">
         <div v-if="countdownTime.message" class="text-2xl flex flex-col justify-center">
