@@ -206,6 +206,7 @@ export const useProviders = () => {
         { id: 128, imgSrc: "/images/rocketIcon/css.svg", text: 'Chinese Space Station Cargo'},
         { id: 129, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1081'},
         { id: 107, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Endeavour'},
+        { id: 108, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Resilience'},
         { id: 127, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Freedom'},
         { id: 130, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Endurance'},
         { id: 131, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: Space Development Agency - Transport Tracking Layers'},

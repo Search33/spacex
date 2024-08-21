@@ -177,7 +177,7 @@ const rockets = [
         styles: [ '#D0D1AC', '#364958']
     },
     {
-        modelPath: '/Vega.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Vega', height: 30, country: 'Europe', bg: '#61A0AF', color: 'white',
+        modelPath: '/Vega.gltf', id: 11, fov: 75, camY: 4, camZ: 10, name: 'Vega', height: 30, country: 'Europe', bg: '#61A0AF', color: 'white',
         styles: [ '#FFFB46', '#5F4BB6']
     },
     {
@@ -192,6 +192,7 @@ const rockets = [
         modelPath: '/gravity1.gltf', id: 149, fov: 75, camY: 4, camZ: 10, name: 'Gravity 1', height: 31.4, country: 'China', bg: '#16425B', color: 'white',
         styles: [ '#8FBAF6', '#C5D1EB', '#FFDDD2']
     },
+
     
     // ... other slides   
 ];
