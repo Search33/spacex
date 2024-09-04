@@ -33,11 +33,11 @@
                             pt-4 sm:pt-6 md:pt-8 
                             pb-4 sm:pb-6 md:pb-6 
                             rounded-tl-xl sm:rounded-tl-2xl md:rounded-tl-3xl 
-                            rounded-bl-xl sm:rounded-bl-2xl md:rounded-bl-3xl my-shadow ">
+                            rounded-bl-xl sm:rounded-bl-2xl md:rounded-bl-3xl md:my-shadow ">
 
                     <div class="flex justify-between">
                         <div class="flex items-end   ">
-                            <p class=" text-3xl ">
+                            <p class="text-2xl sm:text-3xl ">
                                 {{ launch?.provider.name === 'China' ?
                                     'CNSA'
                                     : launch?.provider.name
@@ -144,8 +144,10 @@ const getModelSettings = (vehicleId) => {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css?family=Inter&display=swap");
 
-.my-shadow {
-    box-shadow: 0px 0px 20px 4px rgba(24, 31, 39, 0.4);
+@media (min-width: 768px) {
+    .md\:my-shadow {
+        box-shadow: 0px 0px 20px 4px rgba(24, 31, 39, 0.4);
+    }
 }
 
 .code-font {
