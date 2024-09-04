@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#292929] text-[#dddddd] text-sm code-font rounded-xl p-3 red-inner-shadow">
+    <div class="bg-[#292929] text-[#dddddd] text-xs sm:text-sm code-font rounded-xl p-1 sm:p-2 md:p-3 red-inner-shadow">
         <div v-for="(m, index) in launch?.missions" 
             class="  m-2 "
             :class="{'pb-2 border-b-[1px] border-[#434343]': index < launch.missions.length - 1 && launch.missions.length > 1}">

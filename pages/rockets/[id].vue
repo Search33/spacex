@@ -1,46 +1,61 @@
 <template>
     <div>
         <header>
-            <nav class=" w-full flex h-56 top-0 z-20 bg-contain bg-no-repeat"
+            <nav class=" w-full flex h-20 sm:h-36 md:h-56 top-0 z-20 bg-contain bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <div class="flex w-full items-top justify-start p-8">
-                    <NuxtLink to="/" class="text-white z-50 mb-auto p-2 bg-[#389373] border-[1px] border-black rounded-lg">
+                <div class="flex w-full items-top justify-start p-4 sm:p-6 md:p-8">
+                    <NuxtLink to="/"
+                        class="text-white z-50 mb-auto p-2 bg-[#389373] border-[1px] border-black rounded-lg">
                         &lt- Launches</NuxtLink>
                 </div>
             </nav>
         </header>
 
-        <div class=" z-[50] flex w-full items-bottom justify-between px-4 pb-4">
+        <div class=" z-[50] flex w-full items-bottom justify-between px-1 sm:px-2 md:px-4 pb-1 sm:pb-2 md:pb-4">
 
-            <!-- Dynamic Navigation -->
-            <div v-if="page <= 1" class="w-[164px] invisible"></div>
+            <!-- Dynamic Navigation
+            <div v-if="page <= 1" class="w-[164px] invisible"></div> -->
 
-            <NuxtLink v-if="page > 1" :to="`/rockets/${page - 1}`"
-                class="w-[164px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
-                &lt- Previous Page 🚀
-            </NuxtLink>
+            <div class="w-[120px] sm:w-[164px]">
+                <div v-if="page <= 1" class="invisible"></div>
+                <NuxtLink v-else :to="`/rockets/${page - 1}`"
+                    class="block mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl text-center">
+                    <span class="hidden sm:inline">&lt;- Previous Page 🚀</span>
+                    <span class="sm:hidden">&lt;</span>
+                </NuxtLink>
+            </div>
+
             <RocketFilters />
-            <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
-                class="w-[134px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
-                Next Page 🚀 -&gt
-            </NuxtLink>
-            <div v-else class="w-[134px] invisible"></div>
+
+            <div class="w-[120px] sm:w-[164px]">
+                <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
+                    class="block mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl text-center">
+                    <span class="hidden sm:inline">Next Page 🚀 -&gt</span>
+                    <span class="sm:hidden">&gt;</span>
+                </NuxtLink>
+                <div v-else class="invisible"></div>
+            </div>
         </div>
 
-        <div :key="`grid-${activeCountry}-${isSortingActive}`" class=" grid grid-cols-4 gap-5 py-4 ">
+        <div :key="`grid-${activeCountry}-${isSortingActive}`"
+            class=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 py-4 ">
             <div v-for="(rocket, idx) in paginatedRockets" :key="`model-${rocket.name}-${rocket.height}`"
                 class="relative flex flex-col justify-center items-center h-[60vh] rounded-lg border-[1px]  border-black overflow-hidden"
                 :style="`background-color: ${rocket.bg}; color: ${rocket.color}`">
                 <ClientOnly>
-                    <LazyRocketModel :fov="rocket.fov" :camY="rocket.camY" :camZ="rocket.camZ" :modelPath="rocket.modelPath"
-                        :key="`model-${rocket.name}-${rocket.height}`" class="z-0 h-[40vh]" />
+                    <LazyRocketModel :fov="rocket.fov" :camY="rocket.camY" :camZ="rocket.camZ"
+                        :modelPath="rocket.modelPath" :key="`model-${rocket.name}-${rocket.height}`"
+                        class="z-0 h-[40vh] p-3" />
                 </ClientOnly>
-                <p class="absolute z-[4] flex flex-col items-center top-0 text-base font-normal pt-3">
-                    <span class="pr-2 text-4xl cool-font" :style="rocket.textStyle">
+                <p class="absolute z-[4] flex flex-col items-center top-0 text-base font-normal pt-3 text-center">
+                    <span class="pr-2 text-xl sm:text-3xl md:text-4xl cool-font" :style="rocket.textStyle">
                         {{ rocket.name }}
                     </span>
                     <span>{{ rocket.height }}m</span>
                 </p>
+                <div>
+
+                </div>
             </div>
         </div>
 
@@ -61,12 +76,14 @@
                 Page: {{ page }}
             </p>
 
-            <!-- Right Navigation Link or Placeholder -->
-            <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
-                class="w-[134px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
-                Next Page 🚀 -&gt
-            </NuxtLink>
-            <div v-else class="w-[134px] "></div> <!-- Invisible Placeholder -->
+            <div class="w-[120px] sm:w-[164px]">
+                <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
+                    class="block mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl text-center">
+                    <span class="hidden sm:inline">Next Page 🚀 -&gt</span>
+                    <span class="sm:hidden">&gt;</span>
+                </NuxtLink>
+                <div v-else class="invisible"></div>
+            </div>
         </div>
 
     </div>
@@ -164,7 +181,7 @@ watch(activeCountry, (newCountry) => {
 
 </script>
 
-  
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@800&display=swap');
@@ -172,4 +189,5 @@ watch(activeCountry, (newCountry) => {
 .cool-font {
     font-family: 'Turret Road', sans-serif;
     /* opacity: 30%; */
-}</style>
+}
+</style>

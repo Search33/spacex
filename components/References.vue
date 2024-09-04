@@ -1,5 +1,5 @@
 <template>
-    <div class="flex pt-4 justify-between  space-x-4 ">
+    <div class="flex pt-1 sm:pt-2 md:pt-4 justify-between  space-x-4 ">
         <div class="flex space-x-4">
             <template v-for="provider in providers" :key="provider.name">
                 <template v-if="launch?.provider.name === provider.name">

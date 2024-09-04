@@ -1,18 +1,18 @@
 <template>
   <!-- <div class="pb-8 grid grid-flow-col gap-3"> -->
-    <div class="relative flex rounded-2xl my-inner-shadow">
+    <div class="relative flex  rounded-2xl my-inner-shadow">
       <div class="absolute z-5 m w-full h-full overflow-hidden rounded-2xl">
         <div class="image-container" ref="imageContainer">
           <img alt="" aria-hidden
-            class="py-2 w-full h-full -translate-x-1/2  transform scale-[700%] filter blur-[13px] opacity-30"
+            class="py-1 sm:py-2 w-full h-full -translate-x-1/2  transform scale-[700%] filter blur-[13px] opacity-30"
             :src="imgSrc" />
 
         </div>
       </div>
-      <div class=" py-2 z-9 ml-4">
+      <div class="py-1 sm:py-2 z-9 ml-4">
         <img :src="imgSrc" width="40" height="40" />
       </div>
-      <div class="flex items-center px-3 z-9 flex-grow min-w-0 overflow-hidden text-ellipsis  ">
+      <div class="flex items-center px-3 z-9 flex-grow min-w-0 overflow-hidden text-xs md:text-base text-ellipsis  ">
         {{ text || 'added soon' }}
       </div>
     </div>

@@ -1,12 +1,12 @@
 <template>
     <div class="text-[#141414] relative ">
         <header>
-            <nav class=" w-full flex h-56 fixed top-0 z-40 p-8 bg-contain  bg-no-repeat"
+            <nav class=" w-full flex h-20 sm:h-32 md:h-56 fixed top-0 z-40 p-4 sm:p-6 md:p-8 bg-contain  bg-no-repeat"
                 :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
                 <div class="flex w-full items-top justify-end">
                     <!-- <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink> -->
                     <NuxtLink to="rockets/1"
-                        class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt
+                        class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt
                     </NuxtLink>
                 </div>
             </nav>
@@ -15,8 +15,8 @@
         <section v-for="(launch, index) in launches.result" :key="launch.id"
             :ref="el => (index === 2 ? (thirdSection = el) : '')"
             :class="{ 'hide-section': index < 2, 'first-section': index === 0, 'fade-in': true }"
-            class="min-h-screen relative flex second-section ">
-            <div class="w-1/3 md:block hidden items-center justify-center p-8">
+            class="min-h-screen relative flex second-section pl-3">
+            <div class="w-1/3 md:block hidden items-center justify-center  ">
                 <ClientOnly>
                     <LazyRocketModel :fov="getModelSettings(launch.vehicle.id).fov"
                         :camY="getModelSettings(launch.vehicle.id).camY"
@@ -26,8 +26,14 @@
             </div>
 
             <div
-                class="inter-font w-[95%] lg:w-3/4 ml-auto py-6 mb-20 justify-center items-center  overflow-auto pl-6 ">
-                <div class="bg-[#eeeeee]/90 px-8 pt-8 pb-6 rounded-tl-3xl rounded-bl-3xl my-shadow ">
+                class="inter-font w-full sm:w-[95%] lg:w-3/4 ml-auto py-3 sm:py-4 md:py-6 mb-20 justify-center items-center  overflow-auto pl-2 sm:pl-4 md:pl-6 ">
+                <div class="bg-[#eeeeee]/90 
+
+                            px-4 sm:px-6 md:px-8 
+                            pt-4 sm:pt-6 md:pt-8 
+                            pb-4 sm:pb-6 md:pb-6 
+                            rounded-tl-xl sm:rounded-tl-2xl md:rounded-tl-3xl 
+                            rounded-bl-xl sm:rounded-bl-2xl md:rounded-bl-3xl my-shadow ">
 
                     <div class="flex justify-between">
                         <div class="flex items-end   ">
@@ -37,7 +43,7 @@
                                     : launch?.provider.name
                                     || 'launch provider not available' }}
                             </p>
-                            <p class="pl-6 text-[#656565] mb-1 ">
+                            <p class="pl-6 text-[#656565] mb-1 lg:block hidden ">
                                 {{ launch?.provider.name === 'China' ?
                                     '(China National Space Association)' :
                                     launch?.provider.name === 'ISRO' ?
@@ -52,12 +58,9 @@
                         </div>
                     </div>
 
-
                     <!-- Countdown + Location -->
-                    <div
-                        class="pt-6 pb-6  text-lg font-extrabold responsive-container flex justify-end">
-                        <Countdown :countdown="launch?.t0" class="" />
-
+                    <div class="py-3 sm:py-4 md:py-6 text-lg font-extrabold flex justify-between items-center  ">
+                        <Countdown :countdown="launch?.t0" class="flex-shrink-0 " />
 
                         <LocationDetails class="lg:block hidden ml-auto " :launch="{
                             country: launch?.pad.location.country,
@@ -68,7 +71,7 @@
                     </div>
 
                     <!-- Launch Tags -->
-                    <div class="pb-4 flex flex-wrap gap-3">
+                    <div class="pb-2 md:pb-4 flex flex-wrap gap-1 sm:gap-2 md:gap-3">
                         <VehicleTag class="flex-grow" imgSrc="/images/rocketIcon/3.svg" :text="launch?.vehicle.name" />
                         <VehicleTag class="flex-grow" v-for="tag in validTags[index]" :key="tag.id" :imgSrc="tag.imgSrc"
                             :text="tag.text" />
@@ -105,7 +108,7 @@ useHead({
     title: 'Rocket Launches'
 })
 
-//  const { data: launches } = await useFetch('http://localhost:3000/launches.json')
+//   const { data: launches } = await useFetch('http://localhost:3000/launches.json')
 const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 const { providers } = useProviders()
@@ -157,11 +160,12 @@ section {
     scroll-snap-align: start;
     scroll-margin-top: 80px;
     height: calc(100vh - 80px);
+    overflow-y: auto;
 }
 
 .first-section {
     margin-top: 80px;
-    overflow-y: auto;
+    // overflow-y: auto;
 
 }
 
@@ -173,20 +177,38 @@ section {
 
 .responsive-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
-/* Media Query for medium screens (e.g., tablets) */
-@media screen and (max-width: 1024px) {
+@media (min-width: 640px ) {
     .responsive-container {
-        /* Adjustments for medium screens */
-        flex-direction: column;
-        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
     }
+}
 
-    .responsive-container>*:not(:last-child) {
-        margin-bottom: 10px;
-    }
+// /* Media Query for medium screens (e.g., tablets) */
+// @media screen and (max-width: 1024px) {
+//     .responsive-container {
+//         /* Adjustments for medium screens */
+//         flex-direction: column;
+//         justify-content: space-between;
+//     }
+
+//     .responsive-container>*:not(:last-child) {
+//         margin-bottom: 10px;
+//     }
+// }
+
+/* Adjust for fixed header on smaller screens */
+@media (max-width: 639px) {
+  section {
+    scroll-margin-top: 5rem; /* Adjust this value based on your mobile header height */
+  }
+  .first-section {
+    margin-top: 5rem; /* Adjust this value based on your mobile header height */
+  }
 }
 </style>

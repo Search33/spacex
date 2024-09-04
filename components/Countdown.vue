@@ -1,25 +1,25 @@
 <!-- /components/Countdown.vue -->
 <template>
-    <div class="flex space-x-10">
-        <div v-if="countdownTime.message" class="text-2xl flex flex-col justify-center">
+    <div class="flex space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-10  ">
+        <div v-if="countdownTime.message" class="text-base sm:text-xl md:text-2xl flex flex-col justify-center h-2 md:h-10">
             {{ countdownTime.message }}
         </div>
         <template v-else>
             <div class="flex flex-col items-center" v-if="countdownTime.days > 0">
-                <div class="text-6xl">{{ countdownTime.days }}</div>
-                <div class="font-extralight">DAYS</div>
+                <div class="countdown-value">{{ countdownTime.days }}</div>
+                <div class="countdown-label">DAYS</div>
                 </div>
             <div class="flex flex-col items-center" v-if="countdownTime.hours > 0 || countdownTime.days > 0">
-                <div class="text-6xl">{{ countdownTime.hours }}</div>
-                <div class="font-extralight">HOURS</div>
+                <div class="countdown-value">{{ countdownTime.hours }}</div>
+                <div class="countdown-label">HOURS</div>
             </div>
             <div class="flex flex-col items-center">
-                <div class="text-6xl">{{ countdownTime.minutes }}</div>
-                <div class="font-extralight ">MINUTES</div>
+                <div class="countdown-value">{{ countdownTime.minutes }}</div>
+                <div class="countdown-label ">MINUTES</div>
             </div>
             <div class="flex flex-col items-center">
-                <div class="text-6xl">{{ countdownTime.seconds }}</div>
-                <div class="font-extralight ">SECONDS</div>
+                <div class="countdown-value">{{ countdownTime.seconds }}</div>
+                <div class="countdown-label ">SECONDS</div>
             </div>
         </template>
     </div>
@@ -62,4 +62,31 @@ onMounted(calculateCountdown)
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.countdown-value {
+  @apply text-2xl sm:text-4xl md:text-5xl lg:text-6xl;
+}
+
+.countdown-label {
+  @apply text-xs sm:text-sm md:text-base font-extralight;
+}
+
+@media screen and (max-width: 374px) {
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+  .countdown-label {
+    font-size: 0.65rem;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  .countdown-value {
+    font-size: 1.75rem;
+  }
+  .countdown-label {
+    font-size: 0.75rem;
+  }
+}
+</style>

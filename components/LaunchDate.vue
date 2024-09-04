@@ -1,5 +1,5 @@
 <template>
-    <div class="z-20 flex -mb-3 flex-col items-center justify-end text-base font-normal ">
+    <div class=" z-20 flex -mb-3 flex-col items-center justify-end text-base font-normal ">
         <span class="text-[#656565] text-xs mr-auto ">
             {{ dayNumber }}<sup class="ordinal">{{ ordinalSuffix }}</sup> {{ monthYear }}</span>
         <span class=" text-xl font-medium mr-auto">{{ time }}</span>

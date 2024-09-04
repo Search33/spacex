@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <canvas ref="experience" />
         <!-- below works -->
         <!-- <div v-if="hasAnimations">
