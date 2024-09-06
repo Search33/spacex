@@ -153,6 +153,7 @@ export const useProviders = () => {
 
     const tagMapArray: Tag[] = [
         { id: 1, imgSrc: "/images/rocketIcon/expendable.svg", text: "Expendable" },
+        { id: 2, imgSrc: "/images/rocketIcon/droneship.svg", text: "Droneship Landing" },
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
         { id: 10, imgSrc: "/images/rocketIcon/finallaunch.svg", text: "Final Launch of Vehicle" },
