@@ -170,11 +170,13 @@ export const useProviders = () => {
         { id: 26, imgSrc: "/images/rocketIcon/40.svg", text: "Navigation Satellite" },
         { id: 28, imgSrc: "/images/rocketIcon/recon.svg", text: "Reconnaissance Satellite" },
         { id: 29, imgSrc: "/images/rocketIcon/polar.svg", text: "Polar Orbit" },
+        { id: 42, imgSrc: "/images/rocketIcon/planetary-science.svg", text: "Planetary Science" },
         { id: 44, imgSrc: "/images/rocketIcon/return.svg", text: "Return to flight" },
         { id: 45, imgSrc: "/images/rocketIcon/32.svg", text: "Meteorological Satellite" },
         { id: 53, imgSrc: "/images/rocketIcon/unconfirmed.svg", text: 'Unconfirmed Payload'},
         { id: 54, imgSrc: "/images/rocketIcon/lander.svg", text: 'Lunar Lander'},
         { id: 55, imgSrc: "/images/rocketIcon/rover.svg", text: 'Lunar Rover'},
+        { id: 61, imgSrc: "/images/rocketIcon/jupiter.svg", text: "Jupiter Orbit" },
         { id: 66, imgSrc: "/images/rocketIcon/noVideo.svg", text: "No Live Video Expected" },
         { id: 68, imgSrc: "/images/rocketIcon/earth.svg", text: "Suborbital" },
         { id: 78, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 4" },
@@ -182,6 +184,7 @@ export const useProviders = () => {
         { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
         { id: 100, imgSrc: "/images/rocketIcon/mars.svg", text: "Mars Flyby" },
         { id: 102, imgSrc: "/images/rocketIcon/moon.svg", text: "NASA Commercial Lunar Payload Services (CLPS)" },
+        { id: 96, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: OneWeb'},
         { id: 96, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1058'},
         { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1060'},
         { id: 104, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1061'},
@@ -213,6 +216,7 @@ export const useProviders = () => {
         { id: 131, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: Space Development Agency - Transport Tracking Layers'},
         { id: 132, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1082'},
         { id: 133, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1083'},
+        { id: 138, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1090'},
     ];
 
     const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {
