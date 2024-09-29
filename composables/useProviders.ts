@@ -152,7 +152,7 @@ export const useProviders = () => {
     ]);
 
     const tagMapArray: Tag[] = [
-        { id: 1, imgSrc: "/images/rocketIcon/expendable.svg", text: "Expendable" },
+        { id: 1, imgSrc: "/images/rocketIcon/trash.svg", text: "Expendable booster" },
         { id: 2, imgSrc: "/images/rocketIcon/droneship4.svg", text: "Droneship Landing" },
         { id: 8, imgSrc: "/images/rocketIcon/33.svg", text: "Classified Payload 🤫" },
         { id: 9, imgSrc: "/images/rocketIcon/8.svg", text: "Crewed" },
@@ -182,9 +182,9 @@ export const useProviders = () => {
         { id: 78, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 4" },
         { id: 89, imgSrc: "/images/rocketIcon/Landing.svg", text: "Landing Zone 2" },
         { id: 92, imgSrc: "/images/rocketIcon/10.svg", text: "Starlink Satellites" },
+        { id: 93, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: OneWeb'},
         { id: 100, imgSrc: "/images/rocketIcon/mars.svg", text: "Mars Flyby" },
         { id: 102, imgSrc: "/images/rocketIcon/moon.svg", text: "NASA Commercial Lunar Payload Services (CLPS)" },
-        { id: 93, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: OneWeb'},
         { id: 96, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1058'},
         { id: 101, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1060'},
         { id: 104, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1061'},
@@ -205,18 +205,18 @@ export const useProviders = () => {
         { id: 124, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1084'},
         { id: 125, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1072'},
         { id: 126, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1080'},
+        { id: 129, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1081'},
+        { id: 132, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1082'},
+        { id: 133, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1083'},
         { id: 134, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1086'},
         { id: 135, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1087'},
+        { id: 138, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1090'},
         { id: 128, imgSrc: "/images/rocketIcon/css.svg", text: 'Chinese Space Station Cargo'},
-        { id: 129, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1081'},
         { id: 107, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Endeavour'},
         { id: 108, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Resilience'},
         { id: 127, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Freedom'},
         { id: 130, imgSrc: "/images/rocketIcon/capsule.svg", text: 'Dragon Endurance'},
         { id: 131, imgSrc: "/images/rocketIcon/sda.svg", text: 'Series: Space Development Agency - Transport Tracking Layers'},
-        { id: 132, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1082'},
-        { id: 133, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1083'},
-        { id: 138, imgSrc: "/images/rocketIcon/booster.svg", text: 'Booster B1090'},
     ];
 
     const tagMap: Record<number, Tag> = tagMapArray.reduce((obj: Record<number, Tag>, item) => {
