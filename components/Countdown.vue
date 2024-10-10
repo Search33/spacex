@@ -1,7 +1,7 @@
 <!-- /components/Countdown.vue -->
 <template>
     <div class="flex space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-10  ">
-        <div v-if="countdownTime.message" class="text-base sm:text-xl md:text-2xl flex flex-col justify-center h-2 md:h-10">
+        <div v-if="countdownTime.message" class=" text-base sm:text-xl md:text-2xl flex flex-col justify-center h-4 md:h-10">
             {{ countdownTime.message }}
         </div>
         <template v-else>

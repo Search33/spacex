@@ -1,10 +1,20 @@
 <template>
     <div class="text-[#141414] relative ">
-        <header>
+        <!-- <header>
+            :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
             <nav class=" w-full flex h-20 sm:h-32 md:h-56 fixed top-0 z-40 p-4 sm:p-6 md:p-8 bg-contain  bg-no-repeat"
-                :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
+                :style="{ backgroundImage: 'url(/images/detailedClouds.png)', backgroundSize: '', backgroundRepeat: '' }">
                 <div class="flex w-full items-top justify-end">
-                    <!-- <NuxtLink to="rockets" class="  mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt</NuxtLink> -->
+                    <NuxtLink to="rockets/1"
+                        class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt
+                    </NuxtLink>
+                </div>
+            </nav>
+        </header> -->
+
+        <header>
+            <nav class=" w-full flex h-[350px] fixed top-0 z-40 p-4 sm:p-6 md:p-8 responsive-bg">
+                <div class="flex w-full items-top justify-end">
                     <NuxtLink to="rockets/1"
                         class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt
                     </NuxtLink>
@@ -108,8 +118,8 @@ useHead({
     title: 'Rocket Launches'
 })
 
-//   const { data: launches } = await useFetch('http://localhost:3000/launches.json')
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+   const { data: launches } = await useFetch('http://localhost:3000/launches.json')
+// const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
@@ -143,6 +153,37 @@ const getModelSettings = (vehicleId) => {
 
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css?family=Inter&display=swap");
+
+
+.responsive-bg {
+    background-image: url(/images/detailedClouds.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: background-size 0.3s ease, background-position 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .responsive-bg {
+      background-size: 100% auto;
+      background-position: center center;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-bg {
+      background-size: 103% auto;
+      background-position: center center;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .responsive-bg {
+      background-size: 105% auto;
+      background-position: center center;
+    }
+  }
+
 
 @media (min-width: 768px) {
     .md\:my-shadow {

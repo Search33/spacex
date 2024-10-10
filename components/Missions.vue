@@ -10,12 +10,15 @@
                 </span>
                     {{ m.name || '' }}
             </p>
-            <p class="text-[#8d8d8d]">
-                ■■■■■■■■■■■ <span class="text-[#8d8d8d]">100%</span>
-            </p>
-            <p  class=" pt-0.5">
-                {{ m.description || '' }}
-            </p>
+            <div>
+                <p class="text-[#8d8d8d] ">
+                    ■■■■■■■■■■■ <span class="text-[#8d8d8d]">100%</span>
+                </p>
+                <p  class=" pt-0.5 text-[11px] md:text-sm ">
+                    {{ m.description || '' }}
+                </p>
+
+            </div>
         </div>
     </div>
 </template>

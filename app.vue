@@ -28,10 +28,14 @@ useHead({
 </script>
 <style>
 
-:root {
+/* :root {
+  --gradient-start:  #E4E3F4;
+  --gradient-end: #143F61;
+} */
+/* :root {
   --gradient-start:  #5BC9D7;
   --gradient-end: #0a3c42;
-}
+} */
 
 
 /* body::before {
@@ -53,7 +57,16 @@ body::before {
   height: 100vh;
   width: 100%;
   z-index: -1;
-  background: linear-gradient(to bottom, #0a3c42, #5BC9D7);
+  background: linear-gradient(
+    to bottom,
+    #1e3c5a 0%,
+    #294A67FF 20%,
+    #436e8e 40%,
+    #6C9AB3 60%,
+    #b0c0cd 80%,
+    #E8F0F6FF 100%
+  );
+  /* background: linear-gradient(to bottom, #143F61, #BED3DB); */
 }
 
 /* 2f7781 */
