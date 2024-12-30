@@ -93,7 +93,7 @@ const rockets = [
         styles: ['linear-gradient(170deg, #5EA9CF, #386C86)']
     },
     {
-        modelPath: '/new-glenn.gltf', id: 1, fov: 75, camY: 6, camZ: 14, name: 'New Glenn', height: 98, country: 'USA', bg: '#6387AB', color: 'white',
+        modelPath: '/new-glenn.gltf', id: 33, fov: 75, camY: 6, camZ: 14, name: 'New Glenn', height: 98, country: 'USA', bg: '#6387AB', color: 'white',
         styles: ['#46EC46']
     },
     {
