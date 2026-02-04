@@ -91,7 +91,6 @@ const hasSpaceShipTwo = computed(() => {
 const { id } = useRoute().params;
 
 const page = ref(parseInt(Array.isArray(id) ? id[0] : id) || 1);
-console.log('Initial page:', page.value);
 
 const modelsPerPage = 16;
 

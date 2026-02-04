@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { Scene, AnimationMixer, Clock, PerspectiveCamera, Mesh, WebGLRenderer, AmbientLight, DirectionalLight } from 'three'
+import { Scene, AnimationMixer, Clock, PerspectiveCamera, Mesh, WebGLRenderer, AmbientLight, DirectionalLight, Group, Material, MeshStandardMaterial } from 'three'
 import { Ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -48,13 +48,12 @@ scene.add(light.target)
 
 const { load } = useGLTFModel()
 
-let currentModel: THREE.Group | null = null;
+let currentModel: Group | null = null;
 
 const initialise = async () => {
     try {
         if (props.modelPath) {
             const { scene: model, animations: modelAnimations } = await load(props.modelPath);
-            console.log(`${props.modelPath} loaded`)
             model.traverse(function (child) {
                 if (child instanceof Mesh) {
                     child.receiveShadow = true;
@@ -88,7 +87,9 @@ const setupRendererAndControls = async () => {
     }
 
     if (!renderer) {
-        renderer = getRenderer(experience.value);
+        renderer = new WebGLRenderer({ canvas: experience.value, alpha: true });
+        renderer.shadowMap.enabled = true;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setSize(width.value * 0.3, height.value * 0.7);
     }
 
@@ -121,24 +122,6 @@ watch(aspectRatio, () => {
     renderer.setSize(width.value * 0.3, height.value * 0.7)
 })
 
-let sharedRenderer: WebGLRenderer | null = null;
-const getRenderer = (canvas: HTMLCanvasElement): WebGLRenderer => {
-    if (!sharedRenderer) {
-        sharedRenderer = new WebGLRenderer({ canvas: canvas, alpha: true });
-        sharedRenderer.setSize(width.value * 0.3, height.value * 0.7);
-        sharedRenderer.shadowMap.enabled = true;
-        sharedRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    }
-
-    return sharedRenderer;
-}
-
-const setupRenderer = () => {
-    if (experience.value && !renderer) {
-        renderer = getRenderer(experience.value)
-    }
-}
-
 const render = () => {
     if (!controls) {
         console.warn("Render called before controls were initialised");
@@ -163,7 +146,7 @@ const initialiseResources = async () => {
 
     try {
         await nextTick();
-        if (!render || !controls) {
+        if (!renderer || !controls) {
             setupRendererAndControls();
         }
         if (animationFrameId) {
@@ -187,7 +170,6 @@ const initialiseResources = async () => {
 watch(() => isComponentVisible.value, async (isVisible) => {
     try {
         if (isVisible) {
-            setupRenderer();
             if (!isInitialised) {
                 await initialiseResources();
             }
@@ -216,7 +198,6 @@ const cleanUpResources = () => {
             }
         });
         currentModel = null;
-        console.log(`${props.modelPath} disposed`)
     }
     if (mixer) {
         mixer.stopAllAction();
@@ -230,30 +211,24 @@ const cleanUpResources = () => {
 }
 
 onMounted(async () => {
-    setupRenderer();
     if (isComponentVisible.value) {
         await initialiseResources();
-    } else {
-        console.log('Component is not visible on mount. Skipping initialisation.');
     }
 })
 
 onBeforeUnmount(() => {
-    if (renderer === sharedRenderer) {
-        sharedRenderer = null;
-    }
     cleanUpResources();
 })
 
 
-const cleanMaterial = (material: THREE.Material) => {
+const cleanMaterial = (material: Material) => {
     material.dispose();
 
-    (material as THREE.MeshStandardMaterial).map?.dispose();
-    (material as THREE.MeshStandardMaterial).lightMap?.dispose();
-    (material as THREE.MeshStandardMaterial).bumpMap?.dispose();
-    (material as THREE.MeshStandardMaterial).normalMap?.dispose();
-    (material as THREE.MeshStandardMaterial).envMap?.dispose();
+    (material as MeshStandardMaterial).map?.dispose();
+    (material as MeshStandardMaterial).lightMap?.dispose();
+    (material as MeshStandardMaterial).bumpMap?.dispose();
+    (material as MeshStandardMaterial).normalMap?.dispose();
+    (material as MeshStandardMaterial).envMap?.dispose();
 };
 
 
