@@ -1,6 +1,5 @@
-// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
-import { AnimationClip, AnimationMixer } from 'three'
+import { AnimationMixer } from 'three'
 
 interface GLTFExtended extends GLTF {
     mixer?: AnimationMixer;
@@ -15,8 +14,6 @@ export function useGLTFModel() {
             // gltfloader.load(url, resolve, undefined, reject)
 gltfloader.load(url, (gltf: GLTF) => {
                 const extendedGltf = gltf as GLTFExtended;
-                // console.log('Loaded GLTF:', extendedGltf)
-                // console.log('Loaded GLTF in composable:', gltf)
                 if (extendedGltf.animations && extendedGltf.animations.length) {
                     extendedGltf.mixer = new AnimationMixer(extendedGltf.scene);
                     extendedGltf.animations.forEach((clip) => {

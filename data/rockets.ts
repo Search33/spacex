@@ -1,8 +1,18 @@
-// filteringSorting.ts
-import { count } from 'console';
-import { ref, computed } from 'vue';
+export interface Rocket {
+    modelPath: string;
+    id?: number;
+    fov: number;
+    camY: number;
+    camZ: number;
+    name: string;
+    height: number;
+    country: string;
+    bg: string;
+    color: string;
+    styles: string[];
+}
 
-const rockets = [
+export const rockets: Rocket[] = [
     {
         modelPath: '/falcon-heavy-v2.gltf', id: 7, fov: 75, camY: 4, camZ: 10, name: 'Falcon Heavy', height: 70, country: 'USA', bg: '#D86A60', color: 'white',
         styles: ['linear-gradient(45deg, #FFC371, #FF6F5F)', '#F0F74D', '#52EAD1', '#863227']
@@ -60,10 +70,6 @@ const rockets = [
         modelPath: '/falcon9-v2.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, country: 'USA', bg: '#7BC090', color: 'white',
         styles: ['#01718E', '#0A9B77']
     },
-    // {
-    //     modelPath: '/animation3.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Falcon 9', height: 70, country: 'USA', bg: '#7BC090', color: 'white',
-    //     styles: ['#01718E', '#0A9B77']
-    // },
     {
         modelPath: '/electron-v2.gltf', id: 18, fov: 40, camY: 4, camZ: 10, name: 'Electron', height: 18, country: 'USA', bg: 'rgb(217,152,125,100)', color: 'white',
         styles: ['#EBDB1C']
@@ -73,7 +79,7 @@ const rockets = [
         styles: ['linear-gradient(90deg, #C6CE5D, #25FCDA)', 'linear-gradient(180deg, #C6CE5D, #25FCDA)']
     },
     {
-        modelPath: '/Zhuque-2.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Zhuque-2', height: 49.5, country: 'China', bg: 'rgb(71,128,148,100)', color: 'white',
+        modelPath: '/Zhuque-2.gltf', id: 201, fov: 75, camY: 4, camZ: 10, name: 'Zhuque-2', height: 49.5, country: 'China', bg: 'rgb(71,128,148,100)', color: 'white',
         styles: ['linear-gradient(90deg, #8A0111, #FF6F7D)', '#37C694', '#E0AF96']
     },
     {
@@ -105,7 +111,7 @@ const rockets = [
         styles: ['#EBD13C', '#303E75']
     },
     {
-        modelPath: '/ariane5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Ariane 5', height: 50, country: 'Europe', bg: '#A2B4BA', color: 'white',
+        modelPath: '/ariane5.gltf', id: 200, fov: 75, camY: 4, camZ: 10, name: 'Ariane 5', height: 50, country: 'Europe', bg: '#A2B4BA', color: 'white',
         styles: [ '#303E75', 'linear-gradient(170deg, #E765DC, #006674)']
     },
     {
@@ -113,23 +119,23 @@ const rockets = [
         styles: ['#F5F1ED ', '#7C2B28']
     },
     {
-        modelPath: '/sls-block-1-v2.gltf', id: 1, fov: 75, camY: 6, camZ: 14, name: 'SLS Block 1', height: 98, country: 'USA', bg: '#6761A8', color: 'white',
+        modelPath: '/sls-block-1-v2.gltf', id: 202, fov: 75, camY: 6, camZ: 14, name: 'SLS Block 1', height: 98, country: 'USA', bg: '#6761A8', color: 'white',
         styles: ['#F26430', '#CBEF43', '#009DDC']
     },
     {
-        modelPath: '/n1.gltf', id: 1, fov: 75, camY: 6, camZ: 15, name: 'n1', height: 105, country: 'Russia', bg: '#2E5D55', color: 'white',
+        modelPath: '/n1.gltf', id: 203, fov: 75, camY: 6, camZ: 15, name: 'n1', height: 105, country: 'Russia', bg: '#2E5D55', color: 'white',
         styles: ['#ffffff',]
     },
     {
-        modelPath: '/saturnv.gltf', id: 1, fov: 80, camY: 6, camZ: 15, name: 'Saturn V', height: 110, country: 'USA', bg: '#837EB4', color: 'white',
+        modelPath: '/saturnv.gltf', id: 204, fov: 80, camY: 6, camZ: 15, name: 'Saturn V', height: 110, country: 'USA', bg: '#837EB4', color: 'white',
         styles: ['#75FFA8', '#D8FF75', '#75CFFF']
     },
     {
-        modelPath: '/longmarch9-v2.gltf', id: 1, fov: 90, camY: 6, camZ: 15, name: 'Long March 9', height: 114, country: 'China', bg: '#934683', color: 'white',
+        modelPath: '/longmarch9-v2.gltf', id: 205, fov: 90, camY: 6, camZ: 15, name: 'Long March 9', height: 114, country: 'China', bg: '#934683', color: 'white',
         styles: ['#F433AB', '#EDCB96']
     },
     {
-        modelPath: '/longmarch10-v2.gltf', id: 1, fov: 75, camY: 5, camZ: 12, name: 'Long March 10', height: 90, country: 'China', bg: '#202C59', color: 'white',
+        modelPath: '/longmarch10-v2.gltf', id: 206, fov: 75, camY: 5, camZ: 12, name: 'Long March 10', height: 90, country: 'China', bg: '#202C59', color: 'white',
         styles: ['#D95D39', '#5B8CA7']
     },
     {
@@ -140,24 +146,12 @@ const rockets = [
         modelPath: '/longmarch11.gltf', id: 42, fov: 40, camY: 4, camZ: 10, name: 'Long March 11', height: 20, country: 'China', bg: '#43A4DC', color: 'white',
         styles: ['#4932E3', '#3FEA70']
     },
-    // {
-    //     modelPath: '/longmarch11.gltf', fov: 40, camY: 4, camZ: 10, name: 'Long March 33', height: 20, country: 'China', bg: '#43A4DC', color: 'white',
-    //     styles: ['#4932E3', '#3FEA70']
-    // },
-    // {
-    //     modelPath: '/Angara-A5.gltf', fov: 75, camY: 4, camZ: 10, name: 'Angara A5', height: 64, country: 'Russia', bg: '#9BA7C0', color: 'white',
-    //     styles: [ '#843433', '#49416D', '#DDDBF1']
-    // },
     {
         modelPath: '/Angara-A5.gltf', id: 79, fov: 75, camY: 4, camZ: 10, name: 'Angara A5', height: 64, country: 'Russia', bg: '#9BA7C0', color: 'white',
         styles: ['#FFD1BE', '#A33E00']
     },
-    // {
-        //     modelPath: '/ProtonM.gltf', fov: 75, camY: 4, camZ: 10, name: 'Proton M', height: 58.2, country: 'Russia', bg: '#DDDBCB', color: 'white',
-        //     styles: [ '#B48291', '#DE541E']
-        // },
     {
-        modelPath: '/ProtonM.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Proton M', height: 58.2, country: 'Russia', bg: '#4AA0D1', color: 'white',
+        modelPath: '/ProtonM.gltf', id: 207, fov: 75, camY: 4, camZ: 10, name: 'Proton M', height: 58.2, country: 'Russia', bg: '#4AA0D1', color: 'white',
         styles: [ '#2AEF62']
     },
     {
@@ -169,11 +163,11 @@ const rockets = [
         styles: [ '#FFECD1', '#FF7D00', '#FFF2C6']
     },
     {
-        modelPath: '/Miura5.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Miura 5', height: 34, country: 'Europe', bg: '#2C363F', color: 'white',
+        modelPath: '/Miura5.gltf', id: 208, fov: 75, camY: 4, camZ: 10, name: 'Miura 5', height: 34, country: 'Europe', bg: '#2C363F', color: 'white',
         styles: [ '#CC3363', '#FCFFBA']
     },
     {
-        modelPath: '/Zephyr.gltf', id: 1, fov: 40, camY: 4, camZ: 10, name: 'Zephyr', height: 19, country: 'Europe', bg: '#948B89', color: 'white',
+        modelPath: '/Zephyr.gltf', id: 209, fov: 40, camY: 4, camZ: 10, name: 'Zephyr', height: 19, country: 'Europe', bg: '#948B89', color: 'white',
         styles: [ '#D0D1AC', '#364958']
     },
     {
@@ -181,84 +175,19 @@ const rockets = [
         styles: [ '#FFFB46', '#5F4BB6']
     },
     {
-        modelPath: '/rfa1.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'RFA ONE', height: 30, country: 'Europe', bg: '#307473', color: 'white',
+        modelPath: '/rfa1.gltf', id: 210, fov: 75, camY: 4, camZ: 10, name: 'RFA ONE', height: 30, country: 'Europe', bg: '#307473', color: 'white',
         styles: [ '#2DC2BD', '#35CE8D', '#99F7AB']
     },
     {
-        modelPath: '/spectrum.gltf', id: 1, fov: 75, camY: 4, camZ: 10, name: 'Spectrum', height: 28, country: 'Europe', bg: '#5A7684', color: 'white',
+        modelPath: '/spectrum.gltf', id: 211, fov: 75, camY: 4, camZ: 10, name: 'Spectrum', height: 28, country: 'Europe', bg: '#5A7684', color: 'white',
         styles: [ '#92AFD7', '#C5D1EB', '#FFDDD2']
     },
     {
         modelPath: '/gravity1.gltf', id: 149, fov: 75, camY: 4, camZ: 10, name: 'Gravity 1', height: 31.4, country: 'China', bg: '#16425B', color: 'white',
         styles: [ '#8FBAF6', '#C5D1EB', '#FFDDD2']
     },
-
-    
-    // ... other slides   
+        {
+        modelPath: '/ProtonM.gltf', id: 8, fov: 75, camY: 4, camZ: 10, name: 'Proton M', height: 31.4, country: 'Russia', bg: '#16425B', color: 'white',
+        styles: [ '#8FBAF6', '#C5D1EB', '#FFDDD2']
+    },
 ];
-// '#C4F7A1'
-
-const displayRockets = ref([...rockets])
-const activeCountry = ref('all');
-const sortCriteria = ref<any>({ 
-    'all': 'default',
-    'USA': 'default',
-    'India': 'default',
-    'Russia': 'default',
-    'Japan': 'default',
-    'China': 'defual',
-    'Europe': 'default',
-});
-
-
-const isSortingActive = ref(false)
-
-const sortedAndFilteredRockets = computed(() => {
-    let filteredRockets = activeCountry.value === 'all' 
-        ? [...rockets] 
-        : rockets.filter(rocket => rocket.country === activeCountry.value);
-
-    if (isSortingActive.value && sortCriteria.value[activeCountry.value] === 'height') {
-        filteredRockets.sort((a, b) => a.height - b.height);
-    }
-
-    return filteredRockets
-});
-
-const filterRockets = (country: string) => {
-    activeCountry.value = country;
-
-};
-
-const sortRocketsByHeight = () => {
-    isSortingActive.value = !isSortingActive.value
-    const currentCriteria = sortCriteria.value[activeCountry.value];
-    sortCriteria.value[activeCountry.value] = currentCriteria === 'height' ? 'default' : 'height';
-};
-
-
-export function useRockets() {
-
-    const countryFlags = {
-        'China': '🇨🇳', 'USA': '🇺🇸', 'Europe': '🇪🇺',
-        'Russia': '🇷🇺', 'India': '🇮🇳', 'Japan': '🇯🇵',
-        'Italy': '🇮🇹', 'France': '🇫🇷',
-    };
-
-    const existingCountries = computed(() => {
-        const countriesWithRockets = new Set(rockets.map(rocket => rocket.country));
-        return Object.keys(countryFlags).filter(country => countriesWithRockets.has(country));
-    });
-
-    const showAllRockets = () => {
-        activeCountry.value = 'all';
-    };
-
-    const modelsPerPage = 16;
-
-    const numberOfRockets = computed(() => sortedAndFilteredRockets.value.length);
-    const totalPages = computed(() => Math.ceil(numberOfRockets.value / modelsPerPage))
-
-
-    return { activeCountry, countryFlags, rockets, displayRockets: sortedAndFilteredRockets, existingCountries, filterRockets, isSortingActive, showAllRockets, sortRocketsByHeight, totalPages };
-}

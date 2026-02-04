@@ -1,20 +1,8 @@
 <template>
     <div class="text-[#141414] relative ">
-        <!-- <header>
-            :style="{ backgroundImage: 'url(/images/cloud2-nav.png)', backgroundSize: '', backgroundRepeat: '' }">
-            <nav class=" w-full flex h-20 sm:h-32 md:h-56 fixed top-0 z-40 p-4 sm:p-6 md:p-8 bg-contain  bg-no-repeat"
-                :style="{ backgroundImage: 'url(/images/detailedClouds.png)', backgroundSize: '', backgroundRepeat: '' }">
-                <div class="flex w-full items-top justify-end">
-                    <NuxtLink to="rockets/1"
-                        class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt
-                    </NuxtLink>
-                </div>
-            </nav>
-        </header> -->
-
         <header>
             <nav class=" w-full flex h-[350px] fixed top-0 z-40 p-4 sm:p-6 md:p-8 responsive-bg">
-                <div class="flex w-full items-top justify-end">
+                <div class="flex w-full items-start justify-end">
                     <NuxtLink to="rockets/1"
                         class="mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">Rockets 🚀 -&gt
                     </NuxtLink>
@@ -23,8 +11,7 @@
         </header>
 
         <section v-for="(launch, index) in launches.result" :key="launch.id"
-            :ref="el => (index === 2 ? (thirdSection = el) : '')"
-            :class="{ 'hide-section': index < 2, 'first-section': index === 0, 'fade-in': true }"
+            :class="{ 'first-section': index === 0 }"
             class="min-h-screen relative flex second-section pl-3">
             <div class="w-1/3 md:block hidden items-center justify-center  ">
                 <ClientOnly>
@@ -63,7 +50,7 @@
                                             '' }}
                             </p>
                         </div>
-                        <div class="">
+                        <div>
                             <LaunchDate :date="launch?.t0" />
                         </div>
                     </div>
@@ -83,7 +70,7 @@
                     <!-- Launch Tags -->
                     <div class="pb-2 md:pb-4 flex flex-wrap gap-1 sm:gap-2 md:gap-3">
                         <VehicleTag class="flex-grow" imgSrc="/images/rocketIcon/3.svg" :text="launch?.vehicle.name" />
-                        <VehicleTag class="flex-grow" v-for="tag in validTags[index]" :key="tag.id" :imgSrc="tag.imgSrc"
+                        <VehicleTag class="flex-grow" v-for="tag in filteredTags[index]" :key="tag.id" :imgSrc="tag.imgSrc"
                             :text="tag.text" />
                     </div>
                     <Missions :launch="launch" />
@@ -118,27 +105,18 @@ useHead({
     title: 'Rocket Launches'
 })
 
-//    const { data: launches } = await useFetch('http://localhost:3000/launches.json')
-const { data: launches } = useFetch('https://fdo.rocketlaunch.live/json/launches/next/5')
+const { data: launches } = await useFetch('/api/launches')
 
 const { providers } = useProviders()
 const { validTags } = useValidTags(launches)
 
-const launchProvider = computed(() => {
-    return launches?.provider.name === 'China' ? 'China National Space Administration (CNSA)' :
-        launches?.provider.name || ''
-})
-
 const filteredTags = computed(() => {
-    return validTags.map(tags => tags.filter(tag => tag.text !== 'No Live Video Expected'))
+    return validTags.value.map(tags => tags.filter(tag => tag.text !== 'No Live Video Expected'))
 })
 
-const { rockets } = useRockets();
-
-console.log('duplicate kazakhstan.png image but different name: https://spacex-murex.vercel.app/images/kaz')
+const { rockets } = useRockets()
 
 const getModelSettings = (vehicleId) => {
-    // console.log('vehicleId: ', vehicleId)
     const rocket = rockets.find(r => r.id === vehicleId);
     return rocket ? {
         modelPath: rocket.modelPath,
@@ -208,8 +186,6 @@ section {
 
 .first-section {
     margin-top: 80px;
-    // overflow-y: auto;
-
 }
 
 .second-section {
@@ -222,7 +198,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
 }
 
 @media (min-width: 640px ) {
@@ -231,19 +207,6 @@ section {
         align-items: center;
     }
 }
-
-// /* Media Query for medium screens (e.g., tablets) */
-// @media screen and (max-width: 1024px) {
-//     .responsive-container {
-//         /* Adjustments for medium screens */
-//         flex-direction: column;
-//         justify-content: space-between;
-//     }
-
-//     .responsive-container>*:not(:last-child) {
-//         margin-bottom: 10px;
-//     }
-// }
 
 /* Adjust for fixed header on smaller screens */
 @media (max-width: 639px) {
