@@ -10,35 +10,3 @@ export function getSharedRenderer(canvas: HTMLCanvasElement): WebGLRenderer {
     }
     return sharedRenderer;
 }
-
-// composables/useSharedRenderer.js
-// import { ref, onBeforeUnmount } from 'vue';
-// // import { WebGLRenderer } from 'three';
-
-// const sharedRenderer = ref(null);
-// const componentCount = ref(0);
-
-// export function useSharedRenderer() {
-//     const initialiseRenderer = (canvas) => {
-//         if (!sharedRenderer.value) {
-//             sharedRenderer.value = new WebGLRenderer({ canvas });
-//         }
-//     };
-
-//     const incrementComponentCount = () => {
-//         componentCount.value++;
-//     };
-
-//     const decrementComponentCount = () => {
-//         componentCount.value--;
-//         if (componentCount.value === 0) {
-//             // Perform cleanup if needed
-//         }
-//     };
-
-//     onBeforeUnmount(() => {
-//         decrementComponentCount();
-//     });
-
-//     return { sharedRenderer, initialiseRenderer, incrementComponentCount, decrementComponentCount };
-// }

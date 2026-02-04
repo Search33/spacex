@@ -39,7 +39,7 @@
 
         <div :key="`grid-${activeCountry}-${isSortingActive}`"
             class=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 py-4 ">
-            <div v-for="(rocket, idx) in paginatedRockets" :key="`model-${rocket.name}-${rocket.height}`"
+            <div v-for="rocket in paginatedRockets" :key="`model-${rocket.name}-${rocket.height}`"
                 class="relative flex flex-col justify-center items-center h-[60vh] rounded-lg border-[1px]  border-black overflow-hidden"
                 :style="`background-color: ${rocket.bg}; color: ${rocket.color}`">
                 <ClientOnly>
@@ -101,19 +101,6 @@ function shuffleArray(array: any[]) {
     return array
 }
 
-// Function to chunk an array
-function chunkArray(array: any[], chunkSize: any) {
-    let result = [];
-    for (let i = 0; i < array.length; i += chunkSize) {
-        result.push(array.slice(i, i + chunkSize));
-    }
-    return result;
-}
-
-// function selectRandomStyle(styles: any) {
-//     const randomIndex = Math.floor(Math.random() * styles.length);
-//     return styles[randomIndex];
-// }
 
 
 const hasSpaceShipTwo = computed(() => {

@@ -1,17 +1,11 @@
 <template>
-    <div >
+    <div>
         <canvas ref="experience" />
-        <!-- below works -->
-        <!-- <div v-if="hasAnimations">
-            <button v-if="!isAnimationPlaying" @click="playAnimation">Play animation</button>
-            <button v-else @click="stopAnimation">Stop animation</button>
-        </div>
-        <button v-else @click="rotateModel">Rotate</button> -->
     </div>
 </template>
 
 <script setup lang="ts">
-import { Scene, AnimationMixer, Clock, PerspectiveCamera, Mesh, SphereGeometry, MeshBasicMaterial, WebGLRenderer, Color, Fog, AmbientLight, Vector3, Box3, DirectionalLight } from 'three'
+import { Scene, AnimationMixer, Clock, PerspectiveCamera, Mesh, WebGLRenderer, AmbientLight, DirectionalLight } from 'three'
 import { Ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -40,10 +34,7 @@ camera.position.set(0, props.camY ?? 8, props.camZ ?? 18)
 scene.add(camera)
 
 let mixer: AnimationMixer | null = null;
-let animations: THREE.AnimationClip[] = [];
 const clock = new Clock();
-const hasAnimations = ref(false);
-const isAnimationPlaying = ref(false);
 
 const ambientLight = new AmbientLight(0xffffff, 0.7)
 scene.add(ambientLight)
@@ -52,7 +43,6 @@ light.position.set(7, 8, 10)
 light.target.position.set(0, 0, 0)
 light.castShadow = true
 light.shadow.bias = -0.0005
-// light.shadow.radius = 2
 scene.add(light)
 scene.add(light.target)
 
@@ -71,19 +61,11 @@ const initialise = async () => {
                     child.castShadow = true;
                 }
             });
-            const box = new Box3().setFromObject(model);
-            const center = box.getCenter(new Vector3());
             currentModel = model;
             scene.add((model))
 
             if (modelAnimations && modelAnimations.length > 0) {
-                animations = modelAnimations;
                 mixer = new AnimationMixer(model);
-                hasAnimations.value = true;
-                console.log(`${modelAnimations.length} animations loaded for ${props.modelPath}`);
-            } else {
-                hasAnimations.value = false;
-                console.log(`No animations found for ${props.modelPath}`);
             }
 
         }
@@ -92,42 +74,6 @@ const initialise = async () => {
     }
 
 }
-
-const playAnimation = () => {
-    if (mixer && animations.length > 0) {
-        mixer.stopAllAction();
-        const action = mixer.clipAction(animations[0]);
-        action.reset();
-        action.play();
-        isAnimationPlaying.value = true;
-        console.log('Animation started');
-    } else {
-        console.log('No animations available for this model');
-        // Optionally, you could trigger some default behavior here
-        // For example, rotating the model:
-        if (currentModel) {
-            rotateModel();
-        }
-    }
-}
-const stopAnimation = () => {
-    if (mixer) {
-        mixer.stopAllAction();
-        isAnimationPlaying.value = false;
-        console.log('Animation stopped');
-    }
-}
-
-const rotateModel = () => {
-    if (currentModel) {
-        const rotationAnimation = () => {
-            currentModel!.rotation.y += 0.01;
-            requestAnimationFrame(rotationAnimation);
-        };
-        rotationAnimation();
-    }
-}
-
 
 let renderer: WebGLRenderer;
 let controls: OrbitControls | null = null;
@@ -174,7 +120,6 @@ watch(aspectRatio, () => {
     updateCamera();
     renderer.setSize(width.value * 0.3, height.value * 0.7)
 })
-// watch(aspectRatio, updateCamera);
 
 let sharedRenderer: WebGLRenderer | null = null;
 const getRenderer = (canvas: HTMLCanvasElement): WebGLRenderer => {
@@ -240,7 +185,6 @@ const initialiseResources = async () => {
 
 // Initialize resources when component becomes visible
 watch(() => isComponentVisible.value, async (isVisible) => {
-    // console.log(`visibility changed to: ${isVisible} for model ${props.modelPath}`);
     try {
         if (isVisible) {
             setupRenderer();
@@ -278,9 +222,6 @@ const cleanUpResources = () => {
         mixer.stopAllAction();
         mixer = null;
     }
-    hasAnimations.value = false;
-    isAnimationPlaying.value = false;
-
     if (controls) {
         controls.dispose();
         controls = null;
@@ -304,10 +245,6 @@ onBeforeUnmount(() => {
     cleanUpResources();
 })
 
-
-onUnmounted(() => {
-    console.log(`${props.modelPath} Component unmounted.`);
-});
 
 const cleanMaterial = (material: THREE.Material) => {
     material.dispose();
