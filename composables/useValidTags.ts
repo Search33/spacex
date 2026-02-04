@@ -18,18 +18,16 @@ export const useValidTags = (launches: Ref<any>) => {
             return launches.value.result.map((launch: Launch) => {
                 return launch.tags?.map(tag => {
                     const tagMapEntry = tagMap[tag.id];
-                    return {
+                    return tagMapEntry ? {
                         id: tag.id,
-                        imgSrc: tagMapEntry ? tagMapEntry.imgSrc : null,
-                        text: tagMapEntry ? tagMapEntry.text : null,
-                    };
-                // }).filter(tag => tag && tag.id !== 66) || [];
-                })
+                        imgSrc: tagMapEntry.imgSrc,
+                        text: tagMapEntry.text,
+                    } : null;
+                }).filter((tag): tag is Tag => tag !== null) || []
             });
         } else {
             return [];
         }
     });
-    // console.log('validTags:', validTags)
     return { validTags }
 }

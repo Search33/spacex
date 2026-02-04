@@ -10,7 +10,7 @@ export default defineNuxtConfig({
            link: [{ rel: 'icon', type: 'image/png', href: "/favicon.ico" }]
         }
    },
-   tailwindcss: {
+  tailwindcss: {
     config: {
       content: [
         "./components/**/*.{js,vue,ts}",

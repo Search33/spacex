@@ -6,12 +6,7 @@
         </div>
 
         <div class=" font-normal pr-8   relative overflow-hidden text-sm  text-right  flex flex-col justify-center ">
-            <div class="">
-                <!-- {{ launch?.country || '' }}{{ launch?.statename ? ', ' + launch.statename : '' }} {{ countryFlag }} -->
-                <!-- {{ launch?.country || '' }} -->
-            </div>
-
-            <LinkHover class="z-10 text-[#1f1f1f] relative overlapping-text  bg-opacity-60  "
+            <LocationMapPopup class="z-10 text-[#1f1f1f] relative overlapping-text  bg-opacity-60  "
                 :text="convertedLaunchName || ''" :location="convertedLaunchName || ''" />
 
             <div class="pad-text text-[#6a6a6a]">
@@ -23,7 +18,7 @@
 </template>
 
 <script setup>
-import LinkHover from './LinkHover.vue';
+import LocationMapPopup from './LocationMapPopup.vue';
 
 const { launch } = defineProps(['launch'])
 
@@ -50,14 +45,6 @@ const countryImagePath = computed(() => {
 
     const imagePath = `/images/${imageName}.png`;
 
-    console.log('(location) Launch.country:', launch.country)
-
-    // const baseURL = 'http://localhost:3000';
-    const baseURL = 'https://spacex-murex.vercel.app'
-    const fullURL = `${baseURL}${imagePath}`;
-
-    console.log('(imagePath):', fullURL);
-
     return imagePath;
 });
 
@@ -66,8 +53,6 @@ const countryImagePath = computed(() => {
 
 <style scoped>
 .container .overlapping-text {
-    /* mix-blend-mode: difference; */
-    /* color: black; */
     text-shadow: 0 0 8px #fff;
 
 }

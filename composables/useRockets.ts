@@ -2,17 +2,6 @@ import { ref, computed } from 'vue';
 import { rockets } from '~/data/rockets';
 
 const activeCountry = ref('all');
-const sortCriteria = ref<any>({ 
-    'all': 'default',
-    'USA': 'default',
-    'India': 'default',
-    'Russia': 'default',
-    'Japan': 'default',
-    'China': 'default',
-    'Europe': 'default',
-});
-
-
 const isSortingActive = ref(false)
 
 const sortedAndFilteredRockets = computed(() => {
@@ -20,7 +9,7 @@ const sortedAndFilteredRockets = computed(() => {
         ? [...rockets] 
         : rockets.filter(rocket => rocket.country === activeCountry.value);
 
-    if (isSortingActive.value && sortCriteria.value[activeCountry.value] === 'height') {
+    if (isSortingActive.value) {
         filteredRockets.sort((a, b) => a.height - b.height);
     }
 
@@ -33,9 +22,7 @@ const filterRockets = (country: string) => {
 };
 
 const sortRocketsByHeight = () => {
-    isSortingActive.value = !isSortingActive.value
-    const currentCriteria = sortCriteria.value[activeCountry.value];
-    sortCriteria.value[activeCountry.value] = currentCriteria === 'height' ? 'default' : 'height';
+    isSortingActive.value = !isSortingActive.value;
 };
 
 
@@ -62,5 +49,5 @@ export function useRockets() {
     const totalPages = computed(() => Math.ceil(numberOfRockets.value / modelsPerPage))
 
 
-    return { activeCountry, countryFlags, rockets, displayRockets: sortedAndFilteredRockets, existingCountries, filterRockets, isSortingActive, showAllRockets, sortRocketsByHeight, totalPages };
+    return { activeCountry, countryFlags, rockets, displayRockets: sortedAndFilteredRockets, existingCountries, filterRockets, isSortingActive, showAllRockets, sortRocketsByHeight, totalPages, modelsPerPage };
 }

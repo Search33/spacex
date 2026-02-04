@@ -42,9 +42,6 @@
                     </span>
                     <span>{{ rocket.height }}m</span>
                 </p>
-                <div>
-
-                </div>
             </div>
         </div>
 
@@ -71,46 +68,39 @@
 
 <script setup lang="ts">
 
-const { displayRockets, isSortingActive, activeCountry, totalPages } = useRockets();
+const { displayRockets, isSortingActive, activeCountry, totalPages, modelsPerPage } = useRockets();
 
 function shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-    return array
+    return array;
 }
-
-
-
-const hasSpaceShipTwo = computed(() => {
-    return paginatedRockets.value.some(rocket => rocket.name === 'SpaceShipTwo');
-});
-
 
 const { id } = useRoute().params;
 
 const page = ref(parseInt(Array.isArray(id) ? id[0] : id) || 1);
-
-const modelsPerPage = 16;
 
 function selectRandomStyle(styles: string[]): string {
     if (!styles || styles.length === 0) return '';
     return styles[Math.floor(Math.random() * styles.length)];
 }
 
-const paginatedRockets = computed(() => {
+const orderedRockets = ref<any[]>([]);
+
+watch([displayRockets, page, isSortingActive], () => {
     const start = (page.value - 1) * modelsPerPage;
     const end = start + modelsPerPage;
-
-    let currentRockets = displayRockets.value.slice(start, end);
-
-    if (isSortingActive.value) {
-        currentRockets.sort((a, b) => a.height - b.height);
-    } else {
-        shuffleArray(currentRockets);
+    const sliced = displayRockets.value.slice(start, end);
+    if (!isSortingActive.value) {
+        shuffleArray(sliced);
     }
-    return currentRockets.map(rocket => {
+    orderedRockets.value = sliced;
+}, { immediate: true });
+
+const paginatedRockets = computed(() => {
+    return orderedRockets.value.map(rocket => {
         let textStyle = {};
 
         if (rocket.styles && rocket.styles.length > 0) {
@@ -128,8 +118,11 @@ const paginatedRockets = computed(() => {
             ...rocket,
             textStyle
         }
-    });;
+    });
+});
 
+const hasSpaceShipTwo = computed(() => {
+    return paginatedRockets.value.some(rocket => rocket.name === 'SpaceShipTwo');
 });
 
 
@@ -137,9 +130,8 @@ const paginatedRockets = computed(() => {
 
 const router = useRouter();
 
-watch(activeCountry, (newCountry) => {
-    const filteredRocketCount = displayRockets.value.filter(rocket => rocket.country === newCountry).length;
-    if (filteredRocketCount <= modelsPerPage && page.value !== 1) {
+watch(activeCountry, () => {
+    if (displayRockets.value.length <= modelsPerPage && page.value !== 1) {
         page.value = 1;
         router.push('/rockets/1');
     }
