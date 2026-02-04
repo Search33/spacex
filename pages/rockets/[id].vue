@@ -13,26 +13,15 @@
 
         <div class=" z-[50] flex w-full items-bottom justify-between px-1 sm:px-2 md:px-4 pb-1 sm:pb-2 md:pb-4">
 
-            <!-- Dynamic Navigation
-            <div v-if="page <= 1" class="w-[164px] invisible"></div> -->
-
             <div class="w-[120px] sm:w-[164px]">
-                <div v-if="page <= 1" class="invisible"></div>
-                <NuxtLink v-else :to="`/rockets/${page - 1}`"
-                    class="block mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl text-center">
-                    <span class="hidden sm:inline">&lt;- Previous Page 🚀</span>
-                    <span class="sm:hidden">&lt;</span>
-                </NuxtLink>
+                <PageLink v-if="page > 1" :targetPage="page - 1" direction="prev" />
+                <div v-else class="invisible"></div>
             </div>
 
             <RocketFilters />
 
             <div class="w-[120px] sm:w-[164px]">
-                <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
-                    class="block mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl text-center">
-                    <span class="hidden sm:inline">Next Page 🚀 -&gt</span>
-                    <span class="sm:hidden">&gt;</span>
-                </NuxtLink>
+                <PageLink v-if="page < totalPages" :targetPage="page + 1" direction="next" />
                 <div v-else class="invisible"></div>
             </div>
         </div>
@@ -60,28 +49,19 @@
         </div>
 
         <div class="z-[50] flex w-full items-center justify-between px-4 pb-6 pt-1">
-            <!-- Left Navigation Link or Placeholder -->
-            <NuxtLink v-if="page > 1" :to="`/rockets/${page - 1}`"
-                class="w-[164px] mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl">
-                &lt- Previous Page 🚀
-            </NuxtLink>
-            <div v-else-if="page === 1 && !hasSpaceShipTwo" class="w-[164px] "></div> <!-- Invisible Placeholder -->
-            <p v-if="page === 1 && hasSpaceShipTwo" class="w-[164px] pl-3">SpaceShipTwo model by <span><a
+            <PageLink v-if="page > 1" :targetPage="page - 1" direction="prev" class="w-[164px]" />
+            <p v-else-if="hasSpaceShipTwo" class="w-[164px] pl-3">SpaceShipTwo model by <span><a
                         href="https://sketchfab.com/3d-models/virgin-galactic-spaceshiptwo-95716fb34847496eafa5bfb39fcd9c00"
                         target="_blank" class="underline">agreene</a></span></p>
+            <div v-else class="w-[164px]"></div>
 
-            <!-- Page Indicator -->
             <p
                 class="px-2.5 py-2 mr-6 text-md code-font font-semibold rounded-xl border-[1px] border-transparent hover:border-[#5db9bf] text-[#23585c]">
                 Page: {{ page }}
             </p>
 
             <div class="w-[120px] sm:w-[164px]">
-                <NuxtLink v-if="page < totalPages" :to="`/rockets/${page + 1}`"
-                    class="block mb-auto p-3 bg-[#292929] text-sm code-font text-[#ddd] rounded-xl text-center">
-                    <span class="hidden sm:inline">Next Page 🚀 -&gt</span>
-                    <span class="sm:hidden">&gt;</span>
-                </NuxtLink>
+                <PageLink v-if="page < totalPages" :targetPage="page + 1" direction="next" />
                 <div v-else class="invisible"></div>
             </div>
         </div>
